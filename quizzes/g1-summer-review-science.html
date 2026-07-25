@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中学1年 夏休み確認問題 理科</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="header-title-block">
+      <div class="header-eyebrow">夏休み 1学期内容 総復習 ／ 理科</div>
+      <h1>中学1年 夏休み確認問題 24問
+        <small>植物のつくり・身近な物理現象・物質・力</small>
+      </h1>
+    </div>
+    <div class="header-tags">
+      <span class="tag tag-red">1年生</span>
+      <span class="tag tag-blue">植物のつくりとはたらき</span>
+      <span class="tag tag-blue">光・音・力</span>
+      <span class="tag tag-blue">物質の性質</span>
+      <span class="tag tag-gray">偏差値65レベル</span>
+    </div>
+  </div>
+</header>
+
+<div class="hyoka-bar">
+  <div class="hyoka-bar-inner">
+    <strong>評価の観点：</strong>
+    <span><span class="hyoka-dot chi"></span> 知識・技能</span>
+    <span><span class="hyoka-dot shi"></span> 思考・判断・表現</span>
+    <span><span class="hyoka-dot tai"></span> 主体的に学習に取り組む態度</span>
+    <span style="margin-left:auto;font-size:10px;"><a href="../index.html" style="color:#a0b8cc;">← 範囲・問題集一覧へ戻る</a> ／ Enter キーで次の問題へ移動</span>
+  </div>
+</div>
+
+<div id="score-bar">
+  <div class="score-bar-inner">
+    <div class="score-num" id="score-disp">0 <small>/ 24</small></div>
+    <div class="progress-wrap">
+      <div class="progress-label" id="prog-label">未回答: 24問</div>
+      <div class="progress-outer"><div class="progress-inner" id="prog-inner"></div></div>
+    </div>
+    <button class="btn-primary" onclick="checkAll()">全問採点する</button>
+    <button class="btn-secondary" onclick="resetAll()">リセット</button>
+  </div>
+</div>
+
+<main>
+
+<!-- ===================== SECTION A ===================== -->
+<div class="sec-head">
+  <span class="sec-label">A</span>
+  <span class="sec-title">植物のつくりとはたらき</span>
+  <span class="sec-hyoka"><span class="chi-tag">知識・技能</span></span>
+</div>
+
+<div class="q-card" id="qc1">
+  <div class="q-header">
+    <span class="q-num">Q01</span>
+    <div class="q-text">花の中心にあり、受粉した後に果実になる部分を何というか。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q1" type="text"></div>
+  <div class="q-feedback" id="fb1"></div>
+</div>
+
+<div class="q-card" id="qc2">
+  <div class="q-header">
+    <span class="q-num">Q02</span>
+    <div class="q-text">光合成を行う、細胞の中にある緑色の粒を何というか。</div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q2" type="text"></div>
+  <div class="q-feedback" id="fb2"></div>
+</div>
+
+<div class="q-card" id="qc3">
+  <div class="q-header">
+    <span class="q-num">Q03</span>
+    <div class="q-text">根から吸収した水や養分が通る管を何というか。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q3" type="text"></div>
+  <div class="q-feedback" id="fb3"></div>
+</div>
+
+<div class="q-card" id="qc4">
+  <div class="q-header">
+    <span class="q-num">Q04</span>
+    <div class="q-text">葉でつくられた養分が通る管を何というか。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q4" type="text"></div>
+  <div class="q-feedback" id="fb4"></div>
+</div>
+
+<div class="q-card" id="qc5">
+  <div class="q-header">
+    <span class="q-num">Q05</span>
+    <div class="q-text">葉の裏側に多く見られる、水蒸気の出口となる小さな穴を何というか。</div>
+    <span class="diff-tag diff-S">★★★</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q5" type="text"></div>
+  <div class="q-feedback" id="fb5"></div>
+</div>
+
+<!-- ===================== SECTION B ===================== -->
+<div class="sec-head">
+  <span class="sec-label">B</span>
+  <span class="sec-title">身近な物理現象（光・音）</span>
+  <span class="sec-hyoka"><span class="chi-tag">知識・技能</span></span>
+</div>
+
+<div class="q-card" id="qc6">
+  <div class="q-header">
+    <span class="q-num">Q06</span>
+    <div class="q-text">光が異なる物質の境界で折れ曲がる現象を何というか。</div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q6" type="text"></div>
+  <div class="q-feedback" id="fb6"></div>
+</div>
+
+<div class="q-card" id="qc7">
+  <div class="q-header">
+    <span class="q-num">Q07</span>
+    <div class="q-text">1秒間に振動する回数を表す量を何というか。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q7" type="text"></div>
+  <div class="q-feedback" id="fb7"></div>
+</div>
+
+<div class="q-card" id="qc8">
+  <div class="q-header">
+    <span class="q-num">Q08</span>
+    <div class="q-text">凸レンズを通った光が実際に集まってできる像を何というか。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q8" type="text"></div>
+  <div class="q-feedback" id="fb8"></div>
+</div>
+
+<div class="q-card" id="qc9">
+  <div class="q-header">
+    <span class="q-num">Q09</span>
+    <div class="q-text">音は空気中をおよそ秒速何mで伝わるか。整数で答えよ。</div>
+    <span class="diff-tag diff-S">★★★</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q9" type="text" placeholder="単位はm/sで"></div>
+  <div class="q-feedback" id="fb9"></div>
+</div>
+
+<!-- ===================== SECTION C ===================== -->
+<div class="sec-head">
+  <span class="sec-label">C</span>
+  <span class="sec-title">物質の性質・状態変化</span>
+  <span class="sec-hyoka">
+    <span class="chi-tag">知識・技能</span>
+    <span class="shi-tag">思考・判断・表現</span>
+  </span>
+</div>
+
+<div class="q-card" id="qc10">
+  <div class="q-header">
+    <span class="q-num">Q10</span>
+    <div class="q-text">固体が液体にならずに、直接気体に変化することを何というか。</div>
+    <span class="diff-tag diff-S">★★★</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q10" type="text"></div>
+  <div class="q-feedback" id="fb10"></div>
+</div>
+
+<div class="q-card" id="qc11">
+  <div class="q-header">
+    <span class="q-num">Q11</span>
+    <div class="q-text">物質1cm³あたりの質量を何というか。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q11" type="text"></div>
+  <div class="q-feedback" id="fb11"></div>
+</div>
+
+<div class="q-card" id="qc12">
+  <div class="q-header">
+    <span class="q-num">Q12</span>
+    <div class="q-text">1気圧のもとで、水がこおる温度は何℃か。</div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q12" type="text"></div>
+  <div class="q-feedback" id="fb12"></div>
+</div>
+
+<div class="q-card" id="qc13">
+  <div class="q-header">
+    <span class="q-num">Q13</span>
+    <div class="q-text">エタノールのように、燃えると二酸化炭素と水ができる、炭素をふくむ物質を何性の物質というか（漢字2字）。</div>
+    <span class="diff-tag diff-S">★★★</span>
+    <span class="q-hyoka-badge shi-tag">思</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q13" type="text"></div>
+  <div class="q-feedback" id="fb13"></div>
+</div>
+
+<!-- ===================== SECTION D ===================== -->
+<div class="sec-head">
+  <span class="sec-label">D</span>
+  <span class="sec-title">生物の観察・分類</span>
+  <span class="sec-hyoka"><span class="chi-tag">知識・技能</span></span>
+</div>
+
+<div class="q-card" id="qc14">
+  <div class="q-header">
+    <span class="q-num">Q14</span>
+    <div class="q-text">顕微鏡の倍率は「接眼レンズの倍率」×「＿＿＿の倍率」で求められる。空欄に入る語を答えよ。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q14" type="text"></div>
+  <div class="q-feedback" id="fb14"></div>
+</div>
+
+<div class="q-card" id="qc15">
+  <div class="q-header">
+    <span class="q-num">Q15</span>
+    <div class="q-text">背骨を持つ動物をまとめて何というか。</div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q15" type="text"></div>
+  <div class="q-feedback" id="fb15"></div>
+</div>
+
+<div class="q-card" id="qc16">
+  <div class="q-header">
+    <span class="q-num">Q16</span>
+    <div class="q-text">背骨を持たない動物をまとめて何というか。</div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q16" type="text"></div>
+  <div class="q-feedback" id="fb16"></div>
+</div>
+
+<div class="q-card" id="qc17">
+  <div class="q-header">
+    <span class="q-num">Q17</span>
+    <div class="q-text">こん虫の体は頭部・胸部と、あと1つは何部に分かれるか。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q17" type="text"></div>
+  <div class="q-feedback" id="fb17"></div>
+</div>
+
+<!-- ===================== SECTION E ===================== -->
+<div class="sec-head">
+  <span class="sec-label">E</span>
+  <span class="sec-title">力とばね</span>
+  <span class="sec-hyoka">
+    <span class="chi-tag">知識・技能</span>
+    <span class="shi-tag">思考・判断・表現</span>
+  </span>
+</div>
+
+<div class="q-card" id="qc18">
+  <div class="q-header">
+    <span class="q-num">Q18</span>
+    <div class="q-text">力の大きさを表す単位は何か（アルファベット1文字）。</div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q18" type="text"></div>
+  <div class="q-feedback" id="fb18"></div>
+</div>
+
+<div class="q-card" id="qc19">
+  <div class="q-header">
+    <span class="q-num">Q19</span>
+    <div class="q-text">ばねののびは、加えた力の大きさに比例するという法則を何の法則というか。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q19" type="text"></div>
+  <div class="q-feedback" id="fb19"></div>
+</div>
+
+<div class="q-card" id="qc20">
+  <div class="q-header">
+    <span class="q-num">Q20</span>
+    <div class="q-text">質量100gの物体にはたらく重力の大きさはおよそ何Nか。</div>
+    <span class="diff-tag diff-S">★★★</span>
+    <span class="q-hyoka-badge shi-tag">思</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q20" type="text" placeholder="単位はNで"></div>
+  <div class="q-feedback" id="fb20"></div>
+</div>
+
+<!-- ===================== SECTION F ===================== -->
+<div class="sec-head">
+  <span class="sec-label">F</span>
+  <span class="sec-title">気体の性質・実験操作</span>
+  <span class="sec-hyoka">
+    <span class="chi-tag">知識・技能</span>
+    <span class="shi-tag">思考・判断・表現</span>
+  </span>
+</div>
+
+<div class="q-card" id="qc21">
+  <div class="q-header">
+    <span class="q-num">Q21</span>
+    <div class="q-text">石灰石にうすい塩酸を加えると発生する気体は何か。</div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q21" type="text"></div>
+  <div class="q-feedback" id="fb21"></div>
+</div>
+
+<div class="q-card" id="qc22">
+  <div class="q-header">
+    <span class="q-num">Q22</span>
+    <div class="q-text">亜鉛にうすい塩酸を加えると発生する気体は何か。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q22" type="text"></div>
+  <div class="q-feedback" id="fb22"></div>
+</div>
+
+<div class="q-card" id="qc23">
+  <div class="q-header">
+    <span class="q-num">Q23</span>
+    <div class="q-text">ものが燃えるのを助けるはたらきがある気体は何か。</div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q23" type="text"></div>
+  <div class="q-feedback" id="fb23"></div>
+</div>
+
+<div class="q-card" id="qc24">
+  <div class="q-header">
+    <span class="q-num">Q24</span>
+    <div class="q-text">水に溶けにくい気体を集めるのに適した、水を使って気体と置きかえる集め方を何というか。</div>
+    <span class="diff-tag diff-S">★★★</span>
+    <span class="q-hyoka-badge shi-tag">思</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q24" type="text"></div>
+  <div class="q-feedback" id="fb24"></div>
+</div>
+
+<div id="result-panel">
+  <h2>採点結果</h2>
+  <div class="big-score" id="result-score">0<em> / 24</em></div>
+  <div class="result-comment" id="result-comment"></div>
+  <div class="result-breakdown" id="result-breakdown"></div>
+</div>
+
+</main>
+
+<script src="../quiz-engine.js"></script>
+<script>
+const questions = [
+  { num: 1,  hyoka: 'chi', answer: '子房', hint: 'めしべの根もとにあるふくらんだ部分。',
+    check: v => qAccept(v, ['子房']) },
+  { num: 2,  hyoka: 'chi', answer: '葉緑体', hint: '光合成が行われる緑色の粒。',
+    check: v => qAccept(v, ['葉緑体']) },
+  { num: 3,  hyoka: 'chi', answer: '道管', hint: '水や養分が通る管。',
+    check: v => qAccept(v, ['道管']) },
+  { num: 4,  hyoka: 'chi', answer: '師管', hint: '葉でつくられた養分（栄養分）が通る管。',
+    check: v => qAccept(v, ['師管']) },
+  { num: 5,  hyoka: 'chi', answer: '気孔', hint: '孔辺細胞に囲まれた小さな穴。',
+    check: v => qAccept(v, ['気孔']) },
+  { num: 6,  hyoka: 'chi', answer: '屈折', hint: '光が水やガラスに入るときに進む向きが変わる現象。',
+    check: v => qAccept(v, ['屈折']) },
+  { num: 7,  hyoka: 'chi', answer: '振動数', hint: '単位はHz（ヘルツ）で表す。',
+    check: v => qAccept(v, ['振動数','周波数']) },
+  { num: 8,  hyoka: 'chi', answer: '実像', hint: 'スクリーンにうつすことができる像。',
+    check: v => qAccept(v, ['実像']) },
+  { num: 9,  hyoka: 'chi', answer: '340', hint: '気温15℃前後でのおよその値。',
+    check: v => qAccept(v, ['340','340m/s','秒速340m']) },
+  { num: 10, hyoka: 'chi', answer: '昇華', hint: 'ドライアイスの変化がその例。',
+    check: v => qAccept(v, ['昇華']) },
+  { num: 11, hyoka: 'chi', answer: '密度', hint: '単位はg/cm³。',
+    check: v => qAccept(v, ['密度']) },
+  { num: 12, hyoka: 'chi', answer: '0', hint: '水の融点（凝固点）。',
+    check: v => qAccept(v, ['0','0℃']) },
+  { num: 13, hyoka: 'shi', answer: '有機', hint: '炭素をふくみ、燃えるとCO₂と水ができる物質のなかま。',
+    check: v => qAccept(v, ['有機']) },
+  { num: 14, hyoka: 'chi', answer: '対物レンズ', hint: 'プレパラートに近い方のレンズ。',
+    check: v => qAccept(v, ['対物レンズ']) },
+  { num: 15, hyoka: 'chi', answer: '脊椎動物', hint: '魚類・両生類・は虫類・鳥類・ほ乳類が含まれる。',
+    check: v => qAccept(v, ['脊椎動物']) },
+  { num: 16, hyoka: 'chi', answer: '無脊椎動物', hint: 'こん虫やこうかく類、軟体動物などが含まれる。',
+    check: v => qAccept(v, ['無脊椎動物']) },
+  { num: 17, hyoka: 'chi', answer: '腹部', hint: '頭部・胸部・腹部の3つに分かれる。',
+    check: v => qAccept(v, ['腹部']) },
+  { num: 18, hyoka: 'chi', answer: 'N', hint: 'ニュートンの頭文字。',
+    check: v => qAccept(v, ['N']) },
+  { num: 19, hyoka: 'chi', answer: 'フックの法則', hint: 'ばねののびと力の大きさの関係を表す法則。',
+    check: v => qAccept(v, ['フックの法則']) },
+  { num: 20, hyoka: 'shi', answer: '1', hint: '100gの物体にはたらく重力はおよそ1N。',
+    check: v => qAccept(v, ['1','1N']) },
+  { num: 21, hyoka: 'chi', answer: '二酸化炭素', hint: '石灰水を白くにごらせる気体。',
+    check: v => qAccept(v, ['二酸化炭素']) },
+  { num: 22, hyoka: 'chi', answer: '水素', hint: '空気中で最も軽く、燃えると水ができる気体。',
+    check: v => qAccept(v, ['水素']) },
+  { num: 23, hyoka: 'chi', answer: '酸素', hint: '物が燃える助けをするが、酸素自体は燃えない。',
+    check: v => qAccept(v, ['酸素']) },
+  { num: 24, hyoka: 'shi', answer: '水上置換法', hint: '水に溶けにくい気体を集めるのに適した方法。',
+    check: v => qAccept(v, ['水上置換法']) },
+];
+initQuiz(questions);
+</script>
+
+</body>
+</html>

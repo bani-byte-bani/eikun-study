@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中学1年 夏休み確認問題 英語</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="header-title-block">
+      <div class="header-eyebrow">夏休み 1学期内容 総復習 ／ 英語</div>
+      <h1>中学1年 夏休み確認問題 24問
+        <small>be動詞・一般動詞・疑問詞・基本文型</small>
+      </h1>
+    </div>
+    <div class="header-tags">
+      <span class="tag tag-red">1年生</span>
+      <span class="tag tag-blue">be動詞・一般動詞</span>
+      <span class="tag tag-blue">疑問詞</span>
+      <span class="tag tag-blue">基本文型</span>
+      <span class="tag tag-gray">偏差値65レベル</span>
+    </div>
+  </div>
+</header>
+
+<div class="hyoka-bar">
+  <div class="hyoka-bar-inner">
+    <strong>評価の観点：</strong>
+    <span><span class="hyoka-dot chi"></span> 知識・技能</span>
+    <span><span class="hyoka-dot shi"></span> 思考・判断・表現</span>
+    <span><span class="hyoka-dot tai"></span> 主体的に学習に取り組む態度</span>
+    <span style="margin-left:auto;font-size:10px;"><a href="../index.html" style="color:#a0b8cc;">← 範囲・問題集一覧へ戻る</a> ／ Enter キーで次の問題へ移動</span>
+  </div>
+</div>
+
+<div id="score-bar">
+  <div class="score-bar-inner">
+    <div class="score-num" id="score-disp">0 <small>/ 24</small></div>
+    <div class="progress-wrap">
+      <div class="progress-label" id="prog-label">未回答: 24問</div>
+      <div class="progress-outer"><div class="progress-inner" id="prog-inner"></div></div>
+    </div>
+    <button class="btn-primary" onclick="checkAll()">全問採点する</button>
+    <button class="btn-secondary" onclick="resetAll()">リセット</button>
+  </div>
+</div>
+
+<main>
+
+<!-- ===================== SECTION A ===================== -->
+<div class="sec-head">
+  <span class="sec-label">A</span>
+  <span class="sec-title">単語・語彙</span>
+  <span class="sec-hyoka"><span class="chi-tag">知識・技能</span></span>
+</div>
+
+<div class="q-card" id="qc1">
+  <div class="q-header">
+    <span class="q-num">Q01</span>
+    <div class="q-text">「図書館」を表す英単語を1語で答えよ。</div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q1" type="text"></div>
+  <div class="q-feedback" id="fb1"></div>
+</div>
+
+<div class="q-card" id="qc2">
+  <div class="q-header">
+    <span class="q-num">Q02</span>
+    <div class="q-text">「兄・弟」を表す英単語を1語で答えよ。</div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q2" type="text"></div>
+  <div class="q-feedback" id="fb2"></div>
+</div>
+
+<div class="q-card" id="qc3">
+  <div class="q-header">
+    <span class="q-num">Q03</span>
+    <div class="q-text">「忙しい」を表す英単語を1語で答えよ。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q3" type="text"></div>
+  <div class="q-feedback" id="fb3"></div>
+</div>
+
+<div class="q-card" id="qc4">
+  <div class="q-header">
+    <span class="q-num">Q04</span>
+    <div class="q-text">「今日」を表す英単語を1語で答えよ。</div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q4" type="text"></div>
+  <div class="q-feedback" id="fb4"></div>
+</div>
+
+<!-- ===================== SECTION B ===================== -->
+<div class="sec-head">
+  <span class="sec-label">B</span>
+  <span class="sec-title">be動詞・一般動詞</span>
+  <span class="sec-hyoka">
+    <span class="chi-tag">知識・技能</span>
+    <span class="shi-tag">思考・判断・表現</span>
+  </span>
+</div>
+
+<div class="q-card" id="qc5">
+  <div class="q-header">
+    <span class="q-num">Q05</span>
+    <div class="q-text">空所に適切なbe動詞を1語で入れよ。<br><span class="math">They ___ good friends.</span></div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q5" type="text"></div>
+  <div class="q-feedback" id="fb5"></div>
+</div>
+
+<div class="q-card" id="qc6">
+  <div class="q-header">
+    <span class="q-num">Q06</span>
+    <div class="q-text">( )内の動詞を正しい形に直して空所に入れよ。<br><span class="math">My sister ___ (play) the piano every day.</span></div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q6" type="text"></div>
+  <div class="q-feedback" id="fb6"></div>
+</div>
+
+<div class="q-card" id="qc7">
+  <div class="q-header">
+    <span class="q-num">Q07</span>
+    <div class="q-text">次の文を否定文に書きかえよ。<br><span class="math">He is a teacher.</span></div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge shi-tag">思</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input wide" id="q7" type="text"></div>
+  <div class="q-feedback" id="fb7"></div>
+</div>
+
+<div class="q-card" id="qc8">
+  <div class="q-header">
+    <span class="q-num">Q08</span>
+    <div class="q-text">次の文を疑問文に書きかえよ。<br><span class="math">You like dogs.</span></div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge shi-tag">思</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input wide" id="q8" type="text"></div>
+  <div class="q-feedback" id="fb8"></div>
+</div>
+
+<div class="q-card" id="qc9">
+  <div class="q-header">
+    <span class="q-num">Q09</span>
+    <div class="q-text">次の文を疑問文に書きかえよ。<br><span class="math">She can swim.</span></div>
+    <span class="diff-tag diff-S">★★★</span>
+    <span class="q-hyoka-badge shi-tag">思</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input wide" id="q9" type="text"></div>
+  <div class="q-feedback" id="fb9"></div>
+</div>
+
+<!-- ===================== SECTION C ===================== -->
+<div class="sec-head">
+  <span class="sec-label">C</span>
+  <span class="sec-title">代名詞・複数形</span>
+  <span class="sec-hyoka"><span class="chi-tag">知識・技能</span></span>
+</div>
+
+<div class="q-card" id="qc10">
+  <div class="q-header">
+    <span class="q-num">Q10</span>
+    <div class="q-text">"This is Tom's bag." の "Tom's bag" を1語の代名詞で言いかえよ。</div>
+    <span class="diff-tag diff-S">★★★</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q10" type="text"></div>
+  <div class="q-feedback" id="fb10"></div>
+</div>
+
+<div class="q-card" id="qc11">
+  <div class="q-header">
+    <span class="q-num">Q11</span>
+    <div class="q-text">「これらの本」を英語で2語で答えよ。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q11" type="text"></div>
+  <div class="q-feedback" id="fb11"></div>
+</div>
+
+<div class="q-card" id="qc12">
+  <div class="q-header">
+    <span class="q-num">Q12</span>
+    <div class="q-text">"child" の複数形を答えよ。</div>
+    <span class="diff-tag diff-S">★★★</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q12" type="text"></div>
+  <div class="q-feedback" id="fb12"></div>
+</div>
+
+<div class="q-card" id="qc13">
+  <div class="q-header">
+    <span class="q-num">Q13</span>
+    <div class="q-text">( )内の語を正しい形に直して空所に入れよ。<br><span class="math">I have two ___ (box).</span></div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q13" type="text"></div>
+  <div class="q-feedback" id="fb13"></div>
+</div>
+
+<!-- ===================== SECTION D ===================== -->
+<div class="sec-head">
+  <span class="sec-label">D</span>
+  <span class="sec-title">疑問詞・基本文型</span>
+  <span class="sec-hyoka">
+    <span class="chi-tag">知識・技能</span>
+    <span class="shi-tag">思考・判断・表現</span>
+  </span>
+</div>
+
+<div class="q-card" id="qc14">
+  <div class="q-header">
+    <span class="q-num">Q14</span>
+    <div class="q-text">空所に適切な疑問詞を入れよ。<br><span class="math">___ is your birthday? — It's May 3rd.</span></div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q14" type="text"></div>
+  <div class="q-feedback" id="fb14"></div>
+</div>
+
+<div class="q-card" id="qc15">
+  <div class="q-header">
+    <span class="q-num">Q15</span>
+    <div class="q-text">空所に適切な疑問詞を入れよ。<br><span class="math">___ book is this? — It's mine.</span></div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q15" type="text"></div>
+  <div class="q-feedback" id="fb15"></div>
+</div>
+
+<div class="q-card" id="qc16">
+  <div class="q-header">
+    <span class="q-num">Q16</span>
+    <div class="q-text">次の日本語を英語にせよ。「あなたは何時に起きますか。」</div>
+    <span class="diff-tag diff-S">★★★</span>
+    <span class="q-hyoka-badge shi-tag">思</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input wide" id="q16" type="text"></div>
+  <div class="q-feedback" id="fb16"></div>
+</div>
+
+<div class="q-card" id="qc17">
+  <div class="q-header">
+    <span class="q-num">Q17</span>
+    <div class="q-text">空所に適切な疑問詞を入れよ。<br><span class="math">___ old are you? — I'm twelve.</span></div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q17" type="text"></div>
+  <div class="q-feedback" id="fb17"></div>
+</div>
+
+<div class="q-card" id="qc18">
+  <div class="q-header">
+    <span class="q-num">Q18</span>
+    <div class="q-text">次の日本語を英語にせよ。「彼女はだれですか。」</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge shi-tag">思</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input wide" id="q18" type="text"></div>
+  <div class="q-feedback" id="fb18"></div>
+</div>
+
+<!-- ===================== SECTION E ===================== -->
+<div class="sec-head">
+  <span class="sec-label">E</span>
+  <span class="sec-title">前置詞・熟語</span>
+  <span class="sec-hyoka"><span class="chi-tag">知識・技能</span></span>
+</div>
+
+<div class="q-card" id="qc19">
+  <div class="q-header">
+    <span class="q-num">Q19</span>
+    <div class="q-text">空所に適切な前置詞を入れよ（テーブルの上に）。<br><span class="math">The cat is ___ the table.</span></div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q19" type="text"></div>
+  <div class="q-feedback" id="fb19"></div>
+</div>
+
+<div class="q-card" id="qc20">
+  <div class="q-header">
+    <span class="q-num">Q20</span>
+    <div class="q-text">空所に適切な前置詞を入れよ（自転車で）。<br><span class="math">I go to school ___ bike.</span></div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q20" type="text"></div>
+  <div class="q-feedback" id="fb20"></div>
+</div>
+
+<div class="q-card" id="qc21">
+  <div class="q-header">
+    <span class="q-num">Q21</span>
+    <div class="q-text">「〜を楽しみにする」という意味になるように、空所に適切な1語を入れよ。<br><span class="math">look ___ to</span></div>
+    <span class="diff-tag diff-S">★★★</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q21" type="text"></div>
+  <div class="q-feedback" id="fb21"></div>
+</div>
+
+<!-- ===================== SECTION F ===================== -->
+<div class="sec-head">
+  <span class="sec-label">F</span>
+  <span class="sec-title">総合問題</span>
+  <span class="sec-hyoka">
+    <span class="chi-tag">知識・技能</span>
+    <span class="shi-tag">思考・判断・表現</span>
+  </span>
+</div>
+
+<div class="q-card" id="qc22">
+  <div class="q-header">
+    <span class="q-num">Q22</span>
+    <div class="q-text">次の文を過去の文に書きかえよ。<br><span class="math">I play soccer.</span></div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge shi-tag">思</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input wide" id="q22" type="text"></div>
+  <div class="q-feedback" id="fb22"></div>
+</div>
+
+<div class="q-card" id="qc23">
+  <div class="q-header">
+    <span class="q-num">Q23</span>
+    <div class="q-text">空所に適切なbe動詞を入れよ（複数の人がいるという文）。<br><span class="math">There ___ many students in the park.</span></div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q23" type="text"></div>
+  <div class="q-feedback" id="fb23"></div>
+</div>
+
+<div class="q-card" id="qc24">
+  <div class="q-header">
+    <span class="q-num">Q24</span>
+    <div class="q-text">次の日本語を英語にせよ。「彼は毎朝コーヒーを飲みません。」</div>
+    <span class="diff-tag diff-S">★★★</span>
+    <span class="q-hyoka-badge shi-tag">思</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input wide" id="q24" type="text"></div>
+  <div class="q-feedback" id="fb24"></div>
+</div>
+
+<div id="result-panel">
+  <h2>採点結果</h2>
+  <div class="big-score" id="result-score">0<em> / 24</em></div>
+  <div class="result-comment" id="result-comment"></div>
+  <div class="result-breakdown" id="result-breakdown"></div>
+</div>
+
+</main>
+
+<script src="../quiz-engine.js"></script>
+<script>
+const questions = [
+  { num: 1,  hyoka: 'chi', answer: 'library', hint: '本を借りたり読んだりする場所。',
+    check: v => qAccept(v, ['library']) },
+  { num: 2,  hyoka: 'chi', answer: 'brother', hint: '男のきょうだいのこと。',
+    check: v => qAccept(v, ['brother']) },
+  { num: 3,  hyoka: 'chi', answer: 'busy', hint: 'することがたくさんある様子。',
+    check: v => qAccept(v, ['busy']) },
+  { num: 4,  hyoka: 'chi', answer: 'today', hint: 'yesterday（昨日）, tomorrow（明日）とあわせて覚えよう。',
+    check: v => qAccept(v, ['today']) },
+  { num: 5,  hyoka: 'chi', answer: 'are', hint: '主語 They は複数なので be動詞は are。',
+    check: v => qAccept(v, ['are']) },
+  { num: 6,  hyoka: 'chi', answer: 'plays', hint: '主語が3人称単数のときは動詞にsをつける。',
+    check: v => qAccept(v, ['plays']) },
+  { num: 7,  hyoka: 'shi', answer: 'He is not a teacher.', hint: 'be動詞の後ろに not を入れる。',
+    check: v => qAccept(v, ['He is not a teacher.','He isn\'t a teacher.','He is not a teacher','He isn\'t a teacher']) },
+  { num: 8,  hyoka: 'shi', answer: 'Do you like dogs?', hint: '一般動詞の疑問文はDoを主語の前に置く。',
+    check: v => qAccept(v, ['Do you like dogs?','Do you like dogs']) },
+  { num: 9,  hyoka: 'shi', answer: 'Can she swim?', hint: '助動詞canを主語の前に出す。',
+    check: v => qAccept(v, ['Can she swim?','Can she swim']) },
+  { num: 10, hyoka: 'chi', answer: 'his', hint: '「トムの」＝「彼の」と考える所有格の代名詞。',
+    check: v => qAccept(v, ['his']) },
+  { num: 11, hyoka: 'chi', answer: 'these books', hint: 'thisの複数形はthese。',
+    check: v => qAccept(v, ['these books']) },
+  { num: 12, hyoka: 'chi', answer: 'children', hint: 'childは不規則に変化する複数形。',
+    check: v => qAccept(v, ['children']) },
+  { num: 13, hyoka: 'chi', answer: 'boxes', hint: '語尾がxの単語はesをつけて複数形にする。',
+    check: v => qAccept(v, ['boxes']) },
+  { num: 14, hyoka: 'chi', answer: 'When', hint: '日付や時を尋ねる疑問詞。',
+    check: v => qAccept(v, ['When','when']) },
+  { num: 15, hyoka: 'chi', answer: 'Whose', hint: '「だれの」と持ち主を尋ねる疑問詞。',
+    check: v => qAccept(v, ['Whose','whose']) },
+  { num: 16, hyoka: 'shi', answer: 'What time do you get up?', hint: '時刻を尋ねるときは What time で文を始める。',
+    check: v => qAccept(v, ['What time do you get up?','What time do you get up']) },
+  { num: 17, hyoka: 'chi', answer: 'How', hint: 'How old 〜? で年齢を尋ねる。',
+    check: v => qAccept(v, ['How','how']) },
+  { num: 18, hyoka: 'shi', answer: 'Who is she?', hint: '「だれ」と人を尋ねる疑問詞はWho。',
+    check: v => qAccept(v, ['Who is she?','Who is she']) },
+  { num: 19, hyoka: 'chi', answer: 'on', hint: '接触して「〜の上に」というときの前置詞。',
+    check: v => qAccept(v, ['on']) },
+  { num: 20, hyoka: 'chi', answer: 'by', hint: '交通手段を表すときの前置詞。',
+    check: v => qAccept(v, ['by']) },
+  { num: 21, hyoka: 'chi', answer: 'forward', hint: 'look forward to 〜（〜を楽しみにする）。',
+    check: v => qAccept(v, ['forward']) },
+  { num: 22, hyoka: 'shi', answer: 'I played soccer.', hint: '規則動詞の過去形はedをつける。',
+    check: v => qAccept(v, ['I played soccer.','I played soccer']) },
+  { num: 23, hyoka: 'chi', answer: 'are', hint: '主語 many students は複数。There are 〜.の文。',
+    check: v => qAccept(v, ['are']) },
+  { num: 24, hyoka: 'shi', answer: 'He does not drink coffee every morning.', hint: '一般動詞の否定文は主語の前にDoes not（3人称単数）を使う。',
+    check: v => qAccept(v, [
+      'He does not drink coffee every morning.','He doesn\'t drink coffee every morning.',
+      'He does not drink coffee every morning','He doesn\'t drink coffee every morning'
+    ]) },
+];
+initQuiz(questions);
+</script>
+
+</body>
+</html>
