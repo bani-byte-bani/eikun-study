@@ -1,6 +1,6 @@
 # eikun-study
 
-中学数学の自動採点付き練習問題集（静的サイト）。
+中学の自動採点付き練習問題集（静的サイト）。
 
 ## 使い方
 
@@ -11,8 +11,12 @@
 - `index.html` — 範囲・問題集を選ぶハブページ
 - `style.css` — 共通スタイル
 - `quiz-engine.js` — 共通の採点エンジン（進捗バー、Enterキーでの入力欄移動、採点、結果パネル表示）
-- `quizzes/g1-1st-term-math.html` — 中1 第1学期末テスト対策（正負の数・文字と式、30問、偏差値67レベル）
-- `quizzes/g1-summer-review.html` — 中1 夏休み確認問題（正負の数・文字と式・一次方程式、24問、偏差値65レベル）
+- `quizzes/g1-1st-term-math.html` — 中1 第1学期末テスト対策 数学（正負の数・文字と式、30問、偏差値67レベル）
+- `quizzes/g1-summer-review-math.html` — 中1 夏休み確認問題 数学（正負の数・文字と式・一次方程式、24問、偏差値65レベル）
+- `quizzes/g1-summer-review-japanese.html` — 中1 夏休み確認問題 国語（漢字・文法・敬語、24問、偏差値65レベル）
+- `quizzes/g1-summer-review-english.html` — 中1 夏休み確認問題 英語（be動詞・一般動詞・疑問詞、24問、偏差値65レベル）
+- `quizzes/g1-summer-review-science.html` — 中1 夏休み確認問題 理科（植物・物理現象・物質・力、24問、偏差値65レベル）
+- `quizzes/g1-summer-review-social.html` — 中1 夏休み確認問題 社会（世界と日本の姿・古代文明、24問、偏差値65レベル）
 
 ## 問題集の追加方法
 

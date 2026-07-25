@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中学1年 夏休み確認問題 国語</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="header-title-block">
+      <div class="header-eyebrow">夏休み 1学期内容 総復習 ／ 国語</div>
+      <h1>中学1年 夏休み確認問題 24問
+        <small>漢字・語句・文法・敬語</small>
+      </h1>
+    </div>
+    <div class="header-tags">
+      <span class="tag tag-red">1年生</span>
+      <span class="tag tag-blue">漢字の読み書き</span>
+      <span class="tag tag-blue">文法</span>
+      <span class="tag tag-blue">敬語</span>
+      <span class="tag tag-gray">偏差値65レベル</span>
+    </div>
+  </div>
+</header>
+
+<div class="hyoka-bar">
+  <div class="hyoka-bar-inner">
+    <strong>評価の観点：</strong>
+    <span><span class="hyoka-dot chi"></span> 知識・技能</span>
+    <span><span class="hyoka-dot shi"></span> 思考・判断・表現</span>
+    <span><span class="hyoka-dot tai"></span> 主体的に学習に取り組む態度</span>
+    <span style="margin-left:auto;font-size:10px;"><a href="../index.html" style="color:#a0b8cc;">← 範囲・問題集一覧へ戻る</a> ／ Enter キーで次の問題へ移動</span>
+  </div>
+</div>
+
+<div id="score-bar">
+  <div class="score-bar-inner">
+    <div class="score-num" id="score-disp">0 <small>/ 24</small></div>
+    <div class="progress-wrap">
+      <div class="progress-label" id="prog-label">未回答: 24問</div>
+      <div class="progress-outer"><div class="progress-inner" id="prog-inner"></div></div>
+    </div>
+    <button class="btn-primary" onclick="checkAll()">全問採点する</button>
+    <button class="btn-secondary" onclick="resetAll()">リセット</button>
+  </div>
+</div>
+
+<main>
+
+<!-- ===================== SECTION A ===================== -->
+<div class="sec-head">
+  <span class="sec-label">A</span>
+  <span class="sec-title">漢字の読み</span>
+  <span class="sec-hyoka"><span class="chi-tag">知識・技能</span></span>
+</div>
+
+<div class="q-card" id="qc1">
+  <div class="q-header">
+    <span class="q-num">Q01</span>
+    <div class="q-text">次の漢字の読み方をひらがなで答えよ。「相殺」</div>
+    <span class="diff-tag diff-S">★★★</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q1" type="text"></div>
+  <div class="q-feedback" id="fb1"></div>
+</div>
+
+<div class="q-card" id="qc2">
+  <div class="q-header">
+    <span class="q-num">Q02</span>
+    <div class="q-text">次の漢字の読み方をひらがなで答えよ。「境内」</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q2" type="text"></div>
+  <div class="q-feedback" id="fb2"></div>
+</div>
+
+<div class="q-card" id="qc3">
+  <div class="q-header">
+    <span class="q-num">Q03</span>
+    <div class="q-text">次の漢字の読み方をひらがなで答えよ。「貼付」</div>
+    <span class="diff-tag diff-S">★★★</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q3" type="text"></div>
+  <div class="q-feedback" id="fb3"></div>
+</div>
+
+<div class="q-card" id="qc4">
+  <div class="q-header">
+    <span class="q-num">Q04</span>
+    <div class="q-text">次の漢字の読み方をひらがなで答えよ。「専ら」</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q4" type="text"></div>
+  <div class="q-feedback" id="fb4"></div>
+</div>
+
+<div class="q-card" id="qc5">
+  <div class="q-header">
+    <span class="q-num">Q05</span>
+    <div class="q-text">次の漢字の読み方をひらがなで答えよ。「著しい」</div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q5" type="text"></div>
+  <div class="q-feedback" id="fb5"></div>
+</div>
+
+<!-- ===================== SECTION B ===================== -->
+<div class="sec-head">
+  <span class="sec-label">B</span>
+  <span class="sec-title">漢字の書き取り</span>
+  <span class="sec-hyoka"><span class="chi-tag">知識・技能</span></span>
+</div>
+
+<div class="q-card" id="qc6">
+  <div class="q-header">
+    <span class="q-num">Q06</span>
+    <div class="q-text">次のカタカナを漢字に直せ。「事件をカイケツする。」</div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q6" type="text"></div>
+  <div class="q-feedback" id="fb6"></div>
+</div>
+
+<div class="q-card" id="qc7">
+  <div class="q-header">
+    <span class="q-num">Q07</span>
+    <div class="q-text">次のカタカナを漢字に直せ。「先生にシンライされる。」</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q7" type="text"></div>
+  <div class="q-feedback" id="fb7"></div>
+</div>
+
+<div class="q-card" id="qc8">
+  <div class="q-header">
+    <span class="q-num">Q08</span>
+    <div class="q-text">次のカタカナを漢字に直せ。「キチョウな体験をした。」</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q8" type="text"></div>
+  <div class="q-feedback" id="fb8"></div>
+</div>
+
+<div class="q-card" id="qc9">
+  <div class="q-header">
+    <span class="q-num">Q09</span>
+    <div class="q-text">次のカタカナを漢字に直せ。「事故のゲンインを調べる。」</div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q9" type="text"></div>
+  <div class="q-feedback" id="fb9"></div>
+</div>
+
+<!-- ===================== SECTION C ===================== -->
+<div class="sec-head">
+  <span class="sec-label">C</span>
+  <span class="sec-title">語句・ことわざ・慣用句</span>
+  <span class="sec-hyoka"><span class="shi-tag">思考・判断・表現</span></span>
+</div>
+
+<div class="q-card" id="qc10">
+  <div class="q-header">
+    <span class="q-num">Q10</span>
+    <div class="q-text">ことわざ「石の上にも三年」の意味として適切なものを選べ。<br>①辛抱すれば必ず成功する　②三年間石の上に座る　③危険を避ける</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge shi-tag">思</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q10" type="text" placeholder="例: ①"></div>
+  <div class="q-feedback" id="fb10"></div>
+</div>
+
+<div class="q-card" id="qc11">
+  <div class="q-header">
+    <span class="q-num">Q11</span>
+    <div class="q-text">慣用句「油を売る」の意味として適切なものを選べ。<br>①仕事をなまける　②商売がうまくいく　③油を買いに行く</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge shi-tag">思</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q11" type="text" placeholder="例: ①"></div>
+  <div class="q-feedback" id="fb11"></div>
+</div>
+
+<div class="q-card" id="qc12">
+  <div class="q-header">
+    <span class="q-num">Q12</span>
+    <div class="q-text">ことわざ「他山の石」の意味として適切なものを選べ。<br>①他人のつまらない言動も自分の学びに役立てられる　②五十歩百歩で大差ないこと　③何を言っても効き目がないこと</div>
+    <span class="diff-tag diff-S">★★★</span>
+    <span class="q-hyoka-badge shi-tag">思</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q12" type="text" placeholder="例: ①"></div>
+  <div class="q-feedback" id="fb12"></div>
+</div>
+
+<div class="q-card" id="qc13">
+  <div class="q-header">
+    <span class="q-num">Q13</span>
+    <div class="q-text">慣用句「馬の耳に念仏」の意味として適切なものを選べ。<br>①いくら言っても効き目がないこと　②とても静かな様子　③予想外の出来事</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge shi-tag">思</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q13" type="text" placeholder="例: ①"></div>
+  <div class="q-feedback" id="fb13"></div>
+</div>
+
+<!-- ===================== SECTION D ===================== -->
+<div class="sec-head">
+  <span class="sec-label">D</span>
+  <span class="sec-title">文法（文の成分・品詞）</span>
+  <span class="sec-hyoka">
+    <span class="chi-tag">知識・技能</span>
+    <span class="shi-tag">思考・判断・表現</span>
+  </span>
+</div>
+
+<div class="q-card" id="qc14">
+  <div class="q-header">
+    <span class="q-num">Q14</span>
+    <div class="q-text">次の文の主語を答えよ。「昨日、公園で弟が楽しそうに遊んでいた。」</div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge shi-tag">思</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q14" type="text"></div>
+  <div class="q-feedback" id="fb14"></div>
+</div>
+
+<div class="q-card" id="qc15">
+  <div class="q-header">
+    <span class="q-num">Q15</span>
+    <div class="q-text">次の文の述語を答えよ。「その本はとてもおもしろかった。」</div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge shi-tag">思</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q15" type="text"></div>
+  <div class="q-feedback" id="fb15"></div>
+</div>
+
+<div class="q-card" id="qc16">
+  <div class="q-header">
+    <span class="q-num">Q16</span>
+    <div class="q-text">「美しい」の品詞を漢字で答えよ。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q16" type="text"></div>
+  <div class="q-feedback" id="fb16"></div>
+</div>
+
+<div class="q-card" id="qc17">
+  <div class="q-header">
+    <span class="q-num">Q17</span>
+    <div class="q-text">「静かだ」の品詞を漢字で答えよ。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q17" type="text"></div>
+  <div class="q-feedback" id="fb17"></div>
+</div>
+
+<div class="q-card" id="qc18">
+  <div class="q-header">
+    <span class="q-num">Q18</span>
+    <div class="q-text">次の文の——線部「ゆっくり」の品詞を漢字で答えよ。「彼は<u>ゆっくり</u>歩いた。」</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q18" type="text"></div>
+  <div class="q-feedback" id="fb18"></div>
+</div>
+
+<!-- ===================== SECTION E ===================== -->
+<div class="sec-head">
+  <span class="sec-label">E</span>
+  <span class="sec-title">敬語</span>
+  <span class="sec-hyoka"><span class="tai-tag">態度</span></span>
+</div>
+
+<div class="q-card" id="qc19">
+  <div class="q-header">
+    <span class="q-num">Q19</span>
+    <div class="q-text">「行く」の尊敬語を答えよ。</div>
+    <span class="diff-tag diff-S">★★★</span>
+    <span class="q-hyoka-badge tai-tag">態</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q19" type="text"></div>
+  <div class="q-feedback" id="fb19"></div>
+</div>
+
+<div class="q-card" id="qc20">
+  <div class="q-header">
+    <span class="q-num">Q20</span>
+    <div class="q-text">「言う」の謙譲語を答えよ。</div>
+    <span class="diff-tag diff-S">★★★</span>
+    <span class="q-hyoka-badge tai-tag">態</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q20" type="text"></div>
+  <div class="q-feedback" id="fb20"></div>
+</div>
+
+<div class="q-card" id="qc21">
+  <div class="q-header">
+    <span class="q-num">Q21</span>
+    <div class="q-text">「見る」の尊敬語を答えよ。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge tai-tag">態</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q21" type="text"></div>
+  <div class="q-feedback" id="fb21"></div>
+</div>
+
+<!-- ===================== SECTION F ===================== -->
+<div class="sec-head">
+  <span class="sec-label">F</span>
+  <span class="sec-title">韻文・古典の基礎</span>
+  <span class="sec-hyoka"><span class="chi-tag">知識・技能</span></span>
+</div>
+
+<div class="q-card" id="qc22">
+  <div class="q-header">
+    <span class="q-num">Q22</span>
+    <div class="q-text">俳句において、季節を表す言葉を何というか、漢字で答えよ。</div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q22" type="text"></div>
+  <div class="q-feedback" id="fb22"></div>
+</div>
+
+<div class="q-card" id="qc23">
+  <div class="q-header">
+    <span class="q-num">Q23</span>
+    <div class="q-text">歴史的仮名遣い「けふ」を現代仮名遣いに直すと、どうなるか。ひらがなで答えよ。</div>
+    <span class="diff-tag diff-S">★★★</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q23" type="text"></div>
+  <div class="q-feedback" id="fb23"></div>
+</div>
+
+<div class="q-card" id="qc24">
+  <div class="q-header">
+    <span class="q-num">Q24</span>
+    <div class="q-text">五・七・五の十七音からなる定型詩を何というか、漢字で答えよ。</div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q24" type="text"></div>
+  <div class="q-feedback" id="fb24"></div>
+</div>
+
+<div id="result-panel">
+  <h2>採点結果</h2>
+  <div class="big-score" id="result-score">0<em> / 24</em></div>
+  <div class="result-comment" id="result-comment"></div>
+  <div class="result-breakdown" id="result-breakdown"></div>
+</div>
+
+</main>
+
+<script src="../quiz-engine.js"></script>
+<script>
+const questions = [
+  { num: 1,  hyoka: 'chi', answer: 'そうさい', hint: '「相殺」＝互いに差し引きして帳消しにすること。',
+    check: v => qAccept(v, ['そうさい']) },
+  { num: 2,  hyoka: 'chi', answer: 'けいだい', hint: '神社や寺の敷地内のこと。',
+    check: v => qAccept(v, ['けいだい']) },
+  { num: 3,  hyoka: 'chi', answer: 'ちょうふ', hint: '「てんぷ」と読む場合もある。',
+    check: v => qAccept(v, ['ちょうふ','てんぷ']) },
+  { num: 4,  hyoka: 'chi', answer: 'もっぱら', hint: '「もっぱらゲームばかりしている」のように使う。',
+    check: v => qAccept(v, ['もっぱら']) },
+  { num: 5,  hyoka: 'chi', answer: 'いちじるしい', hint: '「はっきりと目立つ」という意味。',
+    check: v => qAccept(v, ['いちじるしい']) },
+  { num: 6,  hyoka: 'chi', answer: '解決', hint: '問題や事件を処理して終わらせること。',
+    check: v => qAccept(v, ['解決']) },
+  { num: 7,  hyoka: 'chi', answer: '信頼', hint: '信じて頼りにすること。',
+    check: v => qAccept(v, ['信頼']) },
+  { num: 8,  hyoka: 'chi', answer: '貴重', hint: 'とても大切なこと。',
+    check: v => qAccept(v, ['貴重']) },
+  { num: 9,  hyoka: 'chi', answer: '原因', hint: '物事が起こるもとになること。',
+    check: v => qAccept(v, ['原因']) },
+  { num: 10, hyoka: 'shi', answer: '①', hint: 'あきらめずに続ければ、いつか成果が出るという意味。',
+    check: v => qAccept(v, ['①','1']) },
+  { num: 11, hyoka: 'shi', answer: '①', hint: '本来の仕事をせずに、むだ話などで時間を過ごすこと。',
+    check: v => qAccept(v, ['①','1']) },
+  { num: 12, hyoka: 'shi', answer: '①', hint: '他人の失敗などからも学べることがあるという意味。',
+    check: v => qAccept(v, ['①','1']) },
+  { num: 13, hyoka: 'shi', answer: '①', hint: 'いくら意見をしても、聞き流されてしまう様子。',
+    check: v => qAccept(v, ['①','1']) },
+  { num: 14, hyoka: 'shi', answer: '弟が', hint: '「だれが（何が）」にあたる部分を探す。',
+    check: v => qAccept(v, ['弟が']) },
+  { num: 15, hyoka: 'shi', answer: 'おもしろかった', hint: '「どうする・どんなだ」にあたる部分を探す。',
+    check: v => qAccept(v, ['おもしろかった']) },
+  { num: 16, hyoka: 'chi', answer: '形容詞', hint: '言い切りの形が「〜い」になる自立語。',
+    check: v => qAccept(v, ['形容詞']) },
+  { num: 17, hyoka: 'chi', answer: '形容動詞', hint: '言い切りの形が「〜だ」になる自立語。',
+    check: v => qAccept(v, ['形容動詞']) },
+  { num: 18, hyoka: 'chi', answer: '副詞', hint: '主に動詞を修飾し、活用しない自立語。',
+    check: v => qAccept(v, ['副詞']) },
+  { num: 19, hyoka: 'tai', answer: 'いらっしゃる', hint: '相手の動作を高めて言う言い方。',
+    check: v => qAccept(v, ['いらっしゃる','行かれる','おいでになる']) },
+  { num: 20, hyoka: 'tai', answer: '申す', hint: '自分の動作をへりくだって言う言い方。',
+    check: v => qAccept(v, ['申す','申し上げる']) },
+  { num: 21, hyoka: 'tai', answer: 'ご覧になる', hint: '相手の動作を高めて言う言い方。',
+    check: v => qAccept(v, ['ご覧になる']) },
+  { num: 22, hyoka: 'chi', answer: '季語', hint: '俳句には原則として1つ入れる。',
+    check: v => qAccept(v, ['季語']) },
+  { num: 23, hyoka: 'chi', answer: 'きょう', hint: '歴史的仮名遣いの「ふ」は「う」に直すことが多い。',
+    check: v => qAccept(v, ['きょう']) },
+  { num: 24, hyoka: 'chi', answer: '俳句', hint: '世界一短い定型詩ともいわれる。',
+    check: v => qAccept(v, ['俳句']) },
+];
+initQuiz(questions);
+</script>
+
+</body>
+</html>

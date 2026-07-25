@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中学1年 夏休み確認問題 社会</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="header-title-block">
+      <div class="header-eyebrow">夏休み 1学期内容 総復習 ／ 社会</div>
+      <h1>中学1年 夏休み確認問題 24問
+        <small>世界と日本の姿・世界の生活と環境・古代文明</small>
+      </h1>
+    </div>
+    <div class="header-tags">
+      <span class="tag tag-red">1年生</span>
+      <span class="tag tag-blue">世界と日本の姿</span>
+      <span class="tag tag-blue">世界各地の生活と環境</span>
+      <span class="tag tag-blue">古代文明</span>
+      <span class="tag tag-gray">偏差値65レベル</span>
+    </div>
+  </div>
+</header>
+
+<div class="hyoka-bar">
+  <div class="hyoka-bar-inner">
+    <strong>評価の観点：</strong>
+    <span><span class="hyoka-dot chi"></span> 知識・技能</span>
+    <span><span class="hyoka-dot shi"></span> 思考・判断・表現</span>
+    <span><span class="hyoka-dot tai"></span> 主体的に学習に取り組む態度</span>
+    <span style="margin-left:auto;font-size:10px;"><a href="../index.html" style="color:#a0b8cc;">← 範囲・問題集一覧へ戻る</a> ／ Enter キーで次の問題へ移動</span>
+  </div>
+</div>
+
+<div id="score-bar">
+  <div class="score-bar-inner">
+    <div class="score-num" id="score-disp">0 <small>/ 24</small></div>
+    <div class="progress-wrap">
+      <div class="progress-label" id="prog-label">未回答: 24問</div>
+      <div class="progress-outer"><div class="progress-inner" id="prog-inner"></div></div>
+    </div>
+    <button class="btn-primary" onclick="checkAll()">全問採点する</button>
+    <button class="btn-secondary" onclick="resetAll()">リセット</button>
+  </div>
+</div>
+
+<main>
+
+<!-- ===================== SECTION A ===================== -->
+<div class="sec-head">
+  <span class="sec-label">A</span>
+  <span class="sec-title">世界の姿</span>
+  <span class="sec-hyoka"><span class="chi-tag">知識・技能</span></span>
+</div>
+
+<div class="q-card" id="qc1">
+  <div class="q-header">
+    <span class="q-num">Q01</span>
+    <div class="q-text">世界を六つの州に分けたとき、日本が属する州を何というか。</div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q1" type="text"></div>
+  <div class="q-feedback" id="fb1"></div>
+</div>
+
+<div class="q-card" id="qc2">
+  <div class="q-header">
+    <span class="q-num">Q02</span>
+    <div class="q-text">経度0度の基準となる、イギリスのグリニッジ天文台を通る線を何というか。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q2" type="text"></div>
+  <div class="q-feedback" id="fb2"></div>
+</div>
+
+<div class="q-card" id="qc3">
+  <div class="q-header">
+    <span class="q-num">Q03</span>
+    <div class="q-text">緯度0度の線を何というか。</div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q3" type="text"></div>
+  <div class="q-feedback" id="fb3"></div>
+</div>
+
+<div class="q-card" id="qc4">
+  <div class="q-header">
+    <span class="q-num">Q04</span>
+    <div class="q-text">世界で最も面積の大きい大陸を何というか。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q4" type="text"></div>
+  <div class="q-feedback" id="fb4"></div>
+</div>
+
+<div class="q-card" id="qc5">
+  <div class="q-header">
+    <span class="q-num">Q05</span>
+    <div class="q-text">世界で最も面積の大きい海洋（大洋）を何というか。</div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q5" type="text"></div>
+  <div class="q-feedback" id="fb5"></div>
+</div>
+
+<!-- ===================== SECTION B ===================== -->
+<div class="sec-head">
+  <span class="sec-label">B</span>
+  <span class="sec-title">日本の姿</span>
+  <span class="sec-hyoka"><span class="chi-tag">知識・技能</span></span>
+</div>
+
+<div class="q-card" id="qc6">
+  <div class="q-header">
+    <span class="q-num">Q06</span>
+    <div class="q-text">日本の標準時子午線は東経何度か。数字で答えよ。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q6" type="text"></div>
+  <div class="q-feedback" id="fb6"></div>
+</div>
+
+<div class="q-card" id="qc7">
+  <div class="q-header">
+    <span class="q-num">Q07</span>
+    <div class="q-text">日本の最北端の島を何というか。</div>
+    <span class="diff-tag diff-S">★★★</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q7" type="text"></div>
+  <div class="q-feedback" id="fb7"></div>
+</div>
+
+<div class="q-card" id="qc8">
+  <div class="q-header">
+    <span class="q-num">Q08</span>
+    <div class="q-text">日本を7地方に分けたとき、愛媛県が属する地方を何というか。</div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q8" type="text"></div>
+  <div class="q-feedback" id="fb8"></div>
+</div>
+
+<div class="q-card" id="qc9">
+  <div class="q-header">
+    <span class="q-num">Q09</span>
+    <div class="q-text">実際の距離を地図上に縮めた割合を何というか。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q9" type="text"></div>
+  <div class="q-feedback" id="fb9"></div>
+</div>
+
+<!-- ===================== SECTION C ===================== -->
+<div class="sec-head">
+  <span class="sec-label">C</span>
+  <span class="sec-title">世界各地の生活と環境</span>
+  <span class="sec-hyoka">
+    <span class="chi-tag">知識・技能</span>
+    <span class="tai-tag">態度</span>
+  </span>
+</div>
+
+<div class="q-card" id="qc10">
+  <div class="q-header">
+    <span class="q-num">Q10</span>
+    <div class="q-text">一年中気温が高く、降水量が多い気候帯を何というか。</div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q10" type="text"></div>
+  <div class="q-feedback" id="fb10"></div>
+</div>
+
+<div class="q-card" id="qc11">
+  <div class="q-header">
+    <span class="q-num">Q11</span>
+    <div class="q-text">サハラ砂漠周辺のように、降水量が非常に少ない気候帯を何というか。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q11" type="text"></div>
+  <div class="q-feedback" id="fb11"></div>
+</div>
+
+<div class="q-card" id="qc12">
+  <div class="q-header">
+    <span class="q-num">Q12</span>
+    <div class="q-text">冷帯（亜寒帯）に広がる針葉樹の森林帯を、ロシア語由来のカタカナで何というか。</div>
+    <span class="diff-tag diff-S">★★★</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q12" type="text"></div>
+  <div class="q-feedback" id="fb12"></div>
+</div>
+
+<div class="q-card" id="qc13">
+  <div class="q-header">
+    <span class="q-num">Q13</span>
+    <div class="q-text">イスラム教の聖典を何というか（カタカナ）。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge tai-tag">態</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q13" type="text"></div>
+  <div class="q-feedback" id="fb13"></div>
+</div>
+
+<!-- ===================== SECTION D ===================== -->
+<div class="sec-head">
+  <span class="sec-label">D</span>
+  <span class="sec-title">歴史の導入（古代文明）</span>
+  <span class="sec-hyoka"><span class="chi-tag">知識・技能</span></span>
+</div>
+
+<div class="q-card" id="qc14">
+  <div class="q-header">
+    <span class="q-num">Q14</span>
+    <div class="q-text">紀元前3000年ごろ、ナイル川流域におこった文明を何というか。</div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q14" type="text"></div>
+  <div class="q-feedback" id="fb14"></div>
+</div>
+
+<div class="q-card" id="qc15">
+  <div class="q-header">
+    <span class="q-num">Q15</span>
+    <div class="q-text">くさび形文字を生み出した、チグリス川・ユーフラテス川流域の文明を何というか。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q15" type="text"></div>
+  <div class="q-feedback" id="fb15"></div>
+</div>
+
+<div class="q-card" id="qc16">
+  <div class="q-header">
+    <span class="q-num">Q16</span>
+    <div class="q-text">紀元前16世紀ごろ、黄河流域におこった中国最古の王朝を何というか。</div>
+    <span class="diff-tag diff-S">★★★</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q16" type="text"></div>
+  <div class="q-feedback" id="fb16"></div>
+</div>
+
+<div class="q-card" id="qc17">
+  <div class="q-header">
+    <span class="q-num">Q17</span>
+    <div class="q-text">紀元前221年に中国を統一した人物はだれか。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q17" type="text"></div>
+  <div class="q-feedback" id="fb17"></div>
+</div>
+
+<div class="q-card" id="qc18">
+  <div class="q-header">
+    <span class="q-num">Q18</span>
+    <div class="q-text">インダス川流域におこった文明を何というか。</div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q18" type="text"></div>
+  <div class="q-feedback" id="fb18"></div>
+</div>
+
+<!-- ===================== SECTION E ===================== -->
+<div class="sec-head">
+  <span class="sec-label">E</span>
+  <span class="sec-title">日本の位置・時差</span>
+  <span class="sec-hyoka"><span class="shi-tag">思考・判断・表現</span></span>
+</div>
+
+<div class="q-card" id="qc19">
+  <div class="q-header">
+    <span class="q-num">Q19</span>
+    <div class="q-text">経度差15度で生じる時差は何時間か。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge shi-tag">思</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q19" type="text" placeholder="例: 1時間"></div>
+  <div class="q-feedback" id="fb19"></div>
+</div>
+
+<div class="q-card" id="qc20">
+  <div class="q-header">
+    <span class="q-num">Q20</span>
+    <div class="q-text">経度差180度の2地点の時差は何時間になるか。</div>
+    <span class="diff-tag diff-S">★★★</span>
+    <span class="q-hyoka-badge shi-tag">思</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q20" type="text" placeholder="例: 12時間"></div>
+  <div class="q-feedback" id="fb20"></div>
+</div>
+
+<div class="q-card" id="qc21">
+  <div class="q-header">
+    <span class="q-num">Q21</span>
+    <div class="q-text">東京（東経135度）とロンドン（経度0度）の時差は何時間か。</div>
+    <span class="diff-tag diff-S">★★★</span>
+    <span class="q-hyoka-badge shi-tag">思</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q21" type="text" placeholder="例: 9時間"></div>
+  <div class="q-feedback" id="fb21"></div>
+</div>
+
+<!-- ===================== SECTION F ===================== -->
+<div class="sec-head">
+  <span class="sec-label">F</span>
+  <span class="sec-title">地図の読み方</span>
+  <span class="sec-hyoka">
+    <span class="chi-tag">知識・技能</span>
+    <span class="shi-tag">思考・判断・表現</span>
+  </span>
+</div>
+
+<div class="q-card" id="qc22">
+  <div class="q-header">
+    <span class="q-num">Q22</span>
+    <div class="q-text">地形図上で、土地の高さが等しい地点を結んだ線を何というか。</div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q22" type="text"></div>
+  <div class="q-feedback" id="fb22"></div>
+</div>
+
+<div class="q-card" id="qc23">
+  <div class="q-header">
+    <span class="q-num">Q23</span>
+    <div class="q-text">縮尺2万5千分の1の地形図で、地図上の4cmは実際には何mか。</div>
+    <span class="diff-tag diff-S">★★★</span>
+    <span class="q-hyoka-badge shi-tag">思</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q23" type="text" placeholder="単位はmで"></div>
+  <div class="q-feedback" id="fb23"></div>
+</div>
+
+<div class="q-card" id="qc24">
+  <div class="q-header">
+    <span class="q-num">Q24</span>
+    <div class="q-text">方位記号がない地形図では、地図の上はどの方位を示すか（漢字1字）。</div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q24" type="text"></div>
+  <div class="q-feedback" id="fb24"></div>
+</div>
+
+<div id="result-panel">
+  <h2>採点結果</h2>
+  <div class="big-score" id="result-score">0<em> / 24</em></div>
+  <div class="result-comment" id="result-comment"></div>
+  <div class="result-breakdown" id="result-breakdown"></div>
+</div>
+
+</main>
+
+<script src="../quiz-engine.js"></script>
+<script>
+const questions = [
+  { num: 1,  hyoka: 'chi', answer: 'アジア州', hint: '六大州のうち、日本が属する州。',
+    check: v => qAccept(v, ['アジア州','アジア']) },
+  { num: 2,  hyoka: 'chi', answer: '本初子午線', hint: '経度0度の基準線。',
+    check: v => qAccept(v, ['本初子午線']) },
+  { num: 3,  hyoka: 'chi', answer: '赤道', hint: '緯度0度の線。',
+    check: v => qAccept(v, ['赤道']) },
+  { num: 4,  hyoka: 'chi', answer: 'ユーラシア大陸', hint: 'アジアとヨーロッパを含む最大の大陸。',
+    check: v => qAccept(v, ['ユーラシア大陸','ユーラシア']) },
+  { num: 5,  hyoka: 'chi', answer: '太平洋', hint: '世界最大の大洋。',
+    check: v => qAccept(v, ['太平洋']) },
+  { num: 6,  hyoka: 'chi', answer: '135', hint: '兵庫県明石市を通る経線。',
+    check: v => qAccept(v, ['135','135度','東経135度']) },
+  { num: 7,  hyoka: 'chi', answer: '択捉島', hint: '北方領土に含まれる島。',
+    check: v => qAccept(v, ['択捉島']) },
+  { num: 8,  hyoka: 'chi', answer: '四国地方', hint: '愛媛・香川・徳島・高知の4県。',
+    check: v => qAccept(v, ['四国地方','四国']) },
+  { num: 9,  hyoka: 'chi', answer: '縮尺', hint: '例えば2万5千分の1のように表される。',
+    check: v => qAccept(v, ['縮尺']) },
+  { num: 10, hyoka: 'chi', answer: '熱帯', hint: '赤道付近に広がる気候帯。',
+    check: v => qAccept(v, ['熱帯']) },
+  { num: 11, hyoka: 'chi', answer: '乾燥帯', hint: '砂漠気候やステップ気候をふくむ。',
+    check: v => qAccept(v, ['乾燥帯']) },
+  { num: 12, hyoka: 'chi', answer: 'タイガ', hint: 'シベリアなどに広がる針葉樹林帯。',
+    check: v => qAccept(v, ['タイガ']) },
+  { num: 13, hyoka: 'tai', answer: 'コーラン', hint: '「クルアーン」ともいう。',
+    check: v => qAccept(v, ['コーラン','クルアーン']) },
+  { num: 14, hyoka: 'chi', answer: 'エジプト文明', hint: 'ピラミッドや象形文字（ヒエログリフ）で知られる。',
+    check: v => qAccept(v, ['エジプト文明']) },
+  { num: 15, hyoka: 'chi', answer: 'メソポタミア文明', hint: '太陰暦や60進法も生み出された。',
+    check: v => qAccept(v, ['メソポタミア文明']) },
+  { num: 16, hyoka: 'chi', answer: '殷', hint: '甲骨文字が使われた王朝。',
+    check: v => qAccept(v, ['殷']) },
+  { num: 17, hyoka: 'chi', answer: '始皇帝', hint: '万里の長城の整備でも知られる。',
+    check: v => qAccept(v, ['始皇帝']) },
+  { num: 18, hyoka: 'chi', answer: 'インダス文明', hint: 'モヘンジョ・ダロの遺跡で知られる。',
+    check: v => qAccept(v, ['インダス文明']) },
+  { num: 19, hyoka: 'shi', answer: '1時間', hint: '360度÷24時間＝15度／時間から考える。',
+    check: v => qAccept(v, ['1時間','1']) },
+  { num: 20, hyoka: 'shi', answer: '12時間', hint: '180度÷15度＝12時間。',
+    check: v => qAccept(v, ['12時間','12']) },
+  { num: 21, hyoka: 'shi', answer: '9時間', hint: '経度差135度÷15度＝9時間。',
+    check: v => qAccept(v, ['9時間','9']) },
+  { num: 22, hyoka: 'chi', answer: '等高線', hint: '線の間隔がせまいほど傾斜が急。',
+    check: v => qAccept(v, ['等高線']) },
+  { num: 23, hyoka: 'shi', answer: '1000m', hint: '4cm×25000＝100000cm＝1000m。',
+    check: v => qAccept(v, ['1000m','1000','1km']) },
+  { num: 24, hyoka: 'chi', answer: '北', hint: '地形図では原則として上が北を示す。',
+    check: v => qAccept(v, ['北']) },
+];
+initQuiz(questions);
+</script>
+
+</body>
+</html>
