@@ -94,6 +94,9 @@ function initQuiz(questions) {
       fb.classList.remove('ok-fb', 'ng-fb');
 
       const badge = `<div class="fb-eval"><b class="${q.hyoka}-b">${HYOKA_LABEL[q.hyoka]}</b></div>`;
+      // 解説と雑学は正解・不正解にかかわらず表示する
+      const kaisetsu = q.hint ? `<div class="fb-hint"><span class="fb-hint-label">解説</span>${q.hint}</div>` : '';
+      const zatsugaku = q.trivia ? `<div class="fb-trivia"><span class="fb-trivia-label">雑学</span>${q.trivia}</div>` : '';
 
       if (ok) {
         correct++;
@@ -101,13 +104,12 @@ function initQuiz(questions) {
         card.classList.add('correct');
         input.classList.add('ok');
         fb.classList.add('ok-fb');
-        fb.innerHTML = `<div class="fb-label" style="color:var(--correct)">正解！</div>${badge}`;
+        fb.innerHTML = `<div class="fb-label" style="color:var(--correct)">正解！</div><div class="fb-ans">答え：${q.answer}</div>${kaisetsu}${zatsugaku}${badge}`;
       } else {
         card.classList.add('wrong');
         input.classList.add('ng');
         fb.classList.add('ng-fb');
-        const hint = q.hint ? `<div class="fb-hint">${q.hint}</div>` : '';
-        fb.innerHTML = `<div class="fb-label" style="color:var(--wrong)">不正解</div><div class="fb-ans">正答例：${q.answer}</div>${hint}${badge}`;
+        fb.innerHTML = `<div class="fb-label" style="color:var(--wrong)">不正解</div><div class="fb-ans">正答例：${q.answer}</div>${kaisetsu}${zatsugaku}${badge}`;
       }
       fb.classList.add('show');
     });

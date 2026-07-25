@@ -257,7 +257,41 @@ main { max-width: 900px; margin: 0 auto; padding: 28px 20px 60px; }
 .fb-eval b.chi-b { background: #eaf4fb; color: #2471a3; }
 .fb-eval b.shi-b { background: #fef3cd; color: #935c00; }
 .fb-eval b.tai-b { background: #eafaf1; color: #1e8449; }
-.fb-hint { margin-top: 5px; color: #3a4a58; }
+.fb-hint { margin-top: 6px; color: #3a4a58; }
+.fb-hint-label {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  background: #dde6ef;
+  color: #2c4a68;
+  padding: 1px 6px;
+  border-radius: 2px;
+  margin-right: 7px;
+  vertical-align: 1px;
+}
+.fb-trivia {
+  margin-top: 8px;
+  padding: 8px 11px;
+  background: #fffaf0;
+  border: 1px dashed #e0c78a;
+  border-radius: 3px;
+  color: #5a4a2e;
+  font-size: 12px;
+  line-height: 1.7;
+}
+.fb-trivia-label {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  background: #e8a33d;
+  color: #fff;
+  padding: 1px 6px;
+  border-radius: 2px;
+  margin-right: 7px;
+  vertical-align: 1px;
+}
 
 /* 結果パネル */
 #result-panel {

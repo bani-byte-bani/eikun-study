@@ -11,6 +11,7 @@
 - `index.html` — 範囲・問題集を選ぶハブページ
 - `style.css` — 共通スタイル
 - `quiz-engine.js` — 共通の採点エンジン（進捗バー、Enterキーでの入力欄移動、採点、結果パネル表示）
+  - 採点後は正解・不正解にかかわらず、答え・解説・雑学をすべて表示する
 - `quizzes/g1-1st-term-math.html` — 中1 第1学期末テスト対策 数学（正負の数・文字と式、30問、偏差値67レベル）
 - `quizzes/g1-summer-review-math.html` — 中1 夏休み確認問題 数学（正負の数・文字と式・一次方程式、24問、偏差値65レベル）
 - `quizzes/g1-summer-review-japanese.html` — 中1 夏休み確認問題 国語（漢字・文法・敬語、24問、偏差値65レベル）
@@ -21,5 +22,6 @@
 ## 問題集の追加方法
 
 1. `quizzes/` に新しいHTMLファイルを作成し、既存ファイルをコピーして `<link>`/`<script src>` はそのまま流用する。
-2. 問題カード（`.q-card`）を追加し、末尾の `<script>` 内の `questions` 配列に `{ num, hyoka, answer, hint, check }` を追加する。
+2. 問題カード（`.q-card`）を追加し、末尾の `<script>` 内の `questions` 配列に `{ num, hyoka, answer, hint, trivia, check }` を追加する。
+   - `hint` は「解説」、`trivia` は「雑学」として、採点後に正解・不正解を問わず表示される。
 3. `index.html` の `.set-list` に新しい `.set-card` を追加してリンクする。
