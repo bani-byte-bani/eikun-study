@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>令和8年度 第1学期末テスト 数学練習問題</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="header-title-block">
+      <div class="header-eyebrow">令和8年度 第1学期末テスト対策 ／ 砥部町中学校 数学</div>
+      <h1>数学 練習問題 30問
+        <small>東京書籍「新編 新しい数学1」準拠</small>
+      </h1>
+    </div>
+    <div class="header-tags">
+      <span class="tag tag-red">1年生</span>
+      <span class="tag tag-blue">第1章 正負の数</span>
+      <span class="tag tag-blue">第2章 文字と式（加減まで）</span>
+      <span class="tag tag-gray">偏差値67レベル</span>
+    </div>
+  </div>
+</header>
+
+<div class="hyoka-bar">
+  <div class="hyoka-bar-inner">
+    <strong>評価の観点：</strong>
+    <span><span class="hyoka-dot chi"></span> 知識・技能</span>
+    <span><span class="hyoka-dot shi"></span> 思考・判断・表現</span>
+    <span><span class="hyoka-dot tai"></span> 主体的に学習に取り組む態度</span>
+    <span style="margin-left:auto;font-size:10px;"><a href="../index.html" style="color:#a0b8cc;">← 範囲・問題集一覧へ戻る</a> ／ Enter キーで次の問題へ移動</span>
+  </div>
+</div>
+
+<div id="score-bar">
+  <div class="score-bar-inner">
+    <div class="score-num" id="score-disp">0 <small>/ 30</small></div>
+    <div class="progress-wrap">
+      <div class="progress-label" id="prog-label">未回答: 30問</div>
+      <div class="progress-outer"><div class="progress-inner" id="prog-inner"></div></div>
+    </div>
+    <button class="btn-primary" onclick="checkAll()">全問採点する</button>
+    <button class="btn-secondary" onclick="resetAll()">リセット</button>
+  </div>
+</div>
+
+<main>
+
+<!-- ===================== SECTION A ===================== -->
+<div class="sec-head">
+  <span class="sec-label">A</span>
+  <span class="sec-title">正の数・負の数の意味・大小・絶対値</span>
+  <span class="sec-hyoka">
+    <span class="chi-tag">知識・技能</span>
+    <span class="shi-tag">思考・判断・表現</span>
+  </span>
+</div>
+
+<!-- Q1 -->
+<div class="q-card" id="qc1">
+  <div class="q-header">
+    <span class="q-num">Q01</span>
+    <div class="q-text">気温が −4℃の日から3℃上がったときの気温を答えよ。</div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q1" type="text" placeholder="例: -1℃"></div>
+  <div class="q-feedback" id="fb1"></div>
+</div>
+
+<!-- Q2 -->
+<div class="q-card" id="qc2">
+  <div class="q-header">
+    <span class="q-num">Q02</span>
+    <div class="q-text">絶対値が <span class="math">5/3</span> より小さい整数をすべて答えよ。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q2" type="text" placeholder="カンマ区切り"></div>
+  <div class="q-feedback" id="fb2"></div>
+</div>
+
+<!-- Q3 -->
+<div class="q-card" id="qc3">
+  <div class="q-header">
+    <span class="q-num">Q03</span>
+    <div class="q-text">−3, +1.5, 0, −<span class="math">1/2</span>, +4 を小さい順に並べよ。</div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input wide" id="q3" type="text" placeholder="カンマ区切りで"></div>
+  <div class="q-feedback" id="fb3"></div>
+</div>
+
+<!-- Q4 -->
+<div class="q-card" id="qc4">
+  <div class="q-header">
+    <span class="q-num">Q04</span>
+    <div class="q-text">次の数を、東西への移動で表されているとき、基準から西に何 km いるかを答えよ。<br>「東に3km 移動→西に7km 移動→東に2km 移動」</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge shi-tag">思</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q4" type="text" placeholder="例: 西に2km"></div>
+  <div class="q-feedback" id="fb4"></div>
+</div>
+
+<!-- ===================== SECTION B ===================== -->
+<div class="sec-head">
+  <span class="sec-label">B</span>
+  <span class="sec-title">正負の数の加法・減法</span>
+  <span class="sec-hyoka">
+    <span class="chi-tag">知識・技能</span>
+    <span class="shi-tag">思考・判断・表現</span>
+  </span>
+</div>
+
+<!-- Q5 -->
+<div class="q-card" id="qc5">
+  <div class="q-header">
+    <span class="q-num">Q05</span>
+    <div class="q-text">（−13）＋（−8）＋25＋（−4）を計算せよ。</div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q5" type="text"></div>
+  <div class="q-feedback" id="fb5"></div>
+</div>
+
+<!-- Q6 -->
+<div class="q-card" id="qc6">
+  <div class="q-header">
+    <span class="q-num">Q06</span>
+    <div class="q-text">5 − (−3) − 8 − (+6) を計算せよ。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q6" type="text"></div>
+  <div class="q-feedback" id="fb6"></div>
+</div>
+
+<!-- Q7 -->
+<div class="q-card" id="qc7">
+  <div class="q-header">
+    <span class="q-num">Q07</span>
+    <div class="q-text">−<span class="math">3/4</span> ＋ <span class="math">5/6</span> − (−<span class="math">1/12</span>) を計算せよ。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q7" type="text" placeholder="分数で答えよ"></div>
+  <div class="q-feedback" id="fb7"></div>
+</div>
+
+<!-- Q8 -->
+<div class="q-card" id="qc8">
+  <div class="q-header">
+    <span class="q-num">Q08</span>
+    <div class="q-text">正負の数の加法と減法が混じった式 −3 − (−7) + (−2) − 5 を、正の項・負の項だけを並べた式になおしてから計算せよ。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge shi-tag">思</span>
+  </div>
+  <div class="q-input-row"><label>答え（計算結果）：</label><input class="ans-input" id="q8" type="text"></div>
+  <div class="q-feedback" id="fb8"></div>
+</div>
+
+<!-- ===================== SECTION C ===================== -->
+<div class="sec-head">
+  <span class="sec-label">C</span>
+  <span class="sec-title">乗法・除法・累乗と符号</span>
+  <span class="sec-hyoka">
+    <span class="chi-tag">知識・技能</span>
+    <span class="shi-tag">思考・判断・表現</span>
+  </span>
+</div>
+
+<!-- Q9 -->
+<div class="q-card" id="qc9">
+  <div class="q-header">
+    <span class="q-num">Q09</span>
+    <div class="q-text">（−4）× 3 × (−5) × (−2) を計算せよ。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q9" type="text"></div>
+  <div class="q-feedback" id="fb9"></div>
+</div>
+
+<!-- Q10 -->
+<div class="q-card" id="qc10">
+  <div class="q-header">
+    <span class="q-num">Q10</span>
+    <div class="q-text">（−3）² の値と −3² の値をそれぞれ求めよ。（形式：a, b）</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge shi-tag">思</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q10" type="text" placeholder="例: 9, -9"></div>
+  <div class="q-feedback" id="fb10"></div>
+</div>
+
+<!-- Q11 -->
+<div class="q-card" id="qc11">
+  <div class="q-header">
+    <span class="q-num">Q11</span>
+    <div class="q-text">48 ÷ (−6) ÷ (−<span class="math">4/3</span>) を計算せよ。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q11" type="text"></div>
+  <div class="q-feedback" id="fb11"></div>
+</div>
+
+<!-- Q12 -->
+<div class="q-card" id="qc12">
+  <div class="q-header">
+    <span class="q-num">Q12</span>
+    <div class="q-text">(−2)³ ÷ 4 × (−3) を計算せよ。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q12" type="text"></div>
+  <div class="q-feedback" id="fb12"></div>
+</div>
+
+<!-- Q13 -->
+<div class="q-card" id="qc13">
+  <div class="q-header">
+    <span class="q-num">Q13</span>
+    <div class="q-text">誤りのある計算を見つけよ。<br>
+    ① (−3)² = −9 &nbsp;&nbsp; ② −(−4)² = −16 &nbsp;&nbsp; ③ (−2)³ = −8<br>
+    誤りの番号と正しい値を答えよ。（形式：①, 正しい値）</div>
+    <span class="diff-tag diff-S">★★★</span>
+    <span class="q-hyoka-badge shi-tag">思</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input wide" id="q13" type="text" placeholder="例: ②, 16"></div>
+  <div class="q-feedback" id="fb13"></div>
+</div>
+
+<!-- ===================== SECTION D ===================== -->
+<div class="sec-head">
+  <span class="sec-label">D</span>
+  <span class="sec-title">四則混合計算・分配法則の活用</span>
+  <span class="sec-hyoka">
+    <span class="chi-tag">知識・技能</span>
+    <span class="shi-tag">思考・判断・表現</span>
+  </span>
+</div>
+
+<!-- Q14 -->
+<div class="q-card" id="qc14">
+  <div class="q-header">
+    <span class="q-num">Q14</span>
+    <div class="q-text">−5² ÷ (−5) + (−3)² − 10 ÷ 2 を計算せよ。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q14" type="text"></div>
+  <div class="q-feedback" id="fb14"></div>
+</div>
+
+<!-- Q15 -->
+<div class="q-card" id="qc15">
+  <div class="q-header">
+    <span class="q-num">Q15</span>
+    <div class="q-text">6 − 4 × {3 − (−2)² + 1} を計算せよ。</div>
+    <span class="diff-tag diff-S">★★★</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q15" type="text"></div>
+  <div class="q-feedback" id="fb15"></div>
+</div>
+
+<!-- Q16 -->
+<div class="q-card" id="qc16">
+  <div class="q-header">
+    <span class="q-num">Q16</span>
+    <div class="q-text">99 × (−13) + (−13) を分配法則を工夫して計算せよ。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge shi-tag">思</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q16" type="text"></div>
+  <div class="q-feedback" id="fb16"></div>
+</div>
+
+<!-- Q17 -->
+<div class="q-card" id="qc17">
+  <div class="q-header">
+    <span class="q-num">Q17</span>
+    <div class="q-text">（−1.25）×（−16）− 4 × (−1.25) を分配法則を使って計算せよ。</div>
+    <span class="diff-tag diff-S">★★★</span>
+    <span class="q-hyoka-badge shi-tag">思</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q17" type="text"></div>
+  <div class="q-feedback" id="fb17"></div>
+</div>
+
+<!-- ===================== SECTION E ===================== -->
+<div class="sec-head">
+  <span class="sec-label">E</span>
+  <span class="sec-title">素因数分解・数の性質への活用</span>
+  <span class="sec-hyoka">
+    <span class="chi-tag">知識・技能</span>
+    <span class="shi-tag">思考・判断・表現</span>
+    <span class="tai-tag">態度</span>
+  </span>
+</div>
+
+<!-- Q18 -->
+<div class="q-card" id="qc18">
+  <div class="q-header">
+    <span class="q-num">Q18</span>
+    <div class="q-text">180 を素因数分解せよ。</div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input wide" id="q18" type="text" placeholder="例: 2^2×3^2×5"></div>
+  <div class="q-feedback" id="fb18"></div>
+</div>
+
+<!-- Q19 -->
+<div class="q-card" id="qc19">
+  <div class="q-header">
+    <span class="q-num">Q19</span>
+    <div class="q-text">素因数分解を使って、252n が整数の2乗になる最小の自然数 n を求めよ。</div>
+    <span class="diff-tag diff-S">★★★</span>
+    <span class="q-hyoka-badge shi-tag">思</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q19" type="text"></div>
+  <div class="q-feedback" id="fb19"></div>
+</div>
+
+<!-- ===================== SECTION F ===================== -->
+<div class="sec-head">
+  <span class="sec-label">F</span>
+  <span class="sec-title">文字を使った式の表し方</span>
+  <span class="sec-hyoka">
+    <span class="chi-tag">知識・技能</span>
+    <span class="shi-tag">思考・判断・表現</span>
+  </span>
+</div>
+
+<!-- Q20 -->
+<div class="q-card" id="qc20">
+  <div class="q-header">
+    <span class="q-num">Q20</span>
+    <div class="q-text">次の式を、×の記号を省いて表せ。<br><span class="math">a × (−3) × b × a</span></div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q20" type="text" placeholder="例: -3a^2b"></div>
+  <div class="q-feedback" id="fb20"></div>
+</div>
+
+<!-- Q21 -->
+<div class="q-card" id="qc21">
+  <div class="q-header">
+    <span class="q-num">Q21</span>
+    <div class="q-text">次の式を、×と÷の記号を省いて表せ。<br><span class="math">x ÷ 4 − y × 2 ÷ 3</span></div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input wide" id="q21" type="text" placeholder="例: x/4-2y/3"></div>
+  <div class="q-feedback" id="fb21"></div>
+</div>
+
+<!-- Q22 -->
+<div class="q-card" id="qc22">
+  <div class="q-header">
+    <span class="q-num">Q22</span>
+    <div class="q-text">次の式を、×と÷の記号を使って表せ。<br><span class="math">4x − y/5</span></div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input wide" id="q22" type="text" placeholder="例: 4×x-y÷5"></div>
+  <div class="q-feedback" id="fb22"></div>
+</div>
+
+<!-- Q23 -->
+<div class="q-card" id="qc23">
+  <div class="q-header">
+    <span class="q-num">Q23</span>
+    <div class="q-text">式 <span class="math">−5x²y</span> の係数と次数をそれぞれ答えよ。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input wide" id="q23" type="text" placeholder="例: 係数-5, 次数3"></div>
+  <div class="q-feedback" id="fb23"></div>
+</div>
+
+<!-- Q24 -->
+<div class="q-card" id="qc24">
+  <div class="q-header">
+    <span class="q-num">Q24</span>
+    <div class="q-text">1個 a 円のパンを3個と、1本 b 円のジュースを2本買ったときの代金の合計を、a, b を用いた式で表せ。</div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge shi-tag">思</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q24" type="text" placeholder="例: 3a+2b"></div>
+  <div class="q-feedback" id="fb24"></div>
+</div>
+
+<!-- ===================== SECTION G ===================== -->
+<div class="sec-head">
+  <span class="sec-label">G</span>
+  <span class="sec-title">文字式の値（代入）</span>
+  <span class="sec-hyoka">
+    <span class="chi-tag">知識・技能</span>
+  </span>
+</div>
+
+<!-- Q25 -->
+<div class="q-card" id="qc25">
+  <div class="q-header">
+    <span class="q-num">Q25</span>
+    <div class="q-text"><span class="math">x = −3</span> のとき、<span class="math">2x² − 5x + 1</span> の値を求めよ。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q25" type="text"></div>
+  <div class="q-feedback" id="fb25"></div>
+</div>
+
+<!-- Q26 -->
+<div class="q-card" id="qc26">
+  <div class="q-header">
+    <span class="q-num">Q26</span>
+    <div class="q-text"><span class="math">a = 4, b = −2</span> のとき、<span class="math">3a − 2b²</span> の値を求めよ。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q26" type="text"></div>
+  <div class="q-feedback" id="fb26"></div>
+</div>
+
+<!-- Q27 -->
+<div class="q-card" id="qc27">
+  <div class="q-header">
+    <span class="q-num">Q27</span>
+    <div class="q-text"><span class="math">x = −1/2</span> のとき、<span class="math">−4x + 3</span> の値を求めよ。</div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q27" type="text"></div>
+  <div class="q-feedback" id="fb27"></div>
+</div>
+
+<!-- ===================== SECTION H ===================== -->
+<div class="sec-head">
+  <span class="sec-label">H</span>
+  <span class="sec-title">文字式の加法・減法（1次式の計算）</span>
+  <span class="sec-hyoka">
+    <span class="chi-tag">知識・技能</span>
+    <span class="shi-tag">思考・判断・表現</span>
+  </span>
+</div>
+
+<!-- Q28 -->
+<div class="q-card" id="qc28">
+  <div class="q-header">
+    <span class="q-num">Q28</span>
+    <div class="q-text"><span class="math">3x + 5 − (2x − 7)</span> を計算せよ。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q28" type="text"></div>
+  <div class="q-feedback" id="fb28"></div>
+</div>
+
+<!-- Q29 -->
+<div class="q-card" id="qc29">
+  <div class="q-header">
+    <span class="q-num">Q29</span>
+    <div class="q-text"><span class="math">(4a − 3b) + (−2a + 8b)</span> を計算せよ。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q29" type="text"></div>
+  <div class="q-feedback" id="fb29"></div>
+</div>
+
+<!-- Q30 -->
+<div class="q-card" id="qc30">
+  <div class="q-header">
+    <span class="q-num">Q30</span>
+    <div class="q-text"><span class="math">2(3x − 4) − 3(x − 2)</span> を計算せよ。</div>
+    <span class="diff-tag diff-S">★★★</span>
+    <span class="q-hyoka-badge shi-tag">思</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q30" type="text"></div>
+  <div class="q-feedback" id="fb30"></div>
+</div>
+
+<div id="result-panel">
+  <h2>採点結果</h2>
+  <div class="big-score" id="result-score">0<em> / 30</em></div>
+  <div class="result-comment" id="result-comment"></div>
+  <div class="result-breakdown" id="result-breakdown"></div>
+</div>
+
+</main>
+
+<script src="../quiz-engine.js"></script>
+<script>
+const questions = [
+  { num: 1,  hyoka: 'chi', answer: '-1℃',        hint: '基準の温度に変化量を加える：−4＋3',
+    check: v => qAccept(v, ['-1℃','-1度','-1']) },
+  { num: 2,  hyoka: 'chi', answer: '-1, 0, 1',    hint: '5/3 ≒1.67 なので、絶対値が1.67より小さい整数を探す。',
+    check: v => qAcceptSet(v, [['-1','0','1']]) },
+  { num: 3,  hyoka: 'chi', answer: '-3, -1/2, 0, 1.5, 4', hint: '数直線をイメージして左から右へ並べる。',
+    check: v => qAcceptOrdered(v, [
+      ['-3','-1/2','0','1.5','4'], ['-3','-0.5','0','1.5','4'],
+      ['-3','-1/2','0','+1.5','+4'], ['-3','-0.5','0','+1.5','+4']
+    ]) },
+  { num: 4,  hyoka: 'shi', answer: '西に2km',     hint: '東を＋として、+3−7+2 を計算する。',
+    check: v => qAccept(v, ['西に2km','西2km','2km西','-2km']) },
+  { num: 5,  hyoka: 'chi', answer: '0',           hint: '−13−8+25−4 の順に計算する。',
+    check: v => qAccept(v, ['0']) },
+  { num: 6,  hyoka: 'chi', answer: '-6',          hint: '減法は符号を変えて加法に直す：5+3−8−6',
+    check: v => qAccept(v, ['-6']) },
+  { num: 7,  hyoka: 'chi', answer: '1/6',         hint: '分母を12にそろえて通分する。',
+    check: v => qAccept(v, ['1/6']) },
+  { num: 8,  hyoka: 'shi', answer: '-3',          hint: '正の項 7 と負の項 3,2,5 に整理してから計算する。',
+    check: v => qAccept(v, ['-3']) },
+  { num: 9,  hyoka: 'chi', answer: '-120',        hint: '負の数が奇数個（3個）あるので積は負になる。',
+    check: v => qAccept(v, ['-120']) },
+  { num: 10, hyoka: 'shi', answer: '9, -9',       hint: '(−3)² はかっこごと2乗、−3² は3²にマイナスをつける。',
+    check: v => qAccept(v, ['9, -9','9,-9']) },
+  { num: 11, hyoka: 'chi', answer: '6',           hint: '48÷(−6)＝−8、−8÷(−4/3)＝−8×(−3/4)',
+    check: v => qAccept(v, ['6']) },
+  { num: 12, hyoka: 'chi', answer: '6',           hint: '(−2)³＝−8。−8÷4＝−2、−2×(−3)＝6',
+    check: v => qAccept(v, ['6']) },
+  { num: 13, hyoka: 'shi', answer: '①, 9',        hint: '(−3)² はかっこごと2乗するので必ず正の数になる。',
+    check: v => qAccept(v, ['①, 9','①,9','1, 9','1,9']) },
+  { num: 14, hyoka: 'chi', answer: '9',           hint: '−5²＝−25。−25÷(−5)＝5、(−3)²＝9、10÷2＝5',
+    check: v => qAccept(v, ['9']) },
+  { num: 15, hyoka: 'chi', answer: '6',           hint: '{ }の中を先に計算：3−4+1＝0',
+    check: v => qAccept(v, ['6']) },
+  { num: 16, hyoka: 'shi', answer: '-1300',       hint: '−13を共通因数として (99+1) をくくり出す。',
+    check: v => qAccept(v, ['-1300']) },
+  { num: 17, hyoka: 'shi', answer: '25',          hint: '−1.25を共通因数としてくくり出すと (−1.25)×(−20)になる。',
+    check: v => qAccept(v, ['25']) },
+  { num: 18, hyoka: 'chi', answer: '2^2×3^2×5',   hint: '180を小さい素数から順に割っていく。',
+    check: v => qAccept(v, ['2^2×3^2×5','2^2*3^2*5','2²×3²×5']) },
+  { num: 19, hyoka: 'shi', answer: '7',           hint: '252＝2²×3²×7。指数が奇数の素因数（7）を1個かければ2乗になる。',
+    check: v => qAccept(v, ['7']) },
+  { num: 20, hyoka: 'chi', answer: '-3a²b',       hint: '数は文字の前、同じ文字の積は累乗で表す。',
+    check: v => qAccept(v, ['-3a^2b','-3a²b']) },
+  { num: 21, hyoka: 'chi', answer: 'x/4-2y/3',    hint: '÷の記号は分数の形で表す。',
+    check: v => qAccept(v, ['x/4-2y/3']) },
+  { num: 22, hyoka: 'chi', answer: '4×x-y÷5',     hint: '文字式の逆で、省略された×÷を書き戻す。',
+    check: v => qAccept(v, ['4×x-y÷5','4*x-y/5']) },
+  { num: 23, hyoka: 'chi', answer: '係数：-5、次数：3', hint: '次数は文字の個数の合計（x²は2個、yは1個で合計3）。',
+    check: v => qAccept(v, ['係数-5,次数3','係数:-5,次数:3','係数：-5、次数：3','-5,3']) },
+  { num: 24, hyoka: 'shi', answer: '3a+2b（円）', hint: 'パン3個分の代金＋ジュース2本分の代金。',
+    check: v => qAccept(v, ['3a+2b','3a+2b円','3a+2b(円)']) },
+  { num: 25, hyoka: 'chi', answer: '34',          hint: 'x=−3を代入：2×9−5×(−3)+1',
+    check: v => qAccept(v, ['34']) },
+  { num: 26, hyoka: 'chi', answer: '4',           hint: 'b²は先に2乗してから2倍する：3×4−2×4',
+    check: v => qAccept(v, ['4']) },
+  { num: 27, hyoka: 'chi', answer: '5',           hint: '−4×(−1/2)＝2、2+3＝5',
+    check: v => qAccept(v, ['5']) },
+  { num: 28, hyoka: 'chi', answer: 'x+12',        hint: 'かっこを外すとき、符号がすべて変わることに注意。',
+    check: v => qAccept(v, ['x+12']) },
+  { num: 29, hyoka: 'chi', answer: '2a+5b',       hint: '同類項（aの項どうし、bの項どうし）をまとめる。',
+    check: v => qAccept(v, ['2a+5b']) },
+  { num: 30, hyoka: 'shi', answer: '3x-2',        hint: '分配法則でかっこを外してから同類項をまとめる。',
+    check: v => qAccept(v, ['3x-2']) },
+];
+initQuiz(questions);
+</script>
+
+</body>
+</html>
