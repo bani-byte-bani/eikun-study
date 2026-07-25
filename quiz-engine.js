@@ -1,6 +1,9 @@
 /* 共通クイズ採点エンジン
-   各クイズページは questions 配列 (num, hyoka, check, answer, hint) を定義し、
-   initQuiz(questions) を呼び出すだけで採点・進捗・結果パネルが動作する。 */
+   各クイズページは questions 配列 (num, hyoka, check, answer, hint, trivia) を定義し、
+   initQuiz(questions) を呼び出すだけで採点・進捗・結果パネル・成績の保存が動作する。
+
+   成績は localStorage に保存し、使えない環境では Cookie にフォールバックする。
+   Cookie は容量が小さい(約4KB)ため、その場合は点数の要約のみを保存する。 */
 
 function qNormalize(s) {
   if (s == null) return '';
@@ -49,8 +52,159 @@ function qAcceptOrdered(raw, accepted) {
 
 const HYOKA_LABEL = { chi: '知識・技能', shi: '思考・判断・表現', tai: '主体的に学習に取り組む態度' };
 
+/* ===================== 成績の保存 ===================== */
+
+const STORE_KEY = 'eikun-study-records';
+const COOKIE_KEY = 'eikun_study_records';
+const COOKIE_DAYS = 180;
+
+/* このページのクイズを識別するキー（ファイル名） */
+function quizId() {
+  const name = (location.pathname.split('/').pop() || '').trim();
+  return decodeURIComponent(name) || 'quiz';
+}
+
+function readCookie(name) {
+  const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const m = document.cookie.match(new RegExp('(?:^|;\\s*)' + escaped + '=([^;]*)'));
+  if (!m) return null;
+  try { return decodeURIComponent(m[1]); } catch (e) { return null; }
+}
+
+function writeCookie(name, value, days) {
+  const expires = new Date(Date.now() + days * 86400000).toUTCString();
+  document.cookie = `${name}=${encodeURIComponent(value)};expires=${expires};path=/;SameSite=Lax`;
+}
+
+/* localStorage が実際に読み書きできるかを確かめる（プライベートモード等で例外になる） */
+function localStorageOrNull() {
+  try {
+    const probe = '__eikun_probe__';
+    localStorage.setItem(probe, '1');
+    localStorage.removeItem(probe);
+    return localStorage;
+  } catch (e) {
+    return null;
+  }
+}
+
+const StudyRecords = {
+  /* 保存されている全記録を { quizId: {score,total,at,best,answers} } の形で返す */
+  readAll() {
+    const ls = localStorageOrNull();
+    let raw = ls ? ls.getItem(STORE_KEY) : null;
+    if (raw == null) raw = readCookie(COOKIE_KEY);
+    if (!raw) return {};
+    try {
+      const parsed = JSON.parse(raw);
+      return (parsed && typeof parsed === 'object') ? parsed : {};
+    } catch (e) {
+      return {};
+    }
+  },
+
+  writeAll(all) {
+    const ls = localStorageOrNull();
+    if (ls) {
+      try {
+        ls.setItem(STORE_KEY, JSON.stringify(all));
+        return true;
+      } catch (e) {
+        /* 容量超過などの場合は Cookie へフォールバックする */
+      }
+    }
+    // Cookie は容量が小さいので、回答内容を除いた要約だけを保存する
+    const slim = {};
+    Object.keys(all).forEach(id => {
+      const r = all[id] || {};
+      slim[id] = { score: r.score, total: r.total, at: r.at, best: r.best };
+    });
+    try {
+      writeCookie(COOKIE_KEY, JSON.stringify(slim), COOKIE_DAYS);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  },
+
+  get(id) { return this.readAll()[id] || null; },
+
+  /* 記録の一部を更新する。patch は既存の記録にマージされる */
+  update(id, patch) {
+    const all = this.readAll();
+    all[id] = Object.assign({}, all[id], patch);
+    this.writeAll(all);
+    return all[id];
+  },
+
+  remove(id) {
+    const all = this.readAll();
+    delete all[id];
+    this.writeAll(all);
+  },
+
+  clearAll() {
+    const ls = localStorageOrNull();
+    if (ls) { try { ls.removeItem(STORE_KEY); } catch (e) { /* 無視 */ } }
+    writeCookie(COOKIE_KEY, '', -1);
+  },
+};
+
+/* 2026/07/25 14:03 の形式に整える */
+function formatStamp(iso) {
+  const d = new Date(iso);
+  if (isNaN(d.getTime())) return '';
+  const p = n => String(n).padStart(2, '0');
+  return `${d.getFullYear()}/${p(d.getMonth() + 1)}/${p(d.getDate())} ${p(d.getHours())}:${p(d.getMinutes())}`;
+}
+
+/* ハブページ（index.html）で、各問題集カードに保存済みの成績を表示する */
+function renderHubRecords() {
+  const all = StudyRecords.readAll();
+  let hasAny = false;
+
+  document.querySelectorAll('a.set-card').forEach(card => {
+    const id = decodeURIComponent((card.getAttribute('href') || '').split('/').pop() || '');
+    const rec = all[id];
+    let box = card.querySelector('.set-record');
+    if (!rec || typeof rec.score !== 'number') {
+      if (box) box.remove();
+      return;
+    }
+    hasAny = true;
+    if (!box) {
+      box = document.createElement('div');
+      box.className = 'set-record';
+      const cta = card.querySelector('.set-cta');
+      card.insertBefore(box, cta);
+    }
+    const pct = rec.total ? Math.round(rec.score / rec.total * 100) : 0;
+    const best = (typeof rec.best === 'number' && rec.best !== rec.score)
+      ? `<span class="set-record-best">最高 ${rec.best} / ${rec.total}</span>` : '';
+    box.innerHTML =
+      `<span class="set-record-label">前回</span>` +
+      `<span class="set-record-score">${rec.score} / ${rec.total}</span>` +
+      `<span class="set-record-pct">${pct}%</span>` +
+      best +
+      (rec.at ? `<span class="set-record-at">${formatStamp(rec.at)}</span>` : '');
+  });
+
+  const empty = document.getElementById('hub-record-empty');
+  if (empty) empty.style.display = hasAny ? 'none' : '';
+  const clearBtn = document.getElementById('hub-clear-btn');
+  if (clearBtn) clearBtn.style.display = hasAny ? '' : 'none';
+}
+
+/* ハブページの「学習記録をすべて消去」ボタン */
+function clearAllRecords() {
+  if (!window.confirm('保存されているすべての成績を消去します。よろしいですか？')) return;
+  StudyRecords.clearAll();
+  renderHubRecords();
+}
+
 function initQuiz(questions) {
   const total = questions.length;
+  const id = quizId();
 
   function el(prefix, num) { return document.getElementById(prefix + num); }
 
@@ -63,9 +217,60 @@ function initQuiz(questions) {
     if (inner) inner.style.width = (answered / total * 100) + '%';
   }
 
+  /* 現在の入力内容を { 問題番号: 回答 } の形で取り出す */
+  function collectAnswers() {
+    const answers = {};
+    questions.forEach(q => {
+      const v = el('q', q.num).value;
+      if (v.trim() !== '') answers[q.num] = v;
+    });
+    return answers;
+  }
+
+  /* 入力の途中経過を保存する（採点前でも次回そのまま再開できる） */
+  let saveTimer = null;
+  function saveDraftSoon() {
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(() => {
+      StudyRecords.update(id, { answers: collectAnswers(), total: total });
+      renderRecordBar();
+    }, 600);
+  }
+
+  /* スコアバーに前回・最高得点を表示する */
+  function renderRecordBar() {
+    const box = document.getElementById('score-record');
+    if (!box) return;
+    const rec = StudyRecords.get(id);
+    if (!rec || typeof rec.score !== 'number') {
+      box.innerHTML = '<span class="score-record-none">記録なし</span>';
+      return;
+    }
+    const best = (typeof rec.best === 'number') ? `<b>最高</b> ${rec.best} / ${rec.total}` : '';
+    box.innerHTML =
+      `<span><b>前回</b> ${rec.score} / ${rec.total}</span>` +
+      (best ? `<span>${best}</span>` : '') +
+      (rec.at ? `<span class="score-record-at">${formatStamp(rec.at)}</span>` : '');
+  }
+
+  /* 保存されている回答を画面に復元する */
+  function restoreAnswers() {
+    const rec = StudyRecords.get(id);
+    if (!rec || !rec.answers) return 0;
+    let restored = 0;
+    questions.forEach(q => {
+      const saved = rec.answers[q.num];
+      if (typeof saved === 'string' && saved !== '') {
+        el('q', q.num).value = saved;
+        restored++;
+      }
+    });
+    return restored;
+  }
+
   questions.forEach((q, i) => {
     const input = el('q', q.num);
-    input.addEventListener('input', updateProgress);
+    input.addEventListener('input', () => { updateProgress(); saveDraftSoon(); });
     input.addEventListener('keydown', e => {
       if (e.key === 'Enter') {
         e.preventDefault();
@@ -75,7 +280,10 @@ function initQuiz(questions) {
       }
     });
   });
+
+  restoreAnswers();
   updateProgress();
+  renderRecordBar();
 
   window.checkAll = function () {
     let correct = 0;
@@ -117,6 +325,20 @@ function initQuiz(questions) {
     const scoreDisp = document.getElementById('score-disp');
     if (scoreDisp) scoreDisp.innerHTML = `${correct} <small>/ ${total}</small>`;
     updateProgress();
+
+    // 採点結果を保存する。最高得点はこれまでの記録と比べて更新する
+    clearTimeout(saveTimer);
+    const prev = StudyRecords.get(id);
+    const prevBest = (prev && typeof prev.best === 'number') ? prev.best : -1;
+    StudyRecords.update(id, {
+      score: correct,
+      total: total,
+      best: Math.max(correct, prevBest),
+      at: new Date().toISOString(),
+      answers: collectAnswers(),
+    });
+    renderRecordBar();
+
     showResult(correct, hyokaCorrect, hyokaTotal);
   };
 
@@ -135,8 +357,23 @@ function initQuiz(questions) {
     if (scoreDisp) scoreDisp.innerHTML = `0 <small>/ ${total}</small>`;
     const panel = document.getElementById('result-panel');
     if (panel) panel.classList.remove('show');
+
+    // 画面上の解答は消すが、点数の記録（前回・最高）は残す
+    clearTimeout(saveTimer);
+    StudyRecords.update(id, { answers: {} });
+
     updateProgress();
+    renderRecordBar();
     el('q', questions[0].num).focus();
+  };
+
+  /* この問題集の記録（回答・点数・最高得点）をすべて消去する */
+  window.clearRecord = function () {
+    if (!window.confirm('この問題集の成績と解答の記録を消去します。よろしいですか？')) return;
+    window.resetAll();          // 先に画面を初期化する（この中で下書きが保存される）
+    clearTimeout(saveTimer);
+    StudyRecords.remove(id);    // そのうえで記録そのものを削除する
+    renderRecordBar();
   };
 
   function showResult(correct, hyokaCorrect, hyokaTotal) {

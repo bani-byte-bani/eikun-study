@@ -122,6 +122,29 @@ header h1 small {
 }
 .btn-secondary:hover { border-color: #888; color: #444; }
 
+/* スコアバー内の保存済み成績 */
+#score-record {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 11px;
+  color: #667;
+  font-family: 'DM Mono', monospace;
+  padding: 3px 10px;
+  border-left: 2px solid var(--grid);
+  white-space: nowrap;
+}
+#score-record b {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: #8a94a6;
+  margin-right: 3px;
+}
+.score-record-at { color: #99a; }
+.score-record-none { color: #aab; font-family: 'Noto Sans JP', sans-serif; }
+
 /* メインコンテンツ */
 main { max-width: 900px; margin: 0 auto; padding: 28px 20px 60px; }
 
@@ -387,6 +410,47 @@ main { max-width: 900px; margin: 0 auto; padding: 28px 20px 60px; }
   color: var(--blue);
 }
 .set-cta::after { content: ' →'; }
+
+/* 問題集カードに表示する保存済み成績 */
+.set-record {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  background: #f2f6fa;
+  border: 1px solid #dbe6f0;
+  border-radius: 3px;
+  padding: 7px 11px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: #46586e;
+}
+.set-record-label {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  background: var(--blue);
+  color: #fff;
+  padding: 1px 7px;
+  border-radius: 2px;
+}
+.set-record-score { font-size: 14px; font-weight: 500; color: var(--ink); }
+.set-record-pct { color: #7a8ca0; }
+.set-record-best { color: #1e8449; }
+.set-record-at { color: #93a3b4; margin-left: auto; }
+
+/* ハブページの記録まわり */
+.hub-record-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+  font-size: 12px;
+  color: #778;
+}
+#hub-record-empty { color: #8a94a6; }
 
 @media (max-width: 600px) {
   header { padding: 18px 14px 14px; }
