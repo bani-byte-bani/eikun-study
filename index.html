@@ -34,7 +34,12 @@
 
 <main>
 
-<p class="hub-intro">下のリストから範囲・問題集を選ぶと、その場で採点できる練習問題ページが開きます。全問回答後に「全問採点する」を押すと、得点と評価の観点ごとの内訳が表示されます。</p>
+<p class="hub-intro">下のリストから範囲・問題集を選ぶと、その場で採点できる練習問題ページが開きます。全問回答後に「全問採点する」を押すと、得点と評価の観点ごとの内訳が表示されます。採点した成績と入力した解答はこのブラウザに保存され、次に開いたときに続きから取り組めます。</p>
+
+<div class="hub-record-bar">
+  <span id="hub-record-empty">まだ成績の記録はありません。問題集を採点すると、ここと各カードに結果が表示されます。</span>
+  <button class="btn-secondary" id="hub-clear-btn" onclick="clearAllRecords()" style="display:none;">学習記録をすべて消去</button>
+</div>
 
 <div class="range-group-title">中学1年生 ／ 第1学期末テスト対策</div>
 <div class="set-list">
@@ -155,6 +160,9 @@
 </div>
 
 </main>
+
+<script src="quiz-engine.js"></script>
+<script>renderHubRecords();</script>
 
 </body>
 </html>
