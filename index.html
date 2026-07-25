@@ -3,330 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>令和8年度 第1学期末テスト 数学練習問題</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=DM+Mono:wght@400;500&display=swap');
-
-  :root {
-    --ink: #1c2840;
-    --paper: #f6f4ef;
-    --accent: #c0392b;
-    --blue: #2471a3;
-    --grid: #dedad2;
-    --correct: #1e8449;
-    --wrong: #c0392b;
-    --white: #ffffff;
-  }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    background: var(--paper);
-    color: var(--ink);
-    font-family: 'Noto Sans JP', sans-serif;
-    font-size: 15px;
-    line-height: 1.75;
-  }
-
-  /* ヘッダー */
-  header {
-    background: var(--ink);
-    color: #fff;
-    padding: 24px 28px 20px;
-  }
-  .header-inner { max-width: 900px; margin: 0 auto; display: flex; align-items: flex-end; gap: 18px; flex-wrap: wrap; }
-  .header-title-block { flex: 1 1 260px; }
-  .header-eyebrow {
-    font-size: 10px;
-    letter-spacing: .18em;
-    color: #8fa8c0;
-    text-transform: uppercase;
-    margin-bottom: 4px;
-  }
-  header h1 {
-    font-size: 20px;
-    font-weight: 900;
-    letter-spacing: .03em;
-    line-height: 1.25;
-  }
-  header h1 small {
-    display: block;
-    font-size: 12px;
-    font-weight: 400;
-    color: #a0b4c4;
-    margin-top: 3px;
-  }
-  .header-tags { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; padding-bottom: 2px; }
-  .tag {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: .07em;
-    padding: 3px 9px;
-    border-radius: 2px;
-  }
-  .tag-red   { background: var(--accent); color: #fff; }
-  .tag-blue  { background: var(--blue);   color: #fff; }
-  .tag-gray  { background: #3a4e64;       color: #c8d8e8; }
-
-  /* 評価観点バナー */
-  .hyoka-bar {
-    background: #253048;
-    padding: 10px 28px;
-    font-size: 11px;
-    color: #a0b8cc;
-  }
-  .hyoka-bar-inner { max-width: 900px; margin: 0 auto; display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
-  .hyoka-bar span { display: inline-flex; align-items: center; gap: 5px; }
-  .hyoka-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
-  .hyoka-dot.chi { background: #5dade2; }
-  .hyoka-dot.shi { background: #f39c12; }
-  .hyoka-dot.tai { background: #2ecc71; }
-  .hyoka-bar strong { color: #e0eaf4; font-weight: 500; }
-
-  /* スコアバー */
-  #score-bar {
-    background: var(--white);
-    border-bottom: 1px solid var(--grid);
-    padding: 12px 28px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 8px rgba(0,0,0,.06);
-  }
-  .score-bar-inner { max-width: 900px; margin: 0 auto; display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
-  .score-num { font-family: 'DM Mono', monospace; font-size: 26px; font-weight: 500; white-space: nowrap; }
-  .score-num small { font-size: 12px; color: #888; }
-  .progress-wrap { flex: 1 1 160px; }
-  .progress-label { font-size: 11px; color: #888; margin-bottom: 3px; }
-  .progress-outer { height: 7px; background: var(--grid); border-radius: 4px; overflow: hidden; }
-  .progress-inner { height: 100%; background: var(--blue); border-radius: 4px; transition: width .4s; width: 0%; }
-  .btn-primary {
-    padding: 8px 18px;
-    background: var(--ink);
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-    font-size: 13px;
-    font-weight: 700;
-    cursor: pointer;
-    letter-spacing: .04em;
-    white-space: nowrap;
-    transition: background .2s;
-  }
-  .btn-primary:hover { background: #2c3e55; }
-  .btn-secondary {
-    padding: 8px 14px;
-    background: transparent;
-    color: #888;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    font-size: 12px;
-    cursor: pointer;
-    transition: all .2s;
-    white-space: nowrap;
-  }
-  .btn-secondary:hover { border-color: #888; color: #444; }
-
-  /* メインコンテンツ */
-  main { max-width: 900px; margin: 0 auto; padding: 28px 20px 60px; }
-
-  /* セクションヘッダー */
-  .sec-head {
-    margin: 38px 0 14px;
-    padding-bottom: 8px;
-    border-bottom: 2.5px solid var(--ink);
-    display: flex;
-    align-items: baseline;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-  .sec-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    background: var(--ink);
-    color: #fff;
-    padding: 2px 8px;
-    border-radius: 2px;
-    letter-spacing: .12em;
-  }
-  .sec-title { font-size: 14px; font-weight: 700; }
-  .sec-hyoka {
-    font-size: 10px;
-    color: #666;
-    margin-left: auto;
-  }
-  .sec-hyoka span { 
-    display: inline-block;
-    padding: 1px 7px;
-    border-radius: 10px;
-    margin-left: 4px;
-    font-weight: 600;
-  }
-  .chi-tag { background: #eaf4fb; color: #2471a3; }
-  .shi-tag { background: #fef3cd; color: #935c00; }
-  .tai-tag { background: #eafaf1; color: #1e8449; }
-
-  /* 問題カード */
-  .q-card {
-    background: var(--white);
-    border: 1px solid var(--grid);
-    border-radius: 4px;
-    padding: 16px 18px 14px;
-    margin-bottom: 10px;
-    transition: box-shadow .2s, border-left .1s;
-  }
-  .q-card:hover { box-shadow: 0 2px 10px rgba(0,0,0,.06); }
-  .q-card.correct { border-left: 4px solid var(--correct); }
-  .q-card.wrong   { border-left: 4px solid var(--wrong); }
-
-  .q-header { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 9px; }
-  .q-num {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    background: var(--paper);
-    border: 1px solid var(--grid);
-    padding: 1px 7px;
-    border-radius: 2px;
-    white-space: nowrap;
-    margin-top: 3px;
-    flex-shrink: 0;
-  }
-  .q-text { font-size: 15px; line-height: 1.8; flex: 1; }
-  .math { font-family: 'DM Mono', monospace; }
-
-  /* 評価観点バッジ */
-  .q-hyoka-badge {
-    font-size: 9px;
-    font-weight: 700;
-    padding: 2px 6px;
-    border-radius: 2px;
-    white-space: nowrap;
-    margin-top: 4px;
-    flex-shrink: 0;
-  }
-
-  /* 難易度星 */
-  .diff-tag {
-    font-size: 10px;
-    font-weight: 700;
-    padding: 2px 7px;
-    border-radius: 2px;
-    white-space: nowrap;
-    margin-top: 4px;
-    flex-shrink: 0;
-  }
-  .diff-B { background: #edf2f7; color: #4a6080; }
-  .diff-A { background: #fef3cd; color: #856404; }
-  .diff-S { background: #1c2840; color: #fff; }
-
-  /* 入力 */
-  .q-input-row { display: flex; align-items: center; gap: 10px; }
-  .q-input-row label { font-size: 13px; color: #555; white-space: nowrap; }
-  .ans-input {
-    width: 190px;
-    padding: 6px 10px;
-    border: 1.5px solid #ccc;
-    border-radius: 3px;
-    font-family: 'DM Mono', monospace;
-    font-size: 15px;
-    background: var(--paper);
-    color: var(--ink);
-    transition: border-color .2s, background .2s;
-  }
-  .ans-input.wide { width: 280px; }
-  .ans-input:focus { outline: none; border-color: var(--blue); background: #fff; }
-  .ans-input.ok { border-color: var(--correct); background: #f0fbf4; }
-  .ans-input.ng { border-color: var(--wrong);   background: #fff5f5; }
-
-  /* フィードバック */
-  .q-feedback {
-    margin-top: 10px;
-    padding: 10px 14px;
-    border-radius: 3px;
-    font-size: 12.5px;
-    display: none;
-    line-height: 1.75;
-  }
-  .q-feedback.show { display: block; }
-  .q-feedback.ok-fb { background: #eafaf1; border-left: 3px solid var(--correct); }
-  .q-feedback.ng-fb { background: #fdf2f2; border-left: 3px solid var(--wrong); }
-  .fb-label { font-weight: 700; font-size: 13px; margin-bottom: 3px; }
-  .fb-ans { font-family: 'DM Mono', monospace; font-size: 14px; color: var(--accent); font-weight: 700; }
-  .fb-eval { font-size: 11px; margin-top: 4px; }
-  .fb-eval b { 
-    display: inline-block;
-    padding: 0px 5px;
-    border-radius: 2px;
-    margin-right: 4px;
-  }
-  .fb-eval b.chi-b { background: #eaf4fb; color: #2471a3; }
-  .fb-eval b.shi-b { background: #fef3cd; color: #935c00; }
-  .fb-eval b.tai-b { background: #eafaf1; color: #1e8449; }
-  .fb-hint { margin-top: 5px; color: #3a4a58; }
-
-  /* 結果パネル */
-  #result-panel {
-    display: none;
-    background: var(--ink);
-    color: #fff;
-    border-radius: 5px;
-    padding: 32px 28px;
-    margin-top: 44px;
-    text-align: center;
-  }
-  #result-panel.show { display: block; }
-  #result-panel h2 { font-size: 17px; color: #a0b4c4; margin-bottom: 8px; }
-  .big-score {
-    font-family: 'DM Mono', monospace;
-    font-size: 58px;
-    font-weight: 500;
-    line-height: 1;
-    margin: 10px 0 6px;
-  }
-  .big-score em { font-size: 20px; font-style: normal; color: #6a8099; }
-  .result-comment { color: #c0d4e4; font-size: 14px; margin-top: 8px; }
-  .result-breakdown {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 24px;
-    flex-wrap: wrap;
-    font-size: 12px;
-    color: #8fa8c0;
-  }
-  .result-breakdown span b { 
-    display: block;
-    font-family: 'DM Mono', monospace;
-    font-size: 22px;
-    font-weight: 500;
-    color: #fff;
-    line-height: 1.2;
-  }
-
-  @media (max-width: 600px) {
-    header { padding: 18px 14px 14px; }
-    #score-bar { padding: 10px 14px; }
-    main { padding: 18px 10px 50px; }
-    .ans-input { width: 150px; }
-    .ans-input.wide { width: 220px; }
-  }
-</style>
+<title>数学 練習問題集 - 範囲を選択</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
   <div class="header-inner">
     <div class="header-title-block">
-      <div class="header-eyebrow">令和8年度 第1学期末テスト対策 ／ 砥部町中学校 数学</div>
-      <h1>数学 練習問題 30問
-        <small>東京書籍「新編 新しい数学1」準拠</small>
+      <div class="header-eyebrow">中学数学 練習問題集</div>
+      <h1>範囲・問題集を選ぶ
+        <small>やりたい問題集を選んでスタート</small>
       </h1>
     </div>
     <div class="header-tags">
       <span class="tag tag-red">1年生</span>
-      <span class="tag tag-blue">第1章 正負の数</span>
-      <span class="tag tag-blue">第2章 文字と式（加減まで）</span>
-      <span class="tag tag-gray">偏差値67レベル</span>
+      <span class="tag tag-gray">全2セット・54問</span>
     </div>
   </div>
 </header>
@@ -337,297 +29,56 @@
     <span><span class="hyoka-dot chi"></span> 知識・技能</span>
     <span><span class="hyoka-dot shi"></span> 思考・判断・表現</span>
     <span><span class="hyoka-dot tai"></span> 主体的に学習に取り組む態度</span>
-    <span style="margin-left:auto;font-size:10px;">Enter キーで次の問題へ移動</span>
-  </div>
-</div>
-
-<div id="score-bar">
-  <div class="score-bar-inner">
-    <div class="score-num" id="score-disp">0 <small>/ 30</small></div>
-    <div class="progress-wrap">
-      <div class="progress-label" id="prog-label">未回答: 30問</div>
-      <div class="progress-outer"><div class="progress-inner" id="prog-inner"></div></div>
-    </div>
-    <button class="btn-primary" onclick="checkAll()">全問採点する</button>
-    <button class="btn-secondary" onclick="resetAll()">リセット</button>
   </div>
 </div>
 
 <main>
 
-<!-- ===================== SECTION A ===================== -->
-<div class="sec-head">
-  <span class="sec-label">A</span>
-  <span class="sec-title">正の数・負の数の意味・大小・絶対値</span>
-  <span class="sec-hyoka">
-    <span class="chi-tag">知識・技能</span>
-    <span class="shi-tag">思考・判断・表現</span>
-  </span>
+<p class="hub-intro">下のリストから範囲・問題集を選ぶと、その場で採点できる練習問題ページが開きます。全問回答後に「全問採点する」を押すと、得点と評価の観点ごとの内訳が表示されます。</p>
+
+<div class="range-group-title">中学1年生</div>
+<div class="set-list">
+
+  <a class="set-card" href="quizzes/g1-1st-term-math.html">
+    <div class="set-card-head">
+      <span class="set-title">第1学期末テスト対策 数学練習問題</span>
+      <div class="set-tags">
+        <span class="tag tag-blue">第1章 正負の数</span>
+        <span class="tag tag-blue">第2章 文字と式（加減まで）</span>
+        <span class="tag tag-gray">偏差値67レベル</span>
+      </div>
+    </div>
+    <div class="set-desc">正負の数の四則混合計算・素因数分解から、文字式の表し方・代入・加減計算までを網羅。期末テストに向けた総仕上げ用。</div>
+    <div class="set-meta">
+      <span>問題数：30問</span>
+      <span>単元：A〜H（8セクション）</span>
+      <span>東京書籍「新編 新しい数学1」準拠</span>
+    </div>
+    <span class="set-cta">この問題集を始める</span>
+  </a>
+
+  <a class="set-card" href="quizzes/g1-summer-review.html">
+    <div class="set-card-head">
+      <span class="set-title">夏休み確認問題（1学期総復習）</span>
+      <div class="set-tags">
+        <span class="tag tag-blue">第1章 正負の数</span>
+        <span class="tag tag-blue">第2章 文字と式</span>
+        <span class="tag tag-blue">第3章 一次方程式</span>
+        <span class="tag tag-gray">偏差値65レベル</span>
+      </div>
+    </div>
+    <div class="set-desc">1学期に学習した正負の数・文字と式・一次方程式を、文章題や思考力問題も交えて総復習。夏休み中の実力チェックに。</div>
+    <div class="set-meta">
+      <span>問題数：24問</span>
+      <span>単元：A〜F（6セクション）</span>
+      <span>1学期範囲 総合復習</span>
+    </div>
+    <span class="set-cta">この問題集を始める</span>
+  </a>
+
 </div>
 
-<!-- Q1 -->
-<div class="q-card" id="qc1">
-  <div class="q-header">
-    <span class="q-num">Q01</span>
-    <div class="q-text">気温が −4℃の日から3℃上がったときの気温を答えよ。</div>
-    <span class="diff-tag diff-B">★☆☆</span>
-    <span class="q-hyoka-badge chi-tag">知</span>
-  </div>
-  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q1" type="text" placeholder="例: -1℃"></div>
-  <div class="q-feedback" id="fb1"></div>
-</div>
+</main>
 
-<!-- Q2 -->
-<div class="q-card" id="qc2">
-  <div class="q-header">
-    <span class="q-num">Q02</span>
-    <div class="q-text">絶対値が <span class="math">5/3</span> より小さい整数をすべて答えよ。</div>
-    <span class="diff-tag diff-A">★★☆</span>
-    <span class="q-hyoka-badge chi-tag">知</span>
-  </div>
-  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q2" type="text" placeholder="カンマ区切り"></div>
-  <div class="q-feedback" id="fb2"></div>
-</div>
-
-<!-- Q3 -->
-<div class="q-card" id="qc3">
-  <div class="q-header">
-    <span class="q-num">Q03</span>
-    <div class="q-text">−3, +1.5, 0, −<span class="math">1/2</span>, +4 を小さい順に並べよ。</div>
-    <span class="diff-tag diff-B">★☆☆</span>
-    <span class="q-hyoka-badge chi-tag">知</span>
-  </div>
-  <div class="q-input-row"><label>答え：</label><input class="ans-input wide" id="q3" type="text" placeholder="カンマ区切りで"></div>
-  <div class="q-feedback" id="fb3"></div>
-</div>
-
-<!-- Q4 -->
-<div class="q-card" id="qc4">
-  <div class="q-header">
-    <span class="q-num">Q04</span>
-    <div class="q-text">次の数を、東西への移動で表されているとき、基準から西に何 km いるかを答えよ。<br>「東に3km 移動→西に7km 移動→東に2km 移動」</div>
-    <span class="diff-tag diff-A">★★☆</span>
-    <span class="q-hyoka-badge shi-tag">思</span>
-  </div>
-  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q4" type="text" placeholder="例: 西に2km"></div>
-  <div class="q-feedback" id="fb4"></div>
-</div>
-
-<!-- ===================== SECTION B ===================== -->
-<div class="sec-head">
-  <span class="sec-label">B</span>
-  <span class="sec-title">正負の数の加法・減法</span>
-  <span class="sec-hyoka">
-    <span class="chi-tag">知識・技能</span>
-    <span class="shi-tag">思考・判断・表現</span>
-  </span>
-</div>
-
-<!-- Q5 -->
-<div class="q-card" id="qc5">
-  <div class="q-header">
-    <span class="q-num">Q05</span>
-    <div class="q-text">（−13）＋（−8）＋25＋（−4）を計算せよ。</div>
-    <span class="diff-tag diff-B">★☆☆</span>
-    <span class="q-hyoka-badge chi-tag">知</span>
-  </div>
-  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q5" type="text"></div>
-  <div class="q-feedback" id="fb5"></div>
-</div>
-
-<!-- Q6 -->
-<div class="q-card" id="qc6">
-  <div class="q-header">
-    <span class="q-num">Q06</span>
-    <div class="q-text">5 − (−3) − 8 − (+6) を計算せよ。</div>
-    <span class="diff-tag diff-A">★★☆</span>
-    <span class="q-hyoka-badge chi-tag">知</span>
-  </div>
-  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q6" type="text"></div>
-  <div class="q-feedback" id="fb6"></div>
-</div>
-
-<!-- Q7 -->
-<div class="q-card" id="qc7">
-  <div class="q-header">
-    <span class="q-num">Q07</span>
-    <div class="q-text">−<span class="math">3/4</span> ＋ <span class="math">5/6</span> − (−<span class="math">1/12</span>) を計算せよ。</div>
-    <span class="diff-tag diff-A">★★☆</span>
-    <span class="q-hyoka-badge chi-tag">知</span>
-  </div>
-  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q7" type="text" placeholder="分数で答えよ"></div>
-  <div class="q-feedback" id="fb7"></div>
-</div>
-
-<!-- Q8 -->
-<div class="q-card" id="qc8">
-  <div class="q-header">
-    <span class="q-num">Q08</span>
-    <div class="q-text">正負の数の加法と減法が混じった式 −3 − (−7) + (−2) − 5 を、正の項・負の項だけを並べた式になおしてから計算せよ。</div>
-    <span class="diff-tag diff-A">★★☆</span>
-    <span class="q-hyoka-badge shi-tag">思</span>
-  </div>
-  <div class="q-input-row"><label>答え（計算結果）：</label><input class="ans-input" id="q8" type="text"></div>
-  <div class="q-feedback" id="fb8"></div>
-</div>
-
-<!-- ===================== SECTION C ===================== -->
-<div class="sec-head">
-  <span class="sec-label">C</span>
-  <span class="sec-title">乗法・除法・累乗と符号</span>
-  <span class="sec-hyoka">
-    <span class="chi-tag">知識・技能</span>
-    <span class="shi-tag">思考・判断・表現</span>
-  </span>
-</div>
-
-<!-- Q9 -->
-<div class="q-card" id="qc9">
-  <div class="q-header">
-    <span class="q-num">Q09</span>
-    <div class="q-text">（−4）× 3 × (−5) × (−2) を計算せよ。</div>
-    <span class="diff-tag diff-A">★★☆</span>
-    <span class="q-hyoka-badge chi-tag">知</span>
-  </div>
-  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q9" type="text"></div>
-  <div class="q-feedback" id="fb9"></div>
-</div>
-
-<!-- Q10 -->
-<div class="q-card" id="qc10">
-  <div class="q-header">
-    <span class="q-num">Q10</span>
-    <div class="q-text">（−3）² の値と −3² の値をそれぞれ求めよ。（形式：a, b）</div>
-    <span class="diff-tag diff-A">★★☆</span>
-    <span class="q-hyoka-badge shi-tag">思</span>
-  </div>
-  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q10" type="text" placeholder="例: 9, -9"></div>
-  <div class="q-feedback" id="fb10"></div>
-</div>
-
-<!-- Q11 -->
-<div class="q-card" id="qc11">
-  <div class="q-header">
-    <span class="q-num">Q11</span>
-    <div class="q-text">48 ÷ (−6) ÷ (−<span class="math">4/3</span>) を計算せよ。</div>
-    <span class="diff-tag diff-A">★★☆</span>
-    <span class="q-hyoka-badge chi-tag">知</span>
-  </div>
-  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q11" type="text"></div>
-  <div class="q-feedback" id="fb11"></div>
-</div>
-
-<!-- Q12 -->
-<div class="q-card" id="qc12">
-  <div class="q-header">
-    <span class="q-num">Q12</span>
-    <div class="q-text">(−2)³ ÷ 4 × (−3) を計算せよ。</div>
-    <span class="diff-tag diff-A">★★☆</span>
-    <span class="q-hyoka-badge chi-tag">知</span>
-  </div>
-  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q12" type="text"></div>
-  <div class="q-feedback" id="fb12"></div>
-</div>
-
-<!-- Q13 -->
-<div class="q-card" id="qc13">
-  <div class="q-header">
-    <span class="q-num">Q13</span>
-    <div class="q-text">誤りのある計算を見つけよ。<br>
-    ① (−3)² = −9 &nbsp;&nbsp; ② −(−4)² = −16 &nbsp;&nbsp; ③ (−2)³ = −8<br>
-    誤りの番号と正しい値を答えよ。（形式：①, 正しい値）</div>
-    <span class="diff-tag diff-S">★★★</span>
-    <span class="q-hyoka-badge shi-tag">思</span>
-  </div>
-  <div class="q-input-row"><label>答え：</label><input class="ans-input wide" id="q13" type="text" placeholder="例: ②, 16"></div>
-  <div class="q-feedback" id="fb13"></div>
-</div>
-
-<!-- ===================== SECTION D ===================== -->
-<div class="sec-head">
-  <span class="sec-label">D</span>
-  <span class="sec-title">四則混合計算・分配法則の活用</span>
-  <span class="sec-hyoka">
-    <span class="chi-tag">知識・技能</span>
-    <span class="shi-tag">思考・判断・表現</span>
-  </span>
-</div>
-
-<!-- Q14 -->
-<div class="q-card" id="qc14">
-  <div class="q-header">
-    <span class="q-num">Q14</span>
-    <div class="q-text">−5² ÷ (−5) + (−3)² − 10 ÷ 2 を計算せよ。</div>
-    <span class="diff-tag diff-A">★★☆</span>
-    <span class="q-hyoka-badge chi-tag">知</span>
-  </div>
-  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q14" type="text"></div>
-  <div class="q-feedback" id="fb14"></div>
-</div>
-
-<!-- Q15 -->
-<div class="q-card" id="qc15">
-  <div class="q-header">
-    <span class="q-num">Q15</span>
-    <div class="q-text">6 − 4 × {3 − (−2)² + 1} を計算せよ。</div>
-    <span class="diff-tag diff-S">★★★</span>
-    <span class="q-hyoka-badge chi-tag">知</span>
-  </div>
-  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q15" type="text"></div>
-  <div class="q-feedback" id="fb15"></div>
-</div>
-
-<!-- Q16 -->
-<div class="q-card" id="qc16">
-  <div class="q-header">
-    <span class="q-num">Q16</span>
-    <div class="q-text">99 × (−13) + (−13) を分配法則を工夫して計算せよ。</div>
-    <span class="diff-tag diff-A">★★☆</span>
-    <span class="q-hyoka-badge shi-tag">思</span>
-  </div>
-  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q16" type="text"></div>
-  <div class="q-feedback" id="fb16"></div>
-</div>
-
-<!-- Q17 -->
-<div class="q-card" id="qc17">
-  <div class="q-header">
-    <span class="q-num">Q17</span>
-    <div class="q-text">（−1.25）×（−16）− 4 × (−1.25) を分配法則を使って計算せよ。</div>
-    <span class="diff-tag diff-S">★★★</span>
-    <span class="q-hyoka-badge shi-tag">思</span>
-  </div>
-  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q17" type="text"></div>
-  <div class="q-feedback" id="fb17"></div>
-</div>
-
-<!-- ===================== SECTION E ===================== -->
-<div class="sec-head">
-  <span class="sec-label">E</span>
-  <span class="sec-title">素因数分解・数の性質への活用</span>
-  <span class="sec-hyoka">
-    <span class="chi-tag">知識・技能</span>
-    <span class="shi-tag">思考・判断・表現</span>
-    <span class="tai-tag">態度</span>
-  </span>
-</div>
-
-<!-- Q18 -->
-<div class="q-card" id="qc18">
-  <div class="q-header">
-    <span class="q-num">Q18</span>
-    <div class="q-text">180 を素因数分解せよ。</div>
-    <span class="diff-tag diff-B">★☆☆</span>
-    <span class="q-hyoka-badge chi-tag">知</span>
-  </div>
-  <div class="q-input-row"><label>答え：</label><input class="ans-input wide" id="q18" type="text" placeholder="例: 2^2×3^2×5"></div>
-  <div class="q-feedback" id="fb18"></div>
-</div>
-
-<!-- Q19 -->
-<div class="q-card" id="qc19">
-  <div class="q-header">
-    <span class="q-num">Q19</span>
-    <div class="q-text">素因数分解を使って、252n が整数の2乗になる最小の自然数 n を求めよ。</div>
-    <span class="diff-tag diff-S">★★★</span>
-    <
+</body>
+</html>

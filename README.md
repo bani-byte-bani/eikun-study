@@ -1,1 +1,21 @@
 # eikun-study
+
+中学数学の自動採点付き練習問題集（静的サイト）。
+
+## 使い方
+
+`index.html` をブラウザで開くと、範囲・問題集をリストから選べます。問題集を選ぶと、その場で回答・自動採点ができるページに移動します。
+
+## 構成
+
+- `index.html` — 範囲・問題集を選ぶハブページ
+- `style.css` — 共通スタイル
+- `quiz-engine.js` — 共通の採点エンジン（進捗バー、Enterキーでの入力欄移動、採点、結果パネル表示）
+- `quizzes/g1-1st-term-math.html` — 中1 第1学期末テスト対策（正負の数・文字と式、30問、偏差値67レベル）
+- `quizzes/g1-summer-review.html` — 中1 夏休み確認問題（正負の数・文字と式・一次方程式、24問、偏差値65レベル）
+
+## 問題集の追加方法
+
+1. `quizzes/` に新しいHTMLファイルを作成し、既存ファイルをコピーして `<link>`/`<script src>` はそのまま流用する。
+2. 問題カード（`.q-card`）を追加し、末尾の `<script>` 内の `questions` 配列に `{ num, hyoka, answer, hint, check }` を追加する。
+3. `index.html` の `.set-list` に新しい `.set-card` を追加してリンクする。
