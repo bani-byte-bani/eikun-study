@@ -202,6 +202,143 @@ function clearAllRecords() {
   renderHubRecords();
 }
 
+/* ===================== 印刷（紙のプリント） ===================== */
+
+/* 画面のヘッダーから、印刷用の見出しに使う文字列を取り出す */
+function printHeadInfo() {
+  const h1 = document.querySelector('header h1');
+  let title = '練習問題';
+  let sub = '';
+  if (h1) {
+    const small = h1.querySelector('small');
+    sub = small ? small.textContent.trim() : '';
+    const clone = h1.cloneNode(true);
+    const smallClone = clone.querySelector('small');
+    if (smallClone) smallClone.remove();
+    title = clone.textContent.trim();
+  }
+  const eyebrowEl = document.querySelector('.header-eyebrow');
+  return {
+    title: title,
+    sub: sub,
+    eyebrow: eyebrowEl ? eyebrowEl.textContent.trim() : '',
+  };
+}
+
+/* 問題文などに使われている HTML をそのまま印刷面に持っていく */
+function innerHtmlOf(scope, selector) {
+  const found = scope.querySelector(selector);
+  return found ? found.innerHTML : '';
+}
+
+/* テキストとして安全に埋め込む */
+function escapeHtml(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
+/* 印刷用のシートを組み立てて #print-sheet に流し込む。
+   mode: 'questions'（問題用紙）／'answers'（解答・解説）／'both'（問題＋解答解説） */
+function buildPrintSheet(questions, mode) {
+  let sheet = document.getElementById('print-sheet');
+  if (!sheet) {
+    sheet = document.createElement('div');
+    sheet.id = 'print-sheet';
+    document.body.appendChild(sheet);
+  }
+
+  const byNum = {};
+  (questions || []).forEach(q => { byNum[q.num] = q; });
+  const total = (questions || []).length;
+  const head = printHeadInfo();
+
+  const wantQuestions = (mode === 'questions' || mode === 'both');
+  const wantAnswers = (mode === 'answers' || mode === 'both');
+
+  const parts = [];
+
+  function pushHeader(label, withNameRow) {
+    parts.push('<div class="print-page">');
+    parts.push('<div class="print-head">');
+    if (head.eyebrow) parts.push(`<div class="print-eyebrow">${escapeHtml(head.eyebrow)}</div>`);
+    parts.push(`<h1 class="print-title">${escapeHtml(head.title)}<span class="print-kind">${escapeHtml(label)}</span></h1>`);
+    if (head.sub) parts.push(`<div class="print-sub">${escapeHtml(head.sub)}</div>`);
+    if (withNameRow) {
+      parts.push(
+        '<div class="print-nameline">' +
+        '<span class="print-field print-field-name">名前</span>' +
+        '<span class="print-field print-field-date">日付</span>' +
+        `<span class="print-field print-field-score">得点<em>／ ${total}</em></span>` +
+        '</div>'
+      );
+    }
+    parts.push('</div>');
+  }
+
+  /* main の中の見出しと問題カードを、画面と同じ順番でたどる */
+  function pushBody(showAnswers) {
+    const nodes = document.querySelectorAll('main > .sec-head, main > .q-card');
+    nodes.forEach(node => {
+      if (node.classList.contains('sec-head')) {
+        const label = (node.querySelector('.sec-label') || {}).textContent || '';
+        const title = (node.querySelector('.sec-title') || {}).textContent || '';
+        parts.push(
+          `<div class="print-sec"><span class="print-sec-label">${escapeHtml(label.trim())}</span>` +
+          `<span class="print-sec-title">${escapeHtml(title.trim())}</span></div>`
+        );
+        return;
+      }
+
+      const num = parseInt(String(node.id).replace(/^qc/, ''), 10);
+      const q = byNum[num];
+      const numText = (node.querySelector('.q-num') || {}).textContent || ('Q' + num);
+      const diff = (node.querySelector('.diff-tag') || {}).textContent || '';
+      const qtext = innerHtmlOf(node, '.q-text');
+
+      parts.push('<div class="print-q">');
+      parts.push(
+        `<div class="print-q-head"><span class="print-qnum">${escapeHtml(numText.trim())}</span>` +
+        `<div class="print-qtext">${qtext}</div>` +
+        (diff ? `<span class="print-diff">${escapeHtml(diff.trim())}</span>` : '') +
+        '</div>'
+      );
+
+      if (showAnswers) {
+        if (q) {
+          parts.push(`<div class="print-a"><span class="print-a-label">答え</span>${escapeHtml(q.answer)}</div>`);
+          if (q.hint) parts.push(`<div class="print-h"><span class="print-h-label">解説</span>${escapeHtml(q.hint)}</div>`);
+          if (q.trivia) parts.push(`<div class="print-t"><span class="print-t-label">雑学</span>${escapeHtml(q.trivia)}</div>`);
+        }
+      } else {
+        parts.push('<div class="print-ansline"><span class="print-ansline-label">答え</span><span class="print-rule"></span></div>');
+      }
+      parts.push('</div>');
+    });
+  }
+
+  if (wantQuestions) {
+    pushHeader('問題', true);
+    pushBody(false);
+    parts.push('</div>');
+  }
+  if (wantAnswers) {
+    pushHeader('解答と解説', false);
+    pushBody(true);
+    parts.push('</div>');
+  }
+
+  sheet.innerHTML = parts.join('');
+  return sheet;
+}
+
+/* 印刷モードを切り替えて印刷ダイアログを開く */
+function printSheet(questions, mode) {
+  buildPrintSheet(questions, mode);
+  window.print();
+}
+
 function initQuiz(questions) {
   const total = questions.length;
   const id = quizId();
@@ -284,6 +421,13 @@ function initQuiz(questions) {
   restoreAnswers();
   updateProgress();
   renderRecordBar();
+
+  // ブラウザの印刷（Ctrl+P）でも紙向けの問題用紙が出るよう、あらかじめ組んでおく
+  buildPrintSheet(questions, 'questions');
+
+  window.printQuestions = () => printSheet(questions, 'questions');
+  window.printAnswers   = () => printSheet(questions, 'answers');
+  window.printBoth      = () => printSheet(questions, 'both');
 
   window.checkAll = function () {
     let correct = 0;

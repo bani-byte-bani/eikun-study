@@ -145,6 +145,21 @@ header h1 small {
 .score-record-at { color: #99a; }
 .score-record-none { color: #aab; font-family: 'Noto Sans JP', sans-serif; }
 
+/* 印刷ボタン */
+.print-btn-group {
+  display: inline-flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-left: auto;
+  padding-left: 10px;
+  border-left: 1px dashed var(--grid);
+}
+.print-btn-group .btn-secondary::before {
+  content: '🖨';
+  margin-right: 5px;
+  font-size: 11px;
+}
+
 /* メインコンテンツ */
 main { max-width: 900px; margin: 0 auto; padding: 28px 20px 60px; }
 
@@ -459,4 +474,140 @@ main { max-width: 900px; margin: 0 auto; padding: 28px 20px 60px; }
   .ans-input { width: 150px; }
   .ans-input.wide { width: 220px; }
   .set-card { padding: 16px 16px; }
+}
+
+/* ===================== 印刷（紙のプリント） ===================== */
+
+/* 画面では印刷用シートを隠しておく */
+#print-sheet { display: none; }
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 14mm 13mm;
+  }
+
+  /* 画面用の操作パーツはすべて隠し、印刷用シートだけを出す */
+  header,
+  .hyoka-bar,
+  #score-bar,
+  main,
+  #result-panel {
+    display: none !important;
+  }
+  #print-sheet { display: block !important; }
+
+  body {
+    background: #fff;
+    color: #000;
+    font-size: 10.5pt;
+    line-height: 1.6;
+  }
+
+  /* 問題用紙と解答用紙は別の紙に分ける */
+  .print-page { break-after: page; page-break-after: always; }
+  .print-page:last-child { break-after: auto; page-break-after: auto; }
+
+  .print-head {
+    border-bottom: 2pt solid #000;
+    padding-bottom: 4pt;
+    margin-bottom: 10pt;
+  }
+  .print-eyebrow { font-size: 8pt; letter-spacing: .08em; margin-bottom: 2pt; }
+  .print-title { font-size: 15pt; font-weight: 900; line-height: 1.3; }
+  .print-kind {
+    font-size: 9pt;
+    font-weight: 700;
+    border: 1pt solid #000;
+    border-radius: 2pt;
+    padding: 0 5pt;
+    margin-left: 8pt;
+    vertical-align: 2pt;
+    white-space: nowrap;
+  }
+  .print-sub { font-size: 9pt; margin-top: 2pt; }
+
+  /* 名前・日付・得点の記入欄 */
+  .print-nameline {
+    display: flex;
+    gap: 10pt;
+    margin-top: 8pt;
+    font-size: 9pt;
+  }
+  .print-field {
+    border: 1pt solid #000;
+    border-radius: 2pt;
+    padding: 3pt 6pt;
+    display: inline-block;
+  }
+  .print-field-name  { flex: 2 1 auto; }
+  .print-field-date  { flex: 1.4 1 auto; }
+  .print-field-score { flex: 1 1 auto; text-align: right; }
+  .print-field-score em { font-style: normal; margin-left: 22pt; }
+
+  .print-sec {
+    margin: 10pt 0 5pt;
+    padding-bottom: 2pt;
+    border-bottom: 1pt solid #000;
+    font-size: 10pt;
+    font-weight: 700;
+    break-after: avoid;
+    page-break-after: avoid;
+    break-inside: avoid;
+  }
+  .print-sec-label {
+    border: 1pt solid #000;
+    border-radius: 2pt;
+    padding: 0 4pt;
+    margin-right: 6pt;
+    font-size: 8.5pt;
+  }
+
+  /* 1問がページをまたいで切れないようにする */
+  .print-q {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 7pt;
+    padding-bottom: 5pt;
+    border-bottom: .5pt dotted #999;
+  }
+  .print-q-head { display: flex; align-items: baseline; gap: 6pt; }
+  .print-qnum { font-weight: 700; white-space: nowrap; font-size: 9.5pt; }
+  .print-qtext { flex: 1; }
+  .print-diff { font-size: 8pt; white-space: nowrap; }
+
+  /* 問題用紙の解答記入欄 */
+  .print-ansline {
+    display: flex;
+    align-items: flex-end;
+    gap: 6pt;
+    margin: 7pt 0 2pt 26pt;
+  }
+  .print-ansline-label { font-size: 9pt; white-space: nowrap; }
+  .print-rule { flex: 1; border-bottom: .75pt solid #000; height: 15pt; }
+
+  /* 解答・解説面 */
+  .print-a, .print-h, .print-t {
+    margin: 3pt 0 0 26pt;
+    font-size: 9.5pt;
+  }
+  .print-a { font-weight: 700; }
+  .print-h, .print-t { font-size: 9pt; }
+  .print-t { border-left: 1.5pt solid #999; padding-left: 6pt; }
+  .print-a-label, .print-h-label, .print-t-label {
+    display: inline-block;
+    border: .75pt solid #000;
+    border-radius: 2pt;
+    padding: 0 4pt;
+    margin-right: 5pt;
+    font-size: 8pt;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .print-t-label { border-style: dashed; }
+
+  /* 入力欄やフィードバックが紛れ込んでも紙には出さない */
+  .ans-input, .q-feedback { display: none !important; }
+
+  a[href]::after { content: none !important; }
 }
