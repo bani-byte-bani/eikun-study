@@ -27,6 +27,9 @@
 - `quizzes/g1-summer-review-english.html` — 中1 夏休み確認問題 英語（be動詞・一般動詞・疑問詞、24問、偏差値65レベル）
 - `quizzes/g1-summer-review-science.html` — 中1 夏休み確認問題 理科（植物・物理現象・物質・力、24問、偏差値65レベル）
 - `quizzes/g1-summer-review-social.html` — 中1 夏休み確認問題 社会（世界と日本の姿・古代文明、24問、偏差値65レベル）
+- `quizzes/g1-sep-exam-science.html` — 中1 9月診断テスト対策 理科（生物の観察と分類・身のまわりの物質、25問、偏差値65レベル）
+- `quizzes/g1-sep-exam-english.html` — 中1 9月診断テスト対策 英語（be動詞・一般動詞・複数形・can・疑問詞・命令文、25問、偏差値65レベル）
+- `quizzes/g1-sep-exam-social.html` — 中1 9月診断テスト対策 社会（世界と日本の地域構成・人々の生活と環境・古代文明、25問、偏差値65レベル）
 
 ## 印刷（紙のプリント）
 

@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中学1年 9月診断テスト対策 社会</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="header-title-block">
+      <div class="header-eyebrow">令和8年度 9月診断テスト対策 ／ 社会</div>
+      <h1>中学1年 9月診断テスト対策 25問
+        <small>地理 p42まで（世界と日本の地域構成・人々の生活と環境）／歴史 p33まで（世界の古代文明と宗教のおこり）</small>
+      </h1>
+    </div>
+    <div class="header-tags">
+      <span class="tag tag-red">1年生</span>
+      <span class="tag tag-blue">世界と日本の地域構成</span>
+      <span class="tag tag-blue">人々の生活と環境</span>
+      <span class="tag tag-blue">古代文明と宗教</span>
+      <span class="tag tag-gray">偏差値65レベル</span>
+    </div>
+  </div>
+</header>
+
+<div class="hyoka-bar">
+  <div class="hyoka-bar-inner">
+    <strong>評価の観点：</strong>
+    <span><span class="hyoka-dot chi"></span> 知識・技能</span>
+    <span><span class="hyoka-dot shi"></span> 思考・判断・表現</span>
+    <span><span class="hyoka-dot tai"></span> 主体的に学習に取り組む態度</span>
+    <span style="margin-left:auto;font-size:10px;"><a href="../index.html" style="color:#a0b8cc;">← 範囲・問題集一覧へ戻る</a> ／ Enter キーで次の問題へ移動</span>
+  </div>
+</div>
+
+<div id="score-bar">
+  <div class="score-bar-inner">
+    <div class="score-num" id="score-disp">0 <small>/ 25</small></div>
+    <div class="progress-wrap">
+      <div class="progress-label" id="prog-label">未回答: 25問</div>
+      <div class="progress-outer"><div class="progress-inner" id="prog-inner"></div></div>
+    </div>
+    <button class="btn-primary" onclick="checkAll()">全問採点する</button>
+    <button class="btn-secondary" onclick="resetAll()">リセット</button>
+    <button class="btn-secondary" onclick="clearRecord()">記録を消去</button>
+    <div id="score-record"></div>
+    <span class="print-btn-group">
+      <button class="btn-secondary" onclick="printQuestions()">問題を印刷</button>
+      <button class="btn-secondary" onclick="printAnswers()">解答・解説を印刷</button>
+    </span>
+  </div>
+</div>
+
+<main>
+
+<!-- ===================== SECTION A ===================== -->
+<div class="sec-head">
+  <span class="sec-label">A</span>
+  <span class="sec-title">世界の地域構成</span>
+  <span class="sec-hyoka">
+    <span class="chi-tag">知識・技能</span>
+    <span class="shi-tag">思考・判断・表現</span>
+  </span>
+</div>
+
+<div class="q-card" id="qc1">
+  <div class="q-header">
+    <span class="q-num">Q01</span>
+    <div class="q-text">六つの大陸のうち、最も面積が小さい大陸を何というか。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q1" type="text"></div>
+  <div class="q-feedback" id="fb1"></div>
+</div>
+
+<div class="q-card" id="qc2">
+  <div class="q-header">
+    <span class="q-num">Q02</span>
+    <div class="q-text">三大洋のうち、アフリカ大陸の東に広がる海洋を何というか。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q2" type="text"></div>
+  <div class="q-feedback" id="fb2"></div>
+</div>
+
+<div class="q-card" id="qc3">
+  <div class="q-header">
+    <span class="q-num">Q03</span>
+    <div class="q-text">北極点と南極点を結ぶ、地球儀上の縦の線を何というか。</div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q3" type="text"></div>
+  <div class="q-feedback" id="fb3"></div>
+</div>
+
+<div class="q-card" id="qc4">
+  <div class="q-header">
+    <span class="q-num">Q04</span>
+    <div class="q-text">赤道と平行に引かれた、地球儀上の横の線を何というか。</div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q4" type="text"></div>
+  <div class="q-feedback" id="fb4"></div>
+</div>
+
+<div class="q-card" id="qc5">
+  <div class="q-header">
+    <span class="q-num">Q05</span>
+    <div class="q-text">1枚の平面の地図に、面積・形・方位・距離のすべてを同時に正しく表すことはできるか。「できる」か「できない」で答えよ。</div>
+    <span class="diff-tag diff-S">★★★</span>
+    <span class="q-hyoka-badge shi-tag">思</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q5" type="text" placeholder="できる / できない"></div>
+  <div class="q-feedback" id="fb5"></div>
+</div>
+
+<!-- ===================== SECTION B ===================== -->
+<div class="sec-head">
+  <span class="sec-label">B</span>
+  <span class="sec-title">日本の地域構成</span>
+  <span class="sec-hyoka">
+    <span class="chi-tag">知識・技能</span>
+    <span class="shi-tag">思考・判断・表現</span>
+  </span>
+</div>
+
+<div class="q-card" id="qc6">
+  <div class="q-header">
+    <span class="q-num">Q06</span>
+    <div class="q-text">日本の国土面積はおよそ何万km²か。数字で答えよ。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q6" type="text" placeholder="例: 38"></div>
+  <div class="q-feedback" id="fb6"></div>
+</div>
+
+<div class="q-card" id="qc7">
+  <div class="q-header">
+    <span class="q-num">Q07</span>
+    <div class="q-text">沿岸から200海里までの範囲で、水産資源や鉱産資源を自国のものにできる水域を何というか。</div>
+    <span class="diff-tag diff-S">★★★</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input wide" id="q7" type="text"></div>
+  <div class="q-feedback" id="fb7"></div>
+</div>
+
+<div class="q-card" id="qc8">
+  <div class="q-header">
+    <span class="q-num">Q08</span>
+    <div class="q-text">日本の東西南北の端のうち、最も南にある島を何というか。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q8" type="text"></div>
+  <div class="q-feedback" id="fb8"></div>
+</div>
+
+<div class="q-card" id="qc9">
+  <div class="q-header">
+    <span class="q-num">Q09</span>
+    <div class="q-text">日本の47都道府県のうち、「府」はいくつあるか。数字で答えよ。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q9" type="text"></div>
+  <div class="q-feedback" id="fb9"></div>
+</div>
+
+<div class="q-card" id="qc10">
+  <div class="q-header">
+    <span class="q-num">Q10</span>
+    <div class="q-text">日本の標準時子午線（東経135度）が通る、兵庫県の都市はどこか。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q10" type="text"></div>
+  <div class="q-feedback" id="fb10"></div>
+</div>
+
+<!-- ===================== SECTION C ===================== -->
+<div class="sec-head">
+  <span class="sec-label">C</span>
+  <span class="sec-title">人々の生活と環境</span>
+  <span class="sec-hyoka">
+    <span class="chi-tag">知識・技能</span>
+    <span class="tai-tag">態度</span>
+  </span>
+</div>
+
+<div class="q-card" id="qc11">
+  <div class="q-header">
+    <span class="q-num">Q11</span>
+    <div class="q-text">世界の気候帯は、熱帯・乾燥帯・温帯・冷帯（亜寒帯）と、あと1つは何か。</div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q11" type="text"></div>
+  <div class="q-feedback" id="fb11"></div>
+</div>
+
+<div class="q-card" id="qc12">
+  <div class="q-header">
+    <span class="q-num">Q12</span>
+    <div class="q-text">アンデス山脈の高地のように、標高が高いために気温が低くなる気候を何というか。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q12" type="text"></div>
+  <div class="q-feedback" id="fb12"></div>
+</div>
+
+<div class="q-card" id="qc13">
+  <div class="q-header">
+    <span class="q-num">Q13</span>
+    <div class="q-text">モンゴルの遊牧民が使う、移動に便利な組み立て式の住居を何というか。</div>
+    <span class="diff-tag diff-S">★★★</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q13" type="text"></div>
+  <div class="q-feedback" id="fb13"></div>
+</div>
+
+<div class="q-card" id="qc14">
+  <div class="q-header">
+    <span class="q-num">Q14</span>
+    <div class="q-text">東南アジアなど高温多湿の地域で、湿気や熱を防ぐために床を地面から離してつくる住居を何というか。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge shi-tag">思</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input wide" id="q14" type="text" placeholder="例: 高床の住居"></div>
+  <div class="q-feedback" id="fb14"></div>
+</div>
+
+<div class="q-card" id="qc15">
+  <div class="q-header">
+    <span class="q-num">Q15</span>
+    <div class="q-text">イスラム教徒が食べてはいけないとされている肉は、何の肉か。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge tai-tag">態</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q15" type="text"></div>
+  <div class="q-feedback" id="fb15"></div>
+</div>
+
+<div class="q-card" id="qc16">
+  <div class="q-header">
+    <span class="q-num">Q16</span>
+    <div class="q-text">三大宗教とは、キリスト教・イスラム教と、あと1つは何か。</div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q16" type="text"></div>
+  <div class="q-feedback" id="fb16"></div>
+</div>
+
+<!-- ===================== SECTION D ===================== -->
+<div class="sec-head">
+  <span class="sec-label">D</span>
+  <span class="sec-title">歴史のとらえ方</span>
+  <span class="sec-hyoka">
+    <span class="chi-tag">知識・技能</span>
+    <span class="shi-tag">思考・判断・表現</span>
+  </span>
+</div>
+
+<div class="q-card" id="qc17">
+  <div class="q-header">
+    <span class="q-num">Q17</span>
+    <div class="q-text">100年をひとまとまりとして数える、年代の表し方を何というか。</div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q17" type="text"></div>
+  <div class="q-feedback" id="fb17"></div>
+</div>
+
+<div class="q-card" id="qc18">
+  <div class="q-header">
+    <span class="q-num">Q18</span>
+    <div class="q-text">西暦2026年は何世紀か。数字で答えよ。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge shi-tag">思</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q18" type="text" placeholder="例: 21"></div>
+  <div class="q-feedback" id="fb18"></div>
+</div>
+
+<div class="q-card" id="qc19">
+  <div class="q-header">
+    <span class="q-num">Q19</span>
+    <div class="q-text">「紀元前」を表す記号を、アルファベット2字で書け。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q19" type="text"></div>
+  <div class="q-feedback" id="fb19"></div>
+</div>
+
+<!-- ===================== SECTION E ===================== -->
+<div class="sec-head">
+  <span class="sec-label">E</span>
+  <span class="sec-title">世界の古代文明と宗教のおこり</span>
+  <span class="sec-hyoka">
+    <span class="chi-tag">知識・技能</span>
+    <span class="shi-tag">思考・判断・表現</span>
+  </span>
+</div>
+
+<div class="q-card" id="qc20">
+  <div class="q-header">
+    <span class="q-num">Q20</span>
+    <div class="q-text">人類が打製石器を使い、狩りや採集をして暮らしていた時代を何というか。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q20" type="text"></div>
+  <div class="q-feedback" id="fb20"></div>
+</div>
+
+<div class="q-card" id="qc21">
+  <div class="q-header">
+    <span class="q-num">Q21</span>
+    <div class="q-text">エジプト文明が栄えた、アフリカ大陸を流れる川を何というか。</div>
+    <span class="diff-tag diff-B">★☆☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q21" type="text"></div>
+  <div class="q-feedback" id="fb21"></div>
+</div>
+
+<div class="q-card" id="qc22">
+  <div class="q-header">
+    <span class="q-num">Q22</span>
+    <div class="q-text">メソポタミア文明で使われた、粘土板に刻まれた文字を何というか。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input wide" id="q22" type="text"></div>
+  <div class="q-feedback" id="fb22"></div>
+</div>
+
+<div class="q-card" id="qc23">
+  <div class="q-header">
+    <span class="q-num">Q23</span>
+    <div class="q-text">古代エジプトで使われた、ものの形をもとにしてつくられた文字を何というか。</div>
+    <span class="diff-tag diff-S">★★★</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input wide" id="q23" type="text"></div>
+  <div class="q-feedback" id="fb23"></div>
+</div>
+
+<div class="q-card" id="qc24">
+  <div class="q-header">
+    <span class="q-num">Q24</span>
+    <div class="q-text">紀元前6世紀ごろ、インドでシャカ（釈迦）が開いた宗教は何か。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge chi-tag">知</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q24" type="text"></div>
+  <div class="q-feedback" id="fb24"></div>
+</div>
+
+<div class="q-card" id="qc25">
+  <div class="q-header">
+    <span class="q-num">Q25</span>
+    <div class="q-text">紀元前後にパレスチナ地方で生まれ、イエスの教えをもとに広まった宗教は何か。</div>
+    <span class="diff-tag diff-A">★★☆</span>
+    <span class="q-hyoka-badge shi-tag">思</span>
+  </div>
+  <div class="q-input-row"><label>答え：</label><input class="ans-input" id="q25" type="text"></div>
+  <div class="q-feedback" id="fb25"></div>
+</div>
+
+<div id="result-panel">
+  <h2>採点結果</h2>
+  <div class="big-score" id="result-score">0<em> / 25</em></div>
+  <div class="result-comment" id="result-comment"></div>
+  <div class="result-breakdown" id="result-breakdown"></div>
+</div>
+
+</main>
+
+<script src="../quiz-engine.js"></script>
+<script>
+const questions = [
+  { num: 1,  hyoka: 'chi', answer: 'オーストラリア大陸', hint: '六大陸で最も小さい大陸。',
+    trivia: 'オーストラリア大陸は六大陸で最小だが、島で最大のグリーンランドの約3.5倍ある。大陸と島の境目は、この大きさで区別されている。',
+    check: v => qAccept(v, ['オーストラリア大陸','オーストラリア']) },
+  { num: 2,  hyoka: 'chi', answer: 'インド洋', hint: '三大洋は太平洋・大西洋・インド洋。',
+    trivia: '三大洋の面積は太平洋・大西洋・インド洋の順に大きい。太平洋だけで、地球上の全海洋のおよそ半分を占めている。',
+    check: v => qAccept(v, ['インド洋']) },
+  { num: 3,  hyoka: 'chi', answer: '経線', hint: '経度を表す縦の線。',
+    trivia: '経線は北極と南極で1点に集まるため、赤道から離れるほど間隔がせまくなる。緯線とちがい、長さはどれも同じになる。',
+    check: v => qAccept(v, ['経線','子午線']) },
+  { num: 4,  hyoka: 'chi', answer: '緯線', hint: '緯度を表す横の線。',
+    trivia: '緯線は赤道が最も長く、極に近づくほど短くなる。北緯66.6度より北の地域では、夏に太陽が沈まない白夜が起こる。',
+    check: v => qAccept(v, ['緯線']) },
+  { num: 5,  hyoka: 'shi', answer: 'できない', hint: '球体を平面に写すと、必ずどこかがゆがむ。',
+    trivia: 'メルカトル図法は高緯度ほど面積が大きく描かれ、グリーンランドが南アメリカ大陸より大きく見えてしまう。実際はおよそ8分の1しかない。',
+    check: v => qAccept(v, ['できない','無理','いいえ']) },
+  { num: 6,  hyoka: 'chi', answer: '38', hint: 'およそ38万km²。',
+    trivia: '国土面積は世界でおよそ60番目だが、排他的経済水域を合わせた面積では世界6位に入る。海に囲まれた国ならではの特徴。',
+    check: v => qAccept(v, ['38','38万','約38万','38万km2']) },
+  { num: 7,  hyoka: 'chi', answer: '排他的経済水域', hint: '領海の外側に広がる、資源を利用できる水域。',
+    trivia: '1海里は1852mで、200海里はおよそ370km。この長さは、地球1周を360度×60分に分けたときの1分の距離に由来している。',
+    check: v => qAccept(v, ['排他的経済水域','経済水域','EEZ']) },
+  { num: 8,  hyoka: 'chi', answer: '沖ノ鳥島', hint: '東京都に属する、日本最南端の島。',
+    trivia: '沖ノ鳥島は満潮時にわずかしか海面上に出ないため、水没を防ぐ護岸工事が行われた。この島があることで日本は広大な排他的経済水域を保っている。',
+    check: v => qAccept(v, ['沖ノ鳥島','沖の鳥島']) },
+  { num: 9,  hyoka: 'chi', answer: '2', hint: '大阪府と京都府。',
+    trivia: '「府」はかつて重要な都市に置かれた行政区分の名残で、今は大阪府と京都府の2つだけ。東京だけが「都」と呼ばれている。',
+    check: v => qAccept(v, ['2','2つ','二']) },
+  { num: 10, hyoka: 'chi', answer: '明石市', hint: '天文科学館があることで知られる都市。',
+    trivia: '明石市には日本標準時子午線が通り、天文科学館が建っている。日本の時刻は、この線の上を太陽が通過する時を正午として決められている。',
+    check: v => qAccept(v, ['明石市','明石']) },
+  { num: 11, hyoka: 'chi', answer: '寒帯', hint: '気候帯は全部で5つ。',
+    trivia: '気候帯の区分は、ドイツの気候学者ケッペンが植物の分布をもとに考えたもの。100年以上前の分類が、今も世界中で使われている。',
+    check: v => qAccept(v, ['寒帯']) },
+  { num: 12, hyoka: 'chi', answer: '高山気候', hint: '標高の高さが気温を下げている。',
+    trivia: '標高が100m上がるごとに気温はおよそ0.6℃下がる。そのため赤道の真下でも、標高4000mを超えると万年雪が見られる。',
+    check: v => qAccept(v, ['高山気候']) },
+  { num: 13, hyoka: 'chi', answer: 'ゲル', hint: '中国では「パオ」と呼ばれる。',
+    trivia: 'ゲルは数時間で解体・組み立てができる。家畜とともに草を求めて移動する遊牧の暮らしに、無駄なく合わせた住まいといえる。',
+    check: v => qAccept(v, ['ゲル','パオ']) },
+  { num: 14, hyoka: 'shi', answer: '高床の住居', hint: '床を地面から離してつくる。',
+    trivia: '床を上げるのは湿気と熱を避けるためだけでなく、洪水や害獣を防ぐ意味もある。シベリアの高床は、永久凍土が家の熱で溶けるのを防ぐという別の理由による。',
+    check: v => qAccept(v, ['高床の住居','高床','高床式住居','高床住居','高床式の住居']) },
+  { num: 15, hyoka: 'tai', answer: '豚肉', hint: 'イスラム教の戒律で禁じられている。',
+    trivia: 'イスラム教の教えに従って処理された食品はハラールと呼ばれる。日本でもハラール対応の食堂や表示が増えてきている。',
+    check: v => qAccept(v, ['豚肉','豚','ぶた肉','ブタ肉']) },
+  { num: 16, hyoka: 'chi', answer: '仏教', hint: '民族をこえて広がった宗教。',
+    trivia: '三大宗教のうち信者数が最も多いのはキリスト教で、世界人口のおよそ3割。民族をこえて広がったことが「世界宗教」と呼ばれる理由で、信者数だけが基準ではない。',
+    check: v => qAccept(v, ['仏教']) },
+  { num: 17, hyoka: 'chi', answer: '世紀', hint: '1世紀は100年。',
+    trivia: '1年から100年までが1世紀なので、100で割り切れる年は前の世紀に入る。2000年が20世紀の最後の年になるのはこのため。',
+    check: v => qAccept(v, ['世紀']) },
+  { num: 18, hyoka: 'shi', answer: '21', hint: '2001年から2100年までが21世紀。',
+    trivia: '2000年は20世紀の最後の年。当時は「新世紀は2000年からか2001年からか」が世界中で議論になった。',
+    check: v => qAccept(v, ['21','21世紀','二十一']) },
+  { num: 19, hyoka: 'chi', answer: 'BC', hint: '紀元後はAD。',
+    trivia: 'BCは英語の Before Christ（キリストより前）の略。一方ADはラテン語の Anno Domini（主の年）の略で、2つで言語が異なるのが面白い。',
+    check: v => qAccept(v, ['BC','B.C.']) },
+  { num: 20, hyoka: 'chi', answer: '旧石器時代', hint: '打製石器を使っていた時代。',
+    trivia: '打製石器は石を打ち欠いてつくった道具。のちに表面をみがいた磨製石器が使われるようになると、新石器時代と呼ばれる。',
+    check: v => qAccept(v, ['旧石器時代']) },
+  { num: 21, hyoka: 'chi', answer: 'ナイル川', hint: '世界有数の長さをほこる川。',
+    trivia: 'ギリシャの歴史家ヘロドトスは「エジプトはナイルのたまもの」と記した。定期的な氾濫が肥えた土を運び、豊かな農業を支えたためである。',
+    check: v => qAccept(v, ['ナイル川','ナイル']) },
+  { num: 22, hyoka: 'chi', answer: 'くさび形文字', hint: '線の先がくさびの形をしている。',
+    trivia: '粘土板に葦（あし）のペンを押しつけて書いたため、線がくさびの形になった。有名なハンムラビ法典もこの文字で記されている。',
+    check: v => qAccept(v, ['くさび形文字','くさび型文字','楔形文字','くさびがた文字']) },
+  { num: 23, hyoka: 'chi', answer: '象形文字', hint: '「ヒエログリフ」「神聖文字」ともいう。',
+    trivia: 'エジプトの象形文字は長く読めなかったが、ロゼッタストーンの発見をきっかけに、フランスのシャンポリオンが解読に成功した。',
+    check: v => qAccept(v, ['象形文字','神聖文字','ヒエログリフ']) },
+  { num: 24, hyoka: 'chi', answer: '仏教', hint: 'インドで生まれ、東アジアへ広がった。',
+    trivia: 'シャカは現在のネパール付近で生まれた王子だったと伝えられる。仏教はやがて東アジアへ広がり、6世紀には日本にも伝わった。',
+    check: v => qAccept(v, ['仏教']) },
+  { num: 25, hyoka: 'shi', answer: 'キリスト教', hint: 'イエスの教えが弟子たちによって広められた。',
+    trivia: 'キリスト教はローマ帝国で長く迫害されたが、4世紀に公認され、のちに国教となった。西暦はイエスが生まれたとされる年を基準としている。',
+    check: v => qAccept(v, ['キリスト教']) },
+];
+initQuiz(questions);
+</script>
+
+</body>
+</html>
