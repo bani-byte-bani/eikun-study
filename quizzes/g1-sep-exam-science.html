@@ -37,9 +37,9 @@
 
 <div id="score-bar">
   <div class="score-bar-inner">
-    <div class="score-num" id="score-disp">0 <small>/ 25</small></div>
+    <div class="score-num" id="score-disp">0 <small>/ 31</small></div>
     <div class="progress-wrap">
-      <div class="progress-label" id="prog-label">未回答: 25問</div>
+      <div class="progress-label" id="prog-label">未回答: 31問</div>
       <div class="progress-outer"><div class="progress-inner" id="prog-inner"></div></div>
     </div>
     <button class="btn-primary" onclick="checkAll()">全問採点する</button>
@@ -57,7 +57,7 @@
 
 <div id="result-panel">
   <h2>採点結果</h2>
-  <div class="big-score" id="result-score">0<em> / 25</em></div>
+  <div class="big-score" id="result-score">0<em> / 31</em></div>
   <div class="result-comment" id="result-comment"></div>
   <div class="result-breakdown" id="result-breakdown"></div>
 </div>
@@ -66,6 +66,168 @@
 
 <script src="../quiz-engine.js"></script>
 <script>
+/* ===== 図（インラインSVG）=====
+   外部画像を使わず、線と文字だけで描く。色に頼らないので白黒印刷でも読める。
+   同じ図を複数の問題で使い回せるよう、ここにまとめて定義する。 */
+const FIG = {};
+
+// アブラナの花のつくり（記号 あ〜か）
+FIG.hana = `<svg viewBox="0 0 360 240" width="360" height="240" role="img" aria-label="アブラナの花の断面図">
+  <text class="fig-small" x="8" y="16">アブラナの花（断面）</text>
+  <path class="fig-fill2" d="M155,148 C118,142 88,112 90,78 C124,84 150,112 155,148 Z"/>
+  <path class="fig-fill2" d="M195,148 C232,142 262,112 260,78 C226,84 200,112 195,148 Z"/>
+  <path class="fig-fill" d="M158,172 C142,180 128,182 118,178 C130,168 146,166 158,172 Z"/>
+  <path class="fig-fill" d="M192,172 C208,180 222,182 232,178 C220,168 204,166 192,172 Z"/>
+  <path class="fig-line" d="M158,152 Q140,125 134,102"/>
+  <path class="fig-line" d="M192,152 Q210,125 216,102"/>
+  <ellipse class="fig-fill2" cx="132" cy="95" rx="7.5" ry="12"/>
+  <ellipse class="fig-fill2" cx="218" cy="95" rx="7.5" ry="12"/>
+  <ellipse class="fig-fill" cx="175" cy="158" rx="24" ry="32"/>
+  <circle class="fig-white" cx="175" cy="163" r="6.5"/>
+  <path class="fig-line" d="M175,126 L175,98"/>
+  <ellipse class="fig-fill" cx="175" cy="92" rx="13" ry="8.5"/>
+  <path class="fig-line" d="M175,190 L175,226"/>
+  <path class="fig-lead" d="M292,62 L186,104"/><circle class="fig-mark" cx="305" cy="60" r="11"/><text class="fig-label" x="305" y="65">あ</text>
+  <path class="fig-lead" d="M292,104 L212,124"/><circle class="fig-mark" cx="305" cy="104" r="11"/><text class="fig-label" x="305" y="109">い</text>
+  <path class="fig-lead" d="M292,150 L200,155"/><circle class="fig-mark" cx="305" cy="150" r="11"/><text class="fig-label" x="305" y="155">お</text>
+  <path class="fig-lead" d="M292,196 L181,170"/><circle class="fig-mark" cx="305" cy="196" r="11"/><text class="fig-label" x="305" y="201">か</text>
+  <path class="fig-lead" d="M68,60 L110,84"/><circle class="fig-mark" cx="55" cy="58" r="11"/><text class="fig-label" x="55" y="63">う</text>
+  <path class="fig-lead" d="M68,196 L124,178"/><circle class="fig-mark" cx="55" cy="198" r="11"/><text class="fig-label" x="55" y="203">え</text>
+</svg>`;
+
+// 顕微鏡（記号 あ〜う）
+FIG.kenbi = `<svg viewBox="0 0 300 240" width="300" height="240" role="img" aria-label="顕微鏡の各部">
+  <text class="fig-small" x="8" y="16">顕微鏡</text>
+  <rect class="fig-fill" x="100" y="28" width="38" height="20" rx="3"/>
+  <rect class="fig-white" x="104" y="48" width="30" height="88"/>
+  <path class="fig-line" d="M134,62 C156,62 168,82 168,108"/>
+  <rect class="fig-fill" x="168" y="108" width="14" height="104" rx="6"/>
+  <ellipse class="fig-fill" cx="119" cy="140" rx="26" ry="8"/>
+  <rect class="fig-fill2" x="110" y="146" width="18" height="22" rx="3"/>
+  <rect class="fig-fill" x="74" y="174" width="94" height="9" rx="2"/>
+  <rect class="fig-white" x="84" y="169" width="12" height="5"/>
+  <rect class="fig-white" x="146" y="169" width="12" height="5"/>
+  <path class="fig-line" d="M121,190 L121,196"/>
+  <ellipse class="fig-white" cx="121" cy="203" rx="18" ry="10"/>
+  <circle class="fig-fill" cx="196" cy="150" r="11"/>
+  <rect class="fig-fill" x="60" y="216" width="160" height="16" rx="6"/>
+  <path class="fig-lead" d="M238,36 L142,38"/><circle class="fig-mark" cx="251" cy="36" r="11"/><text class="fig-label" x="251" y="41">あ</text>
+  <path class="fig-lead" d="M57,152 L106,157"/><circle class="fig-mark" cx="44" cy="152" r="11"/><text class="fig-label" x="44" y="157">い</text>
+  <path class="fig-lead" d="M57,204 L101,203"/><circle class="fig-mark" cx="44" cy="204" r="11"/><text class="fig-label" x="44" y="209">う</text>
+</svg>`;
+
+// 植物の分類（樹形図）
+FIG.bunrui = `<svg viewBox="0 0 380 180" width="380" height="180" role="img" aria-label="植物の分類の図">
+  <rect class="fig-fill" x="6" y="72" width="60" height="30" rx="4"/>
+  <text class="fig-text" x="20" y="92">植物</text>
+  <path class="fig-line" d="M66,87 L86,55 L100,55"/>
+  <path class="fig-line" d="M66,87 L86,140 L100,140"/>
+  <rect class="fig-fill2" x="100" y="40" width="86" height="30" rx="4"/>
+  <text class="fig-text" x="112" y="60">種子植物</text>
+  <rect class="fig-fill2" x="100" y="125" width="86" height="30" rx="4"/>
+  <text class="fig-text" x="106" y="145">胞子でふえる</text>
+  <text class="fig-small" x="60" y="42">種子をつくる</text>
+  <text class="fig-small" x="60" y="168">種子をつくらない</text>
+  <path class="fig-line" d="M186,55 L206,26 L220,26"/>
+  <path class="fig-line" d="M186,55 L206,90 L220,90"/>
+  <rect class="fig-white" x="220" y="11" width="112" height="30" rx="4"/>
+  <text class="fig-text" x="232" y="31">（あ）植物</text>
+  <rect class="fig-white" x="220" y="75" width="112" height="30" rx="4"/>
+  <text class="fig-text" x="232" y="95">（い）植物</text>
+  <text class="fig-small" x="196" y="16">子房がある</text>
+  <text class="fig-small" x="196" y="115">子房がない</text>
+</svg>`;
+
+// 葉のつくり（網状脈と平行脈）
+FIG.yo = `<svg viewBox="0 0 340 180" width="340" height="180" role="img" aria-label="2種類の葉脈">
+  <path class="fig-fill2" d="M28,90 C48,38 100,28 132,90 C100,152 48,142 28,90 Z"/>
+  <path class="fig-thin" d="M30,90 L130,90"/>
+  <path class="fig-thin" d="M55,80 L72,58 M80,76 L96,56 M55,100 L72,122 M80,104 L96,124 M104,84 L114,70 M104,96 L114,110"/>
+  <text class="fig-label" x="80" y="170">A</text>
+  <path class="fig-fill2" d="M212,158 C204,86 224,36 254,18 C268,72 250,128 226,162 Z"/>
+  <path class="fig-thin" d="M219,157 C213,90 230,44 254,22 M228,159 C223,94 238,50 258,26 M236,160 C232,98 245,56 261,32"/>
+  <text class="fig-label" x="240" y="176">B</text>
+</svg>`;
+
+// 根のつくり（主根と側根／ひげ根）
+FIG.ne = `<svg viewBox="0 0 320 180" width="320" height="180" role="img" aria-label="2種類の根のつくり">
+  <path class="fig-thin" d="M8,46 L150,46"/>
+  <path class="fig-thin" d="M172,46 L314,46"/>
+  <text class="fig-small" x="8" y="40">地面</text>
+  <path class="fig-line" d="M80,14 L80,46" stroke-width="3"/>
+  <path class="fig-line" d="M80,46 C82,80 80,118 79,146" stroke-width="3.4"/>
+  <path class="fig-thin" d="M80,62 C66,72 56,84 48,96 M80,78 C96,86 106,98 114,110 M80,96 C66,106 58,118 52,130 M80,116 C94,124 102,134 108,146"/>
+  <text class="fig-label" x="80" y="170">A</text>
+  <path class="fig-line" d="M240,14 L240,46" stroke-width="3"/>
+  <path class="fig-line" d="M240,46 C216,74 202,110 196,148 M240,46 C228,78 220,114 218,150 M240,46 C240,84 240,118 240,152 M240,46 C252,78 260,114 262,150 M240,46 C264,74 278,110 284,148"/>
+  <text class="fig-label" x="240" y="170">B</text>
+</svg>`;
+
+// 脊椎動物の分類表
+FIG.sekitsui = `<table>
+  <tr><th>なかま</th><th>呼吸のしかた</th><th>子のうまれ方</th></tr>
+  <tr><td>魚類</td><td>えら</td><td>卵生</td></tr>
+  <tr><td>両生類</td><td>子はえら、親は（あ）</td><td>卵生</td></tr>
+  <tr><td>は虫類</td><td>肺</td><td>卵生</td></tr>
+  <tr><td>鳥類</td><td>肺</td><td>卵生</td></tr>
+  <tr><td>ほ乳類</td><td>肺</td><td>（い）</td></tr>
+</table>`;
+
+// メスシリンダーの目盛り
+FIG.mesu = `<svg viewBox="0 0 220 220" width="220" height="220" role="img" aria-label="メスシリンダーの目盛り">
+  <rect class="fig-white" x="70" y="18" width="60" height="176" rx="4"/>
+  <path class="fig-fill" d="M71,84 L129,84 L129,193 L71,193 Z"/>
+  <path class="fig-line" d="M71,84 C88,92 112,92 129,84"/>
+  <path class="fig-thin" d="M70,60 L96,60 M70,120 L96,120"/>
+  <path class="fig-thin" d="M70,66 L84,66 M70,72 L84,72 M70,78 L84,78 M70,84 L84,84 M70,90 L84,90 M70,96 L84,96 M70,102 L84,102 M70,108 L84,108 M70,114 L84,114"/>
+  <text class="fig-small" x="42" y="64">50</text>
+  <text class="fig-small" x="42" y="124">40</text>
+  <path class="fig-line" d="M176,86 L136,86"/>
+  <path class="fig-line" d="M136,86 L144,82 M136,86 L144,90"/>
+  <text class="fig-small" x="150" y="76">液面</text>
+  <text class="fig-small" x="8" y="16">目盛りの単位は cm³</text>
+</svg>`;
+
+// ガスバーナー（記号 あ・い）
+FIG.burner = `<svg viewBox="0 0 280 220" width="280" height="220" role="img" aria-label="ガスバーナー">
+  <text class="fig-small" x="8" y="16">ガスバーナー</text>
+  <path class="fig-thin" d="M112,84 C116,68 124,60 130,54 C136,60 144,68 148,84 Z"/>
+  <path class="fig-line" d="M122,84 C124,76 128,72 130,68 C132,72 136,76 138,84 Z"/>
+  <rect class="fig-fill" x="119" y="86" width="22" height="62"/>
+  <ellipse class="fig-white" cx="130" cy="86" rx="11" ry="3.5"/>
+  <circle class="fig-white" cx="124" cy="138" r="2.6"/>
+  <circle class="fig-white" cx="136" cy="138" r="2.6"/>
+  <ellipse class="fig-fill2" cx="130" cy="152" rx="32" ry="8"/>
+  <path class="fig-thin" d="M106,149 L106,155 M117,150 L117,156 M130,150 L130,156 M143,150 L143,156 M154,149 L154,155"/>
+  <ellipse class="fig-fill2" cx="130" cy="174" rx="32" ry="8"/>
+  <path class="fig-thin" d="M106,171 L106,177 M117,172 L117,178 M130,172 L130,178 M143,172 L143,178 M154,171 L154,177"/>
+  <rect class="fig-fill" x="118" y="178" width="24" height="20"/>
+  <ellipse class="fig-fill" cx="130" cy="202" rx="54" ry="11"/>
+  <path class="fig-line" d="M162,194 C190,194 206,190 224,190"/>
+  <text class="fig-small" x="228" y="194">ガス</text>
+  <path class="fig-lead" d="M209,136 L164,150"/><circle class="fig-mark" cx="222" cy="134" r="11"/><text class="fig-label" x="222" y="139">あ</text>
+  <path class="fig-lead" d="M209,174 L164,174"/><circle class="fig-mark" cx="222" cy="174" r="11"/><text class="fig-label" x="222" y="179">い</text>
+</svg>`;
+
+// 気体の集め方 3種（ア・イ・ウ）
+FIG.shuki = `<svg viewBox="0 0 420 210" width="420" height="210" role="img" aria-label="気体の集め方3種">
+  <text class="fig-small" x="8" y="14">試験管の口の向きと、ガラス管を入れる深さに注目する</text>
+  <rect class="fig-fill" x="14" y="116" width="116" height="60"/>
+  <path class="fig-line" d="M14,116 C32,110 44,122 62,116 C80,110 92,122 110,116 C118,113 124,114 130,116"/>
+  <text class="fig-small" x="98" y="150">水</text>
+  <path class="fig-white" d="M56,158 L56,58 A14,14 0 0 1 84,58 L84,158 Z"/>
+  <path class="fig-line" d="M8,190 C8,168 26,162 44,162 C54,162 62,160 66,156"/>
+  <text class="fig-label" x="70" y="202">ア</text>
+  <path class="fig-white" d="M186,152 L186,54 A14,14 0 0 1 214,54 L214,152 Z"/>
+  <path class="fig-line" d="M200,152 L200,78"/>
+  <path class="fig-line" d="M200,152 C200,176 178,186 158,186"/>
+  <text class="fig-label" x="200" y="202">イ</text>
+  <path class="fig-white" d="M326,58 L326,138 A14,14 0 0 0 354,138 L354,58 Z"/>
+  <path class="fig-line" d="M340,58 L340,132"/>
+  <path class="fig-line" d="M340,58 C340,34 318,24 298,24"/>
+  <text class="fig-label" x="340" y="202">ウ</text>
+</svg>`;
+
 const sections = [
   { label: 'A', title: "観察の仕方と花のつくり", hyoka: ['chi', 'tai'] },
   { label: 'B', title: "植物の分類", hyoka: ['chi', 'shi'] },
@@ -282,6 +444,72 @@ const questions = [
     text: "酸素の中に火のついた線香を入れると、炎はどうなるか。「激しく燃える」または「すぐ消える」で答えよ。", hyoka: 'shi', answer: '激しく燃える', hint: '酸素にはものが燃えるのを助けるはたらきがある。',
     trivia: '酸素そのものは燃えない。燃えるのを助けるだけで、この性質を助燃性という。二酸化炭素の中では逆に火が消える。',
     check: v => qAccept(v, ['激しく燃える','はげしく燃える']) },
+
+  // ===== ここから図を読み取る問題 =====
+  { num: 51, sec: 'A', pri: 1, diff: 'A', wide: true, placeholder: "カンマ区切りで4つ",
+    text: "図は、アブラナの花を縦に切ったものである。<b>あ・い・う・え</b> の名前を、順にカンマ区切りで答えよ。",
+    figure: FIG.hana, hyoka: 'chi', answer: 'めしべ, おしべ, 花弁, がく', hint: '花は外側から「がく→花弁→おしべ→めしべ」の順に並んでいる。',
+    trivia: 'アブラナは花弁が4枚で十字に開くため、なかまをアブラナ科（十字花科）という。キャベツやダイコンも同じなかま。',
+    check: v => qAcceptOrdered(v, [
+      ['めしべ','おしべ','花弁','がく'],
+      ['めしべ','おしべ','花びら','がく']]) },
+  { num: 52, sec: 'A', pri: 2, diff: 'A', placeholder: "記号で答えよ",
+    text: "図のアブラナの花で、受粉したあとに<b>果実</b>になる部分はどこか。記号で答えよ。",
+    figure: FIG.hana, hyoka: 'shi', answer: 'お', hint: '果実になるのは子房、種子になるのは胚珠。',
+    trivia: '「お」は子房、「か」は胚珠。子房が果実に、胚珠が種子になるという対応は、図で位置を覚えると忘れにくい。',
+    check: v => qAccept(v, ['お','オ']) },
+  { num: 53, sec: 'A', pri: 1, diff: 'A', wide: true, placeholder: "カンマ区切りで3つ",
+    text: "図は顕微鏡である。<b>あ・い・う</b> の名前を、順にカンマ区切りで答えよ。",
+    figure: FIG.kenbi, hyoka: 'chi', answer: '接眼レンズ, 対物レンズ, 反射鏡', hint: '目を近づける側が接眼レンズ、観察するものに近い側が対物レンズ。',
+    trivia: '顕微鏡の倍率は「接眼レンズの倍率×対物レンズの倍率」。10倍と40倍を組み合わせれば400倍になる。',
+    check: v => qAcceptOrdered(v, [['接眼レンズ','対物レンズ','反射鏡']]) },
+  { num: 54, sec: 'B', pri: 1, diff: 'A', wide: true, placeholder: "カンマ区切りで2つ",
+    text: "図は植物の分類を表したものである。<b>（あ）（い）</b> にあてはまる語を、順にカンマ区切りで答えよ。",
+    figure: FIG.bunrui, hyoka: 'chi', answer: '被子, 裸子', hint: '胚珠が子房に包まれているかどうかで分かれる。',
+    trivia: '「被」はおおう、「裸」ははだかの意味。胚珠が子房に包まれているか、むき出しかがそのまま名前になっている。',
+    check: v => qAcceptOrdered(v, [['被子','裸子'], ['被子植物','裸子植物']]) },
+  { num: 55, sec: 'B', pri: 2, diff: 'A', placeholder: "AまたはB",
+    text: "図のA・Bは、2種類の葉のつくりを表している。<b>単子葉類</b>の葉はどちらか。記号で答えよ。",
+    figure: FIG.yo, hyoka: 'shi', answer: 'B', hint: '単子葉類の葉脈は平行に並んでいる。',
+    trivia: 'Aは網状脈で双子葉類、Bは平行脈で単子葉類。葉を見るだけで、根や子葉のつくりまで見当がつく。',
+    check: v => qAccept(v, ['B','b']) },
+  { num: 56, sec: 'B', pri: 2, diff: 'S',
+    text: "図のAは双子葉類の根である。中心にのびる太い根を何というか。",
+    figure: FIG.ne, hyoka: 'chi', answer: '主根', hint: '主根から枝分かれした細い根は側根という。',
+    trivia: 'Bはひげ根で単子葉類の根。主根は深くまでのび、ひげ根は浅く広がるので、育つ場所の水の取り方がちがってくる。',
+    check: v => qAccept(v, ['主根']) },
+  { num: 57, sec: 'C', pri: 1, diff: 'A', wide: true, placeholder: "カンマ区切りで2つ",
+    text: "表は脊椎動物5つのなかまをまとめたものである。<b>（あ）（い）</b> にあてはまる語を、順にカンマ区切りで答えよ。",
+    figure: FIG.sekitsui, hyoka: 'shi', answer: '肺, 胎生', hint: '両生類は親になると陸上で生活する。ほ乳類だけが子をうむ。',
+    trivia: '表にすると、魚類から ほ乳類へ向かうにつれて陸上の生活に適応していく流れが見えてくる。呼吸とうまれ方はその代表例。',
+    check: v => qAcceptOrdered(v, [['肺','胎生']]) },
+  { num: 58, sec: 'E', pri: 1, diff: 'A', placeholder: "例: 46.0",
+    text: "図はメスシリンダーの目盛りの一部である。液面の値を読み取り、単位 cm³ の数値で答えよ。",
+    figure: FIG.mesu, hyoka: 'shi', answer: '46.0', hint: '最小目盛りは1cm³。その10分の1まで目分量で読む。',
+    trivia: '液面は真横から、へこんだ面のいちばん低いところを読む。ななめから見ると数cm³もずれることがある。',
+    check: v => qAccept(v, ['46.0','46','46.0cm3','46cm3']) },
+  { num: 59, sec: 'E', pri: 3, diff: 'S', wide: true, placeholder: "カンマ区切りで2つ",
+    text: "図はガスバーナーである。<b>あ・い</b> のねじの名前を、順にカンマ区切りで答えよ。",
+    figure: FIG.burner, hyoka: 'tai', answer: '空気調節ねじ, ガス調節ねじ', hint: '上が空気、下がガスのねじ。火をつけるときは下から順に開ける。',
+    trivia: '空気が足りないと炎はオレンジ色になり、すすが出る。青い炎になるまで「あ」を開くのが正しい使い方。',
+    check: v => qAcceptOrdered(v, [
+      ['空気調節ねじ','ガス調節ねじ'],
+      ['空気調節ネジ','ガス調節ネジ']]) },
+  { num: 60, sec: 'F', pri: 1, diff: 'A', placeholder: "ア / イ / ウ",
+    text: "図のア〜ウは、気体の集め方を表している。<b>水上置換法</b>はどれか。記号で答えよ。",
+    figure: FIG.shuki, hyoka: 'chi', answer: 'ア', hint: '水を満たした容器に気体を送りこみ、水と置きかえて集める方法。',
+    trivia: '水上置換法は、集まった気体の量が目で見て分かるのが利点。水にとけにくい酸素や水素はこの方法で集める。',
+    check: v => qAccept(v, ['ア','あ']) },
+  { num: 61, sec: 'F', pri: 3, diff: 'S', placeholder: "ア / イ / ウ",
+    text: "図のア〜ウのうち、<b>アンモニア</b>を集めるのに適した方法はどれか。記号で答えよ。",
+    figure: FIG.shuki, hyoka: 'shi', answer: 'イ', hint: 'アンモニアは水にとけやすく、空気より軽い。',
+    trivia: 'イは試験管の口を下に向けた上方置換法。軽い気体は上にたまるので、口を下に向けても逃げずに集まっていく。',
+    check: v => qAccept(v, ['イ','い']) },
+  { num: 62, sec: 'F', pri: 3, diff: 'A',
+    text: "図のウのように、容器の口を上に向け、ガラス管を底まで入れて気体を集める方法を何というか。",
+    figure: FIG.shuki, hyoka: 'chi', answer: '下方置換法', hint: '空気より重い気体が、容器の下にたまることを利用する。',
+    trivia: '水にとけやすく空気より重い塩化水素や二酸化硫黄は、この方法で集める。集め方は「水へのとけやすさ」と「重さ」で決まる。',
+    check: v => qAccept(v, ['下方置換法','下方置換']) },
 ];
 initQuiz(questions, sections);
 </script>

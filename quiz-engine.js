@@ -278,13 +278,15 @@ function cardHtml(q) {
   const diffCls = 'diff-' + (DIFF_STARS[q.diff] ? q.diff : 'A');
   const wide = q.wide ? ' wide' : '';
   const ph = q.placeholder ? ` placeholder="${escapeAttr(q.placeholder)}"` : '';
+  // figure（インラインSVGの図）は問題文の下に、横幅いっぱいで置く
+  const fig = q.figure ? `\n  <div class="q-figure">${q.figure}</div>` : '';
   return `<div class="q-card" id="qc${q.num}" data-pri="${q.pri || 1}" data-sec="${escapeAttr(q.sec || '')}">
   <div class="q-header">
     <span class="q-num">Q${String(q.num).padStart(2, '0')}</span>
     <div class="q-text">${q.text}</div>
     <span class="diff-tag ${diffCls}">${stars}</span>
     <span class="q-hyoka-badge ${q.hyoka}-tag">${HYOKA_SHORT[q.hyoka] || ''}</span>
-  </div>
+  </div>${fig}
   <div class="q-input-row"><label>答え：</label><input class="ans-input${wide}" id="q${q.num}" type="text"${ph}></div>
   <div class="q-feedback" id="fb${q.num}"></div>
 </div>`;
@@ -402,6 +404,9 @@ function buildPrintSheet(questions, mode, volumeKey) {
 
   function pushBody(showAnswers) {
     let n = 0;
+    // 直前の問題と同じ図なら、紙を節約するため刷り直さず参照だけを書く
+    let lastFigure = '';
+    let lastFigureNo = 0;
     body.forEach(node => {
       if (node.classList.contains('sec-head')) {
         const label = (node.querySelector('.sec-label') || {}).textContent || '';
@@ -418,6 +423,7 @@ function buildPrintSheet(questions, mode, volumeKey) {
       const q = byNum[num];
       const diff = (node.querySelector('.diff-tag') || {}).textContent || '';
       const qtext = innerHtmlOf(node, '.q-text');
+      const figure = innerHtmlOf(node, '.q-figure');
 
       parts.push('<div class="print-q">');
       parts.push(
@@ -426,6 +432,15 @@ function buildPrintSheet(questions, mode, volumeKey) {
         (diff ? `<span class="print-diff">${escapeHtml(diff.trim())}</span>` : '') +
         '</div>'
       );
+      if (figure) {
+        if (figure === lastFigure) {
+          parts.push(`<div class="print-figure-ref">※図は Q${String(lastFigureNo).padStart(2, '0')} と同じ</div>`);
+        } else {
+          parts.push(`<div class="print-figure">${figure}</div>`);
+          lastFigure = figure;
+          lastFigureNo = n;
+        }
+      }
 
       if (showAnswers) {
         if (q) {
