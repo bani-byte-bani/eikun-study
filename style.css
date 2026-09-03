@@ -289,6 +289,48 @@ main { max-width: 900px; margin: 0 auto; padding: 28px 20px 60px; }
 .q-text { font-size: 15px; line-height: 1.8; flex: 1; }
 .math { font-family: 'DM Mono', monospace; }
 
+/* 問題に添える図（インラインSVG） */
+.q-figure {
+  margin: 4px 0 10px;
+  padding: 10px 8px;
+  background: #fcfbf7;
+  border: 1px solid var(--grid);
+  border-radius: 3px;
+  text-align: center;
+  overflow-x: auto;
+}
+.q-figure svg {
+  max-width: 100%;
+  height: auto;
+  color: var(--ink);
+}
+/* 図の線と文字は白黒印刷でも読めるよう、色に頼らず太さで描き分ける */
+.fig-line   { fill: none; stroke: currentColor; stroke-width: 1.4; }
+.fig-thin   { fill: none; stroke: currentColor; stroke-width: .9; }
+.fig-lead   { fill: none; stroke: currentColor; stroke-width: .8; stroke-dasharray: 3 2; }
+.fig-fill   { fill: #e8eef5; stroke: currentColor; stroke-width: 1.2; }
+.fig-fill2  { fill: #f3ede0; stroke: currentColor; stroke-width: 1.2; }
+.fig-white  { fill: #fff; stroke: currentColor; stroke-width: 1.2; }
+.fig-mark   { fill: #fff; stroke: currentColor; stroke-width: 1.3; }
+.fig-text   { fill: currentColor; font-family: 'Noto Sans JP', sans-serif; font-size: 12px; }
+.fig-label  { fill: currentColor; font-family: 'Noto Sans JP', sans-serif; font-size: 12px; font-weight: 700; text-anchor: middle; }
+.fig-small  { fill: currentColor; font-family: 'Noto Sans JP', sans-serif; font-size: 10.5px; }
+
+/* 図として表を出す場合 */
+.q-figure table {
+  border-collapse: collapse;
+  margin: 0 auto;
+  font-size: 13px;
+}
+.q-figure th,
+.q-figure td {
+  border: 1px solid #b9c3cf;
+  padding: 4px 10px;
+  text-align: center;
+  white-space: nowrap;
+}
+.q-figure th { background: #eef2f7; font-weight: 700; }
+
 /* 評価観点バッジ */
 .q-hyoka-badge {
   font-size: 9px;
@@ -649,6 +691,39 @@ main { max-width: 900px; margin: 0 auto; padding: 28px 20px 60px; }
   .print-qnum { font-weight: 700; white-space: nowrap; font-size: 9.5pt; }
   .print-qtext { flex: 1; }
   .print-diff { font-size: 8pt; white-space: nowrap; }
+
+  /* 問題に添える図 */
+  .print-figure {
+    margin: 3pt 0 1pt 26pt;
+    text-align: left;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .print-figure svg {
+    width: 74mm;
+    max-width: 100%;
+    height: auto;
+    color: #000;
+  }
+  /* 紙では背景色に頼らず、線と網かけだけで読めるようにする */
+  .print-figure .fig-fill  { fill: #eee; }
+  .print-figure .fig-fill2 { fill: #f5f5f5; }
+  .print-figure table {
+    border-collapse: collapse;
+    font-size: 8.5pt;
+  }
+  .print-figure th,
+  .print-figure td {
+    border: .5pt solid #000;
+    padding: 1.5pt 5pt;
+    text-align: center;
+    white-space: nowrap;
+  }
+  .print-figure th { background: #eee; font-weight: 700; }
+  .print-figure-ref {
+    margin: 2pt 0 1pt 26pt;
+    font-size: 8.5pt;
+  }
 
   /* 問題用紙の解答記入欄 */
   .print-ansline {
