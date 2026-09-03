@@ -74,25 +74,25 @@ const FIG = {};
 // アブラナの花のつくり（記号 あ〜か）
 FIG.hana = `<svg viewBox="0 0 360 240" width="360" height="240" role="img" aria-label="アブラナの花の断面図">
   <text class="fig-small" x="8" y="16">アブラナの花（断面）</text>
-  <path class="fig-fill2" d="M155,148 C118,142 88,112 90,78 C124,84 150,112 155,148 Z"/>
-  <path class="fig-fill2" d="M195,148 C232,142 262,112 260,78 C226,84 200,112 195,148 Z"/>
-  <path class="fig-fill" d="M158,172 C142,180 128,182 118,178 C130,168 146,166 158,172 Z"/>
-  <path class="fig-fill" d="M192,172 C208,180 222,182 232,178 C220,168 204,166 192,172 Z"/>
-  <path class="fig-line" d="M158,152 Q140,125 134,102"/>
-  <path class="fig-line" d="M192,152 Q210,125 216,102"/>
-  <ellipse class="fig-fill2" cx="132" cy="95" rx="7.5" ry="12"/>
-  <ellipse class="fig-fill2" cx="218" cy="95" rx="7.5" ry="12"/>
-  <ellipse class="fig-fill" cx="175" cy="158" rx="24" ry="32"/>
-  <circle class="fig-white" cx="175" cy="163" r="6.5"/>
-  <path class="fig-line" d="M175,126 L175,98"/>
-  <ellipse class="fig-fill" cx="175" cy="92" rx="13" ry="8.5"/>
-  <path class="fig-line" d="M175,190 L175,226"/>
-  <path class="fig-lead" d="M292,62 L186,104"/><circle class="fig-mark" cx="305" cy="60" r="11"/><text class="fig-label" x="305" y="65">あ</text>
-  <path class="fig-lead" d="M292,104 L212,124"/><circle class="fig-mark" cx="305" cy="104" r="11"/><text class="fig-label" x="305" y="109">い</text>
-  <path class="fig-lead" d="M292,150 L200,155"/><circle class="fig-mark" cx="305" cy="150" r="11"/><text class="fig-label" x="305" y="155">お</text>
-  <path class="fig-lead" d="M292,196 L181,170"/><circle class="fig-mark" cx="305" cy="196" r="11"/><text class="fig-label" x="305" y="201">か</text>
-  <path class="fig-lead" d="M68,60 L110,84"/><circle class="fig-mark" cx="55" cy="58" r="11"/><text class="fig-label" x="55" y="63">う</text>
-  <path class="fig-lead" d="M68,196 L124,178"/><circle class="fig-mark" cx="55" cy="198" r="11"/><text class="fig-label" x="55" y="203">え</text>
+  <path class="fig-fill2" d="M156,152 C130,150 106,138 96,118 C118,116 144,130 156,152 Z"/>
+  <path class="fig-fill2" d="M194,152 C220,150 244,138 254,118 C232,116 206,130 194,152 Z"/>
+  <path class="fig-fill" d="M160,168 C146,176 132,178 122,176 C132,166 148,162 160,168 Z"/>
+  <path class="fig-fill" d="M190,168 C204,176 218,178 228,176 C218,166 202,162 190,168 Z"/>
+  <path class="fig-line" d="M162,150 Q152,128 148,114"/>
+  <path class="fig-line" d="M188,150 Q198,128 202,114"/>
+  <ellipse class="fig-fill2" cx="147" cy="107" rx="6.5" ry="10"/>
+  <ellipse class="fig-fill2" cx="203" cy="107" rx="6.5" ry="10"/>
+  <ellipse class="fig-fill" cx="175" cy="156" rx="22" ry="28"/>
+  <circle class="fig-white" cx="175" cy="160" r="6"/>
+  <path class="fig-line" d="M175,128 L175,102"/>
+  <ellipse class="fig-fill" cx="175" cy="96" rx="12" ry="7.5"/>
+  <path class="fig-line" d="M175,184 L175,226"/>
+  <path class="fig-lead" d="M175,53 L175,87"/><circle class="fig-mark" cx="175" cy="42" r="11"/><text class="fig-label" x="175" y="47">あ</text>
+  <path class="fig-lead" d="M289,102 L212,107"/><circle class="fig-mark" cx="302" cy="102" r="11"/><text class="fig-label" x="302" y="107">い</text>
+  <path class="fig-lead" d="M289,152 L198,154"/><circle class="fig-mark" cx="302" cy="152" r="11"/><text class="fig-label" x="302" y="157">お</text>
+  <path class="fig-lead" d="M289,194 L181,166"/><circle class="fig-mark" cx="302" cy="194" r="11"/><text class="fig-label" x="302" y="199">か</text>
+  <path class="fig-lead" d="M69,108 L104,118"/><circle class="fig-mark" cx="56" cy="106" r="11"/><text class="fig-label" x="56" y="111">う</text>
+  <path class="fig-lead" d="M69,186 L128,175"/><circle class="fig-mark" cx="56" cy="188" r="11"/><text class="fig-label" x="56" y="193">え</text>
 </svg>`;
 
 // 顕微鏡（記号 あ〜う）
@@ -141,11 +141,13 @@ FIG.bunrui = `<svg viewBox="0 0 380 180" width="380" height="180" role="img" ari
 // 葉のつくり（網状脈と平行脈）
 FIG.yo = `<svg viewBox="0 0 340 180" width="340" height="180" role="img" aria-label="2種類の葉脈">
   <path class="fig-fill2" d="M28,90 C48,38 100,28 132,90 C100,152 48,142 28,90 Z"/>
-  <path class="fig-thin" d="M30,90 L130,90"/>
-  <path class="fig-thin" d="M55,80 L72,58 M80,76 L96,56 M55,100 L72,122 M80,104 L96,124 M104,84 L114,70 M104,96 L114,110"/>
+  <path class="fig-line" d="M30,90 L130,90"/>
+  <path class="fig-thin" d="M48,90 C54,78 60,68 68,60 M66,90 C72,76 80,66 90,60 M86,90 C92,78 98,70 108,66"/>
+  <path class="fig-thin" d="M48,90 C54,102 60,112 68,120 M66,90 C72,104 80,114 90,120 M86,90 C92,102 98,110 108,114"/>
+  <path class="fig-thin" d="M57,74 C64,74 70,70 76,66 M75,72 C82,72 88,70 96,68 M57,106 C64,106 70,110 76,114 M75,108 C82,108 88,110 96,112"/>
   <text class="fig-label" x="80" y="170">A</text>
   <path class="fig-fill2" d="M212,158 C204,86 224,36 254,18 C268,72 250,128 226,162 Z"/>
-  <path class="fig-thin" d="M219,157 C213,90 230,44 254,22 M228,159 C223,94 238,50 258,26 M236,160 C232,98 245,56 261,32"/>
+  <path class="fig-thin" d="M221,150 C216,96 231,54 249,30 M229,152 C225,100 238,60 254,38 M236,153 C233,104 244,68 257,46"/>
   <text class="fig-label" x="240" y="176">B</text>
 </svg>`;
 
@@ -176,37 +178,41 @@ FIG.sekitsui = `<table>
 // メスシリンダーの目盛り
 FIG.mesu = `<svg viewBox="0 0 220 220" width="220" height="220" role="img" aria-label="メスシリンダーの目盛り">
   <rect class="fig-white" x="70" y="18" width="60" height="176" rx="4"/>
-  <path class="fig-fill" d="M71,84 L129,84 L129,193 L71,193 Z"/>
-  <path class="fig-line" d="M71,84 C88,92 112,92 129,84"/>
+  <path class="fig-fill" d="M71,78 C88,86 112,86 129,78 L129,193 L71,193 Z"/>
+  <path class="fig-line" d="M71,78 C88,86 112,86 129,78"/>
   <path class="fig-thin" d="M70,60 L96,60 M70,120 L96,120"/>
   <path class="fig-thin" d="M70,66 L84,66 M70,72 L84,72 M70,78 L84,78 M70,84 L84,84 M70,90 L84,90 M70,96 L84,96 M70,102 L84,102 M70,108 L84,108 M70,114 L84,114"/>
   <text class="fig-small" x="42" y="64">50</text>
   <text class="fig-small" x="42" y="124">40</text>
-  <path class="fig-line" d="M176,86 L136,86"/>
-  <path class="fig-line" d="M136,86 L144,82 M136,86 L144,90"/>
+  <path class="fig-line" d="M178,84 L134,84"/>
+  <path class="fig-line" d="M134,84 L142,80 M134,84 L142,88"/>
   <text class="fig-small" x="150" y="76">液面</text>
   <text class="fig-small" x="8" y="16">目盛りの単位は cm³</text>
 </svg>`;
 
 // ガスバーナー（記号 あ・い）
-FIG.burner = `<svg viewBox="0 0 280 220" width="280" height="220" role="img" aria-label="ガスバーナー">
+FIG.burner = `<svg viewBox="0 0 280 224" width="280" height="224" role="img" aria-label="ガスバーナー">
   <text class="fig-small" x="8" y="16">ガスバーナー</text>
-  <path class="fig-thin" d="M112,84 C116,68 124,60 130,54 C136,60 144,68 148,84 Z"/>
-  <path class="fig-line" d="M122,84 C124,76 128,72 130,68 C132,72 136,76 138,84 Z"/>
-  <rect class="fig-fill" x="119" y="86" width="22" height="62"/>
-  <ellipse class="fig-white" cx="130" cy="86" rx="11" ry="3.5"/>
-  <circle class="fig-white" cx="124" cy="138" r="2.6"/>
-  <circle class="fig-white" cx="136" cy="138" r="2.6"/>
-  <ellipse class="fig-fill2" cx="130" cy="152" rx="32" ry="8"/>
-  <path class="fig-thin" d="M106,149 L106,155 M117,150 L117,156 M130,150 L130,156 M143,150 L143,156 M154,149 L154,155"/>
-  <ellipse class="fig-fill2" cx="130" cy="174" rx="32" ry="8"/>
-  <path class="fig-thin" d="M106,171 L106,177 M117,172 L117,178 M130,172 L130,178 M143,172 L143,178 M154,171 L154,177"/>
-  <rect class="fig-fill" x="118" y="178" width="24" height="20"/>
-  <ellipse class="fig-fill" cx="130" cy="202" rx="54" ry="11"/>
-  <path class="fig-line" d="M162,194 C190,194 206,190 224,190"/>
-  <text class="fig-small" x="228" y="194">ガス</text>
-  <path class="fig-lead" d="M209,136 L164,150"/><circle class="fig-mark" cx="222" cy="134" r="11"/><text class="fig-label" x="222" y="139">あ</text>
-  <path class="fig-lead" d="M209,174 L164,174"/><circle class="fig-mark" cx="222" cy="174" r="11"/><text class="fig-label" x="222" y="179">い</text>
+  <path class="fig-thin" d="M110,82 C112,60 122,50 130,42 C138,50 148,60 150,82 Z"/>
+  <path class="fig-line" d="M121,82 C123,70 127,64 130,60 C133,64 137,70 139,82 Z"/>
+  <rect class="fig-fill" x="118" y="84" width="24" height="54"/>
+  <ellipse class="fig-white" cx="130" cy="84" rx="12" ry="4"/>
+  <circle class="fig-white" cx="123" cy="130" r="2.6"/>
+  <circle class="fig-white" cx="137" cy="130" r="2.6"/>
+  <rect class="fig-fill2" x="98" y="138" width="64" height="20"/>
+  <ellipse class="fig-fill2" cx="130" cy="138" rx="32" ry="7"/>
+  <path class="fig-thin" d="M108,142 L108,156 M119,143 L119,157 M130,143 L130,157 M141,143 L141,157 M152,142 L152,156"/>
+  <rect class="fig-fill" x="118" y="156" width="24" height="10"/>
+  <rect class="fig-fill2" x="98" y="166" width="64" height="20"/>
+  <ellipse class="fig-fill2" cx="130" cy="166" rx="32" ry="7"/>
+  <path class="fig-thin" d="M108,170 L108,184 M119,171 L119,185 M130,171 L130,185 M141,171 L141,185 M152,170 L152,184"/>
+  <rect class="fig-fill" x="102" y="190" width="56" height="14"/>
+  <ellipse class="fig-fill" cx="130" cy="206" rx="50" ry="10"/>
+  <rect class="fig-fill" x="162" y="172" width="14" height="9"/>
+  <path class="fig-line" d="M176,177 C196,177 210,174 226,174"/>
+  <text class="fig-small" x="230" y="178">ガス</text>
+  <path class="fig-lead" d="M209,132 L166,144"/><circle class="fig-mark" cx="222" cy="130" r="11"/><text class="fig-label" x="222" y="135">あ</text>
+  <path class="fig-lead" d="M59,174 L96,174"/><circle class="fig-mark" cx="46" cy="174" r="11"/><text class="fig-label" x="46" y="179">い</text>
 </svg>`;
 
 // 気体の集め方 3種（ア・イ・ウ）
