@@ -145,6 +145,68 @@ header h1 small {
 .score-record-at { color: #99a; }
 .score-record-none { color: #aab; font-family: 'Noto Sans JP', sans-serif; }
 
+/* 問題量（ふつう／しっかり／ガリ勉）の切りかえ */
+.vol-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+  padding-left: 10px;
+  border-left: 1px dashed var(--grid);
+}
+.vol-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  color: #8a94a6;
+  margin-right: 2px;
+}
+.vol-btn {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  padding: 5px 10px;
+  background: var(--paper);
+  color: #667;
+  border: 1px solid var(--grid);
+  border-radius: 3px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background .15s, color .15s, border-color .15s;
+}
+.vol-btn em {
+  font-style: normal;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 400;
+  opacity: .75;
+}
+.vol-btn:hover { border-color: var(--blue); color: var(--blue); }
+.vol-btn.active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+}
+.vol-btn.active em { opacity: .8; }
+
+/* 選ばれた問題量に入っていない問題・セクションは画面から隠す */
+.q-card.vol-off,
+.sec-head.vol-off { display: none !important; }
+
+.score-record-vol,
+.set-record-vol {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  background: #eef2f7;
+  color: #4a6080;
+  border-radius: 2px;
+  padding: 1px 6px;
+}
+
 /* 印刷ボタン */
 .print-btn-group {
   display: inline-flex;
@@ -530,6 +592,11 @@ main { max-width: 900px; margin: 0 auto; padding: 28px 20px 60px; }
     border: 1pt solid #000;
     border-radius: 2pt;
     padding: 1pt 7pt;
+    white-space: nowrap;
+  }
+  .print-vol {
+    font-size: 8.5pt;
+    font-weight: 400;
     white-space: nowrap;
   }
   .print-sub { font-size: 9pt; margin-top: 2pt; }
