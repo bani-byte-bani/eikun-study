@@ -568,11 +568,15 @@ function initQuiz(questions, sections) {
     volumeKey = volumeByKey(key).key;
     const max = volumeByKey(volumeKey).maxPri;
 
+    // 通し番号は画面に並んでいる順（＝セクション順）で振り直す。
+    // questions の配列順とは一致しないことがあるので、必ずDOMをたどること。
+    const byNum = {};
+    questions.forEach(q => { byNum[q.num] = q; });
     let n = 0;
-    questions.forEach(q => {
-      const card = el('qc', q.num);
-      if (!card) return;
-      const on = (q.pri || 1) <= max;
+    document.querySelectorAll('main .q-card').forEach(card => {
+      const num = parseInt(String(card.id).replace(/^qc/, ''), 10);
+      const q = byNum[num];
+      const on = q ? (q.pri || 1) <= max : true;
       card.classList.toggle('vol-off', !on);
       if (on) {
         n++;
